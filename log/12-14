@@ -1,0 +1,108 @@
+﻿[root@host168 etc]# mysqladmin -uroot -proot -h localhost ping
+mysqld is alive
+[root@host168 etc]# 
+[root@host168 etc]# 
+[root@host168 etc]# 
+[root@host168 etc]# [root@host168 etc]# systemctl stop mariadb
+-bash: [root@host168: command not found
+[root@host168 etc]# systemctl stop mariadb
+[root@host168 etc]# mysqladmin -uroot -proot -h localhost ping
+mysqladmin: connect to server at 'localhost' failed
+error: 'Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)'
+Check that mysqld is running and that the socket: '/var/lib/mysql/mysql.sock' exists!
+[root@host168 etc]# 
+[root@host168 etc]# systemctl start mariadb
+[root@host168 etc]# ll /var/lib/mysql/mysql.sock
+srwxrwxrwx. 1 mysql mysql 0 12鏈14 14:09 /var/lib/mysql/mysql.sock
+[root@host168 etc]# 
+[root@host168 etc]# ls
+adjtime                  cron.monthly             filesystems         gtk          ld.so.conf.d              modules-load.d     pm              redhat-release    skel                Trolltech.conf
+aliases                  crontab                  firewalld           host.conf    libaudit.conf             motd               polkit-1        resolv.conf       ssh                 tuned
+aliases.db               cron.weekly              fonts               hostname     libnl                     mtab               popt.d          resolv.conf.save  ssl                 udev
+alternatives             crypttab                 foomatic            hosts        libuser.conf              my.cnf             postfix         rpc               statetab            vconsole.conf
+anacrontab               csh.cshrc                fstab               hosts.allow  locale.conf               my.cnf.bak         ppp             rpm               statetab.d          vimrc
+ant.conf                 csh.login                gconf               hosts.deny   localtime                 my.cnf.d           prelink.conf.d  rsyncd.conf       subgid              virc
+ant.d                    dbus-1                   gcrypt              init.d       login.defs                my.cnf.mod         printcap        rsyslog.conf      subuid              wgetrc
+asound.conf              default                  GeoIP.conf          inittab      logrotate.conf            my.cnf.new         profile         rsyslog.d         subversion          wpa_supplicant
+at.deny                  depmod.d                 GeoIP.conf.default  inputrc      logrotate.d               NetworkManager     profile.d       rwtab             sudo.conf           X11
+audisp                   dhcp                     ghostscript         iproute2     lsb-release.d             networks           protocols       rwtab.d           sudoers             xdg
+audit                    DIR_COLORS               glvnd               issue        lvm                       nsswitch.conf      python          sasl2             sudoers.d           xinetd.d
+bash_completion.d        DIR_COLORS.256color      gnupg               issue.net    machine-id                nsswitch.conf.bak  rc0.d           screenrc          sudo-ldap.conf      xml
+bashrc                   DIR_COLORS.lightbgcolor  GREP_COLORS         java         magic                     openldap           rc1.d           securetty         sysconfig           yum
+binfmt.d                 dracut.conf              groff               jvm          mailcap                   opt                rc2.d           security          sysctl.conf         yum.conf
+centos-release           dracut.conf.d            group               jvm-commmon  mail.rc                   os-release         rc3.d           selinux           sysctl.d            yum.repos.d
+centos-release-upstream  e2fsck.conf              group-              kdump.conf   makedumpfile.conf.sample  pam.d              rc4.d           services          systemd
+chkconfig.d              egl                      grub2-efi.cfg       kernel       man_db.conf               passwd             rc5.d           sestatus.conf     system-release
+cron.d                   environment              grub.d              krb5.conf    maven                     passwd-            rc6.d           sgml              system-release-cpe
+cron.daily               ethertypes               gshadow             krb5.conf.d  mime.types                pkcs11             rc.d            shadow            tcsd.conf
+cron.deny                exports                  gshadow-            ld.so.cache  mke2fs.conf               pki                rc.local        shadow-           terminfo
+cron.hourly              favicon.png              gss                 ld.so.conf   modprobe.d                plymouth           redhat-lsb      shells            tmpfiles.d
+[root@host168 etc]# cd /da/mysql
+[root@host168 mysql]# ls
+aria_log.00000001  aria_log_control  host168.pid  ib_buffer_pool  ibdata1  ib_logfile0  ib_logfile1  ibtmp1  multi-master.info  mysql  mysql.sock  performance_schema  tc.log  usr_510
+[root@host168 mysql]# ll
+total 123360
+-rw-r-----. 1 mysql mysql    16384 12鏈14 14:08 aria_log.00000001
+-rw-r-----. 1 mysql mysql       52 12鏈14 14:08 aria_log_control
+-rw-rw----. 1 mysql mysql        6 12鏈14 14:09 host168.pid
+-rw-rw----. 1 mysql mysql      992 12鏈14 14:08 ib_buffer_pool
+-rw-r-----. 1 mysql mysql 12582912 12鏈14 14:08 ibdata1
+-rw-r-----. 1 mysql mysql 50331648 12鏈14 14:09 ib_logfile0
+-rw-r-----. 1 mysql mysql 50331648 12鏈13 23:01 ib_logfile1
+-rw-rw----. 1 mysql mysql 12582912 12鏈14 14:09 ibtmp1
+-rw-r-----. 1 mysql mysql        0 12鏈13 23:01 multi-master.info
+drwx--x--x. 2 mysql mysql     4096 12鏈13 23:01 mysql
+srwxr-xr-x. 1 mysql mysql        0 12鏈13 23:01 mysql.sock
+drwx------. 2 mysql mysql       20 12鏈13 23:01 performance_schema
+-rw-rw----. 1 mysql mysql   393216 12鏈14 14:09 tc.log
+drwx------. 2 mysql mysql       56 12鏈14 11:40 usr_510
+[root@host168 mysql]# cd mysql
+[root@host168 mysql]# ls
+columns_priv.frm  event.MYD           help_category.frm  help_topic.MYD          innodb_table_stats.frm  procs_priv.MYI     slow_log.CSM     time_zone_leap_second.frm  time_zone_transition.MYI
+columns_priv.MYD  event.MYI           help_category.MYD  help_topic.MYI          innodb_table_stats.ibd  proxies_priv.frm   slow_log.CSV     time_zone_leap_second.MYD  time_zone_transition_type.frm
+columns_priv.MYI  func.frm            help_category.MYI  host.frm                plugin.frm              proxies_priv.MYD   slow_log.frm     time_zone_leap_second.MYI  time_zone_transition_type.MYD
+column_stats.frm  func.MYD            help_keyword.frm   host.MYD                plugin.MYD              proxies_priv.MYI   tables_priv.frm  time_zone.MYD              time_zone_transition_type.MYI
+column_stats.MYD  func.MYI            help_keyword.MYD   host.MYI                plugin.MYI              roles_mapping.frm  tables_priv.MYD  time_zone.MYI              transaction_registry.frm
+column_stats.MYI  general_log.CSM     help_keyword.MYI   index_stats.frm         proc.frm                roles_mapping.MYD  tables_priv.MYI  time_zone_name.frm         transaction_registry.ibd
+db.frm            general_log.CSV     help_relation.frm  index_stats.MYD         proc.MYD                roles_mapping.MYI  table_stats.frm  time_zone_name.MYD         user.frm
+db.MYD            general_log.frm     help_relation.MYD  index_stats.MYI         proc.MYI                servers.frm        table_stats.MYD  time_zone_name.MYI         user.MYD
+db.MYI            gtid_slave_pos.frm  help_relation.MYI  innodb_index_stats.frm  procs_priv.frm          servers.MYD        table_stats.MYI  time_zone_transition.frm   user.MYI
+event.frm         gtid_slave_pos.ibd  help_topic.frm     innodb_index_stats.ibd  procs_priv.MYD          servers.MYI        time_zone.frm    time_zone_transition.MYD
+[root@host168 mysql]# cd ..
+[root@host168 mysql]# cd usr_510/
+[root@host168 usr_510]# ls
+db.opt  mybook.frm  mybook.ibd
+[root@host168 usr_510]# cd ..
+[root@host168 mysql]# cd ..
+[root@host168 da]# ls
+mysql
+[root@host168 da]# lsblk
+NAME            MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sdb               8:16   0  3.7T  0 disk 
+鈹斺攢sdb1            8:17   0  3.7T  0 part 
+  鈹斺攢centos-home 253:2    0 10.1T  0 lvm  /home
+sda               8:0    0  3.7T  0 disk 
+鈹溾攢sda2            8:2    0    1G  0 part /boot
+鈹溾攢sda3            8:3    0  3.7T  0 part 
+鈹鈹斺攢centos-home 253:2    0 10.1T  0 lvm  /home
+鈹斺攢sda1            8:1    0  200M  0 part /boot/efi
+nvme0n1         259:0    0  2.9T  0 disk 
+鈹斺攢nvme0n1p1     259:1    0  2.9T  0 part 
+  鈹溾攢centos-swap 253:1    0    4G  0 lvm  [SWAP]
+  鈹溾攢centos-home 253:2    0 10.1T  0 lvm  /home
+  鈹斺攢centos-root 253:0    0   50G  0 lvm  /
+[root@host168 da]# lsblk
+NAME            MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sdb               8:16   0  3.7T  0 disk 
+鈹斺攢sdb1            8:17   0  3.7T  0 part 
+  鈹斺攢centos-home 253:2    0 10.1T  0 lvm  /home
+sda               8:0    0  3.7T  0 disk 
+鈹溾攢sda2            8:2    0    1G  0 part /boot
+鈹溾攢sda3            8:3    0  3.7T  0 part 
+鈹鈹斺攢centos-home 253:2    0 10.1T  0 lvm  /home
+鈹斺攢sda1            8:1    0  200M  0 part /boot/efi
+nvme0n1         259:0    0  2.9T  0 disk 
+鈹斺攢nvme0n1p1     259:1    0  2.9T  0 part 
+  鈹溾攢centos-swap 253:1    0    4G  0 lvm  [SWAP]
+  鈹溾攢centos-home 253:2    0 10.1T  0 lvm  /home
+  鈹斺攢centos-root 253:0    0   50G  0 lvm  /

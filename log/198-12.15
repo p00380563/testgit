@@ -1,0 +1,1146 @@
+﻿[root@localhost ~]# strace systemctl start mariadb
+execve("/usr/bin/systemctl", ["systemctl", "start", "mariadb"], [/* 30 vars */]) = 0
+brk(NULL)                               = 0xaaaafd630000
+faccessat(AT_FDCWD, "/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=24220, ...}) = 0
+mmap(NULL, 24220, PROT_READ, MAP_PRIVATE, 3, 0) = 0xffff8fe10000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/librt.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\0\36\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=82072, ...}) = 0
+mmap(NULL, 131904, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xffff8fde0000
+mmap(0xffff8fdf0000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff8fdf0000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/libselinux.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0 k\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=204976, ...}) = 0
+mmap(NULL, 272688, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xffff8fd90000
+mmap(0xffff8fdc0000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x20000) = 0xffff8fdc0000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/liblzma.so.5", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0@2\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=202480, ...}) = 0
+mmap(NULL, 262768, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xffff8fd40000
+mmap(0xffff8fd70000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x20000) = 0xffff8fd70000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/liblz4.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\20&\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=135096, ...}) = 0
+mmap(NULL, 196912, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xffff8fd00000
+mmap(0xffff8fd20000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x10000) = 0xffff8fd20000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/libgcrypt.so.11", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\320u\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=546424, ...}) = 0
+mmap(NULL, 601296, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xffff8fc60000
+mmap(0xffff8fce0000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x70000) = 0xffff8fce0000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/libcap.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0@\27\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=69152, ...}) = 0
+mmap(NULL, 131608, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xffff8fc30000
+mmap(0xffff8fc40000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff8fc40000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/libgcc_s.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0 )\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=133776, ...}) = 0
+mmap(NULL, 197688, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xffff8fbf0000
+mmap(0xffff8fc10000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x10000) = 0xffff8fc10000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\200h\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=185080, ...}) = 0
+mmap(NULL, 213912, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xffff8fbb0000
+mmap(0xffff8fbd0000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x10000) = 0xffff8fbd0000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\370\26\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1866704, ...}) = 0
+mmap(NULL, 1594240, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xffff8fa20000
+mmap(0xffff8fb90000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x160000) = 0xffff8fb90000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/libpcre.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0p\26\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=265976, ...}) = 0
+mmap(NULL, 327912, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xffff8f9c0000
+mmap(0xffff8fa00000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x30000) = 0xffff8fa00000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\20\16\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=74424, ...}) = 0
+mmap(NULL, 131296, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xffff8f990000
+mmap(0xffff8f9a0000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff8f9a0000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/libgpg-error.so.0", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0p\v\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=68520, ...}) = 0
+mmap(NULL, 131164, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xffff8f960000
+mmap(0xffff8f970000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff8f970000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/libattr.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\220\25\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=69048, ...}) = 0
+mmap(NULL, 131424, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xffff8f930000
+mmap(0xffff8f940000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff8f940000
+close(3)                                = 0
+mprotect(0xffff8fb90000, 65536, PROT_READ) = 0
+mprotect(0xffff8f940000, 65536, PROT_READ) = 0
+mprotect(0xffff8f970000, 65536, PROT_READ) = 0
+mprotect(0xffff8f9a0000, 65536, PROT_READ) = 0
+mprotect(0xffff8fa00000, 65536, PROT_READ) = 0
+mprotect(0xffff8fbd0000, 65536, PROT_READ) = 0
+mprotect(0xffff8fc10000, 65536, PROT_READ) = 0
+mprotect(0xffff8fc40000, 65536, PROT_READ) = 0
+mprotect(0xffff8fce0000, 65536, PROT_READ) = 0
+mprotect(0xffff8fd20000, 65536, PROT_READ) = 0
+mprotect(0xffff8fd70000, 65536, PROT_READ) = 0
+mprotect(0xffff8fdc0000, 65536, PROT_READ) = 0
+mprotect(0xffff8fdf0000, 65536, PROT_READ) = 0
+mprotect(0xaaaadf1a0000, 65536, PROT_READ) = 0
+mprotect(0xffff8fe60000, 65536, PROT_READ) = 0
+munmap(0xffff8fe10000, 24220)           = 0
+set_tid_address(0xffff8fe772c0)         = 2638
+set_robust_list(0xffff8fe772d0, 24)     = 0
+rt_sigaction(SIGRTMIN, {0xffff8fbb6324, [], SA_SIGINFO}, NULL, 8) = 0
+rt_sigaction(SIGRT_1, {0xffff8fbb6404, [], SA_RESTART|SA_SIGINFO}, NULL, 8) = 0
+rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+getrlimit(RLIMIT_STACK, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+brk(NULL)                               = 0xaaaafd630000
+brk(0xaaaafd660000)                     = 0xaaaafd660000
+faccessat(AT_FDCWD, "/etc/system-fips", F_OK) = -1 ENOENT (No such file or directory)
+statfs("/sys/fs/selinux", 0xffffed3da9c0) = -1 ENOENT (No such file or directory)
+statfs("/selinux", 0xffffed3da9c0)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/proc/filesystems", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap(NULL, 65536, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff8fe10000
+read(3, "nodev\tsysfs\nnodev\trootfs\nnodev\tr"..., 1024) = 316
+read(3, "", 1024)                       = 0
+close(3)                                = 0
+munmap(0xffff8fe10000, 65536)           = 0
+faccessat(AT_FDCWD, "/etc/selinux/config", F_OK) = 0
+openat(AT_FDCWD, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=109675168, ...}) = 0
+mmap(NULL, 109675168, PROT_READ, MAP_PRIVATE, 3, 0) = 0xffff89090000
+close(3)                                = 0
+openat(AT_FDCWD, "/proc/self/stat", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap(NULL, 65536, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff8fe10000
+read(3, "2638 (systemctl) R 2636 2636 256"..., 1024) = 316
+close(3)                                = 0
+munmap(0xffff8fe10000, 65536)           = 0
+ioctl(1, TCGETS, {B38400 opost isig icanon echo ...}) = 0
+newfstatat(AT_FDCWD, "/proc/1/root", {st_mode=S_IFDIR|0555, st_size=254, ...}, 0) = 0
+newfstatat(AT_FDCWD, "/", {st_mode=S_IFDIR|0555, st_size=254, ...}, 0) = 0
+newfstatat(AT_FDCWD, "/proc/1/root", {st_mode=S_IFDIR|0555, st_size=254, ...}, 0) = 0
+newfstatat(AT_FDCWD, "/", {st_mode=S_IFDIR|0555, st_size=254, ...}, 0) = 0
+newfstatat(AT_FDCWD, "/run/systemd/system/", {st_mode=S_IFDIR|0755, st_size=160, ...}, AT_SYMLINK_NOFOLLOW) = 0
+geteuid()                               = 0
+socket(AF_LOCAL, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 3
+setsockopt(3, SOL_SOCKET, SO_PASSCRED, [1], 4) = 0
+setsockopt(3, SOL_SOCKET, SO_PASSSEC, [0], 4) = 0
+getsockopt(3, SOL_SOCKET, SO_RCVBUF, [229376], [4]) = 0
+setsockopt(3, SOL_SOCKET, SO_RCVBUFFORCE, [8388608], 4) = 0
+getsockopt(3, SOL_SOCKET, SO_SNDBUF, [229376], [4]) = 0
+setsockopt(3, SOL_SOCKET, SO_SNDBUFFORCE, [8388608], 4) = 0
+connect(3, {sa_family=AF_LOCAL, sun_path="/run/systemd/private"}, 22) = 0
+getsockopt(3, SOL_SOCKET, SO_PEERCRED, {pid=1, uid=0, gid=0}, [12]) = 0
+getsockopt(3, SOL_SOCKET, SO_PEERSEC, 0xaaaafd632770, 0xffffed3da5e4) = -1 ENOPROTOOPT (Protocol not available)
+clock_gettime(CLOCK_MONOTONIC, {528, 961705480}) = 0
+fstat(3, {st_mode=S_IFSOCK|0777, st_size=0, ...}) = 0
+getsockopt(3, SOL_SOCKET, SO_ACCEPTCONN, [0], [4]) = 0
+getsockname(3, {sa_family=AF_LOCAL, sun_path=@"0007b"}, [8]) = 0
+geteuid()                               = 0
+sendmsg(3, {msg_name(0)=NULL, msg_iov(3)=[{"\0AUTH EXTERNAL ", 15}, {"30", 2}, {"\r\nNEGOTIATE_UNIX_FD\r\nBEGIN\r\n", 28}], msg_controllen=0, msg_flags=0}, MSG_DONTWAIT|MSG_NOSIGNAL) = 45
+getsockopt(3, SOL_SOCKET, SO_PEERCRED, {pid=1, uid=0, gid=0}, [12]) = 0
+newfstatat(AT_FDCWD, "/proc/1/root", {st_mode=S_IFDIR|0555, st_size=254, ...}, 0) = 0
+newfstatat(AT_FDCWD, "/", {st_mode=S_IFDIR|0555, st_size=254, ...}, 0) = 0
+ioctl(0, TCGETS, {B38400 opost isig icanon echo ...}) = 0
+rt_sigprocmask(SIG_SETMASK, ~[RTMIN RT_1], [], 8) = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff8fe772c0) = 2639
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+ioctl(0, TCGETS, {B38400 opost isig icanon echo ...}) = 0
+pipe2([4, 5], 0)                        = 0
+rt_sigprocmask(SIG_SETMASK, ~[RTMIN RT_1], [], 8) = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff8fe772c0) = 2640
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+close(5)                                = 0
+ppoll([{fd=4, events=POLLHUP}], 1, NULL, NULL, 8) = 1 ([{fd=4, revents=POLLHUP}])
+close(4)                                = 0
+gettid()                                = 2638
+getrandom("\24\3\5\212sl\322\3008-@\250&\302vj", 16, GRND_NONBLOCK) = 16
+clock_gettime(CLOCK_MONOTONIC, {528, 973487320}) = 0
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"OK 5deec0a74151452fb38641f12413a"..., 256}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 52
+sendmsg(3, {msg_name(0)=NULL, msg_iov(2)=[{"l\1\4\1 \0\0\0\1\0\0\0\240\0\0\0\1\1o\0\31\0\0\0/org/fre"..., 176}, {"\17\0\0\0mariadb.service\0\7\0\0\0replace\0", 32}], msg_controllen=0, msg_flags=0}, MSG_DONTWAIT|MSG_NOSIGNAL) = 208
+clock_gettime(CLOCK_MONOTONIC, {528, 973637200}) = 0
+recvmsg(3, 0xffffed3d96a0, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = -1 EAGAIN (Resource temporarily unavailable)
+clock_gettime(CLOCK_MONOTONIC, {528, 973708380}) = 0
+ppoll([{fd=3, events=POLLIN}], 1, {24, 999929000}, NULL, 8) = 1 ([{fd=3, revents=POLLIN}], left {24, 999507600})
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"l\2\1\1&\0\0\0\1\0\0\0\17\0\0\0\5\1u\0\1\0\0\0", 24}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 24
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"\10\1g\0\1o\0\0!\0\0\0/org/freedesktop/sys"..., 46}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 46
+sendmsg(3, {msg_name(0)=NULL, msg_iov(2)=[{"l\1\0\1\24\0\0\0\2\0\0\0\227\0\0\0\1\1o\0\31\0\0\0/org/fre"..., 168}, {"\17\0\0\0mariadb.service\0", 20}], msg_controllen=0, msg_flags=0}, MSG_DONTWAIT|MSG_NOSIGNAL) = 188
+clock_gettime(CLOCK_MONOTONIC, {528, 974392320}) = 0
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"l\4\1\1@\0\0\0\2\0\0\0q\0\0\0\1\1o\0\31\0\0\0", 24}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 24
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"/org/freedesktop/systemd1\0\0\0\0\0\0\0"..., 176}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 176
+recvmsg(3, 0xffffed3d9510, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = -1 EAGAIN (Resource temporarily unavailable)
+clock_gettime(CLOCK_MONOTONIC, {528, 974572980}) = 0
+ppoll([{fd=3, events=POLLIN}], 1, {24, 999820000}, NULL, 8) = 1 ([{fd=3, revents=POLLIN}], left {24, 998324000})
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"l\4\1\1!\2\0\0\3\0\0\0\226\0\0\0\1\1o\0000\0\0\0", 24}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 24
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"/org/freedesktop/systemd1/unit/m"..., 689}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 689
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"l\4\1\1\354\2\0\0\4\0\0\0\226\0\0\0\1\1o\0000\0\0\0", 24}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 24
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"/org/freedesktop/systemd1/unit/m"..., 892}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 892
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"l\4\1\1H\0\0\0\5\0\0\0\206\0\0\0\1\1o\0!\0\0\0", 24}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 24
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"/org/freedesktop/systemd1/job/89"..., 200}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 200
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"l\2\1\0015\0\0\0\6\0\0\0\17\0\0\0\5\1u\0\2\0\0\0", 24}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 24
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"\10\1g\0\1o\0\0000\0\0\0/org/freedesktop/sys"..., 61}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 61
+sendmsg(3, {msg_name(0)=NULL, msg_iov(2)=[{"l\1\0\0019\0\0\0\3\0\0\0\250\0\0\0\1\1o\0000\0\0\0/org/fre"..., 184}, {"\35\0\0\0org.freedesktop.systemd1.Uni"..., 57}], msg_controllen=0, msg_flags=0}, MSG_DONTWAIT|MSG_NOSIGNAL) = 241
+clock_gettime(CLOCK_MONOTONIC, {528, 976624260}) = 0
+recvmsg(3, 0xffffed3d9480, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = -1 EAGAIN (Resource temporarily unavailable)
+clock_gettime(CLOCK_MONOTONIC, {528, 976700160}) = 0
+ppoll([{fd=3, events=POLLIN}], 1, {24, 999924000}, NULL, 8) = 1 ([{fd=3, revents=POLLIN}], left {24, 999923140})
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"l\2\1\1\10\0\0\0\7\0\0\0\17\0\0\0\5\1u\0\3\0\0\0", 24}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 24
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"\10\1g\0\1v\0\0\1b\0\0\0\0\0\0", 16}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 16
+recvmsg(3, 0xffffed3d9500, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = -1 EAGAIN (Resource temporarily unavailable)
+ppoll([{fd=3, events=POLLIN}], 1, NULL, NULL, 8) = 1 ([{fd=3, revents=POLLIN}])
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"l\4\1\1!\2\0\0\10\0\0\0\226\0\0\0\1\1o\0000\0\0\0", 24}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 24
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"/org/freedesktop/systemd1/unit/m"..., 689}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 689
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"l\4\1\1\354\2\0\0\t\0\0\0\226\0\0\0\1\1o\0000\0\0\0", 24}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 24
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"/org/freedesktop/systemd1/unit/m"..., 892}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 892
+recvmsg(3, 0xffffed3d9500, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = -1 EAGAIN (Resource temporarily unavailable)
+ppoll([{fd=3, events=POLLIN}], 1, NULL, NULL, 8) = 1 ([{fd=3, revents=POLLIN}])
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"l\4\1\1!\2\0\0\n\0\0\0\226\0\0\0\1\1o\0000\0\0\0", 24}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 24
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"/org/freedesktop/systemd1/unit/m"..., 689}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 689
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"l\4\1\1\354\2\0\0\v\0\0\0\226\0\0\0\1\1o\0000\0\0\0", 24}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 24
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"/org/freedesktop/systemd1/unit/m"..., 892}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 892
+recvmsg(3, 0xffffed3d9500, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = -1 EAGAIN (Resource temporarily unavailable)
+ppoll([{fd=3, events=POLLIN}], 1, NULL, NULL, 8) = 1 ([{fd=3, revents=POLLIN}])
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"l\4\1\0019\2\0\0\f\0\0\0\226\0\0\0\1\1o\0000\0\0\0", 24}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 24
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"/org/freedesktop/systemd1/unit/m"..., 713}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 713
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"l\4\1\1\354\2\0\0\r\0\0\0\226\0\0\0\1\1o\0000\0\0\0", 24}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 24
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"/org/freedesktop/systemd1/unit/m"..., 892}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 892
+recvmsg(3, 0xffffed3d9500, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = -1 EAGAIN (Resource temporarily unavailable)
+ppoll([{fd=3, events=POLLIN}], 1, NULL, NULL, 8) = 1 ([{fd=3, revents=POLLIN}])
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"l\4\1\1I\0\0\0\16\0\0\0z\0\0\0\1\1o\0\31\0\0\0", 24}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 24
+recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"/org/freedesktop/systemd1\0\0\0\0\0\0\0"..., 193}], msg_controllen=32, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=1, uid=0, gid=0}}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_NOSIGNAL|MSG_CMSG_CLOEXEC) = 193
+kill(2639, SIGTERM)                     = 0
+kill(2639, SIGCONT)                     = 0
+waitid(P_PID, 2639, {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=2639, si_uid=0, si_status=0, si_utime=0, si_stime=0}, WEXITED, NULL) = 0
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=2639, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+kill(2640, SIGTERM)                     = 0
+kill(2640, SIGCONT)                     = 0
+waitid(P_PID, 2640, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=2640, si_uid=0, si_status=SIGTERM, si_utime=0, si_stime=0}, WEXITED, NULL) = 0
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=2640, si_uid=0, si_status=SIGTERM, si_utime=0, si_stime=0} ---
+close(3)                                = 0
+exit_group(0)                           = ?
++++ exited with 0 +++
+[root@localhost ~]# netstat -an|grep 3306
+-bash: netstat: command not found
+[root@localhost ~]# ps -ef|grep mysql
+mysql     2663     1  0 09:49 ?        00:00:00 /usr/sbin/mysqld
+root      2715  2562  0 09:50 pts/0    00:00:00 grep --color=auto mysql
+[root@localhost ~]# 
+[root@localhost ~]# systemctl stop mariadb
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# useradd --h
+useradd: option '--h' is ambiguous; possibilities: '--home-dir' '--help'
+Usage: useradd [options] LOGIN
+       useradd -D
+       useradd -D [options]
+
+Options:
+  -b, --base-dir BASE_DIR       base directory for the home directory of the
+                                new account
+  -c, --comment COMMENT         GECOS field of the new account
+  -d, --home-dir HOME_DIR       home directory of the new account
+  -D, --defaults                print or change default useradd configuration
+  -e, --expiredate EXPIRE_DATE  expiration date of the new account
+  -f, --inactive INACTIVE       password inactivity period of the new account
+  -g, --gid GROUP               name or ID of the primary group of the new
+                                account
+  -G, --groups GROUPS           list of supplementary groups of the new
+                                account
+  -h, --help                    display this help message and exit
+  -k, --skel SKEL_DIR           use this alternative skeleton directory
+  -K, --key KEY=VALUE           override /etc/login.defs defaults
+  -l, --no-log-init             do not add the user to the lastlog and
+                                faillog databases
+  -m, --create-home             create the user's home directory
+  -M, --no-create-home          do not create the user's home directory
+  -N, --no-user-group           do not create a group with the same name as
+                                the user
+  -o, --non-unique              allow to create users with duplicate
+                                (non-unique) UID
+  -p, --password PASSWORD       encrypted password of the new account
+  -r, --system                  create a system account
+  -R, --root CHROOT_DIR         directory to chroot into
+  -s, --shell SHELL             login shell of the new account
+  -u, --uid UID                 user ID of the new account
+  -U, --user-group              create a group with the same name as the user
+  -Z, --selinux-user SEUSER     use a specific SEUSER for the SELinux user mapping
+
+[root@localhost ~]# rpm -qa|grep mariadb
+[root@localhost ~]# rpm -qa|grep maria
+[root@localhost ~]# rpm -qa|grep -i maria
+MariaDB-compat-10.3.10-1.el7.centos.aarch64
+MariaDB-client-10.3.10-1.el7.centos.aarch64
+MariaDB-common-10.3.10-1.el7.centos.aarch64
+MariaDB-server-10.3.10-1.el7.centos.aarch64
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# rpm -e --nodesp MariaDB-*.aarch64
+rpm: --nodesp: unknown option
+[root@localhost ~]# rpm -e --nodeps MariaDB-*.aarch64
+error: package MariaDB-*.aarch64 is not installed
+[root@localhost ~]# rpm -e --nodeps MariaDB-compat-10.3.10-1.el7.centos.aarch64
+warning: file /usr/lib64/libmysqlclient_r.so.18.0.0: remove failed: No such file or directory
+warning: file /usr/lib64/libmysqlclient_r.so.18: remove failed: No such file or directory
+[root@localhost ~]# rpm -e --nodeps MariaDB-client-10.3.10-1.el7.centos.aarch64
+[root@localhost ~]# rpm -e --nodeps MariaDB-common-10.3.10-1.el7.centos.aarch64
+warning: /etc/my.cnf saved as /etc/my.cnf.rpmsave
+[root@localhost ~]# rpm -e --nodeps MariaDB-server-10.3.10-1.el7.centos.aarch64
+[root@localhost ~]# rpm -e --nodeps MariaDB-server-10.3.10-1.el7.centos.aarch64
+error: package MariaDB-server-10.3.10-1.el7.centos.aarch64 is not installed
+[root@localhost ~]# rpm -qa |grep -i maria
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# userdel mysql
+[root@localhost ~]# groupdel mysql
+groupdel: group 'mysql' does not exist
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# cat /etc/group
+root:x:0:
+bin:x:1:
+daemon:x:2:
+sys:x:3:
+adm:x:4:
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mem:x:8:
+kmem:x:9:
+wheel:x:10:
+cdrom:x:11:
+mail:x:12:postfix
+man:x:15:
+dialout:x:18:
+floppy:x:19:
+games:x:20:
+tape:x:33:
+video:x:39:
+ftp:x:50:
+lock:x:54:
+audio:x:63:
+nobody:x:99:
+users:x:100:
+utmp:x:22:
+utempter:x:35:
+input:x:999:
+systemd-journal:x:190:
+systemd-network:x:192:
+dbus:x:81:
+polkitd:x:998:
+ssh_keys:x:997:
+sshd:x:74:
+postdrop:x:90:
+postfix:x:89:
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# cat /etc/passwd|grep mysql
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls
+anaconda-ks.cfg  mariaDB
+[root@localhost ~]# pwd
+/root
+[root@localhost ~]# cd mariaDB/
+[root@localhost mariaDB]# ls
+boost_1_66_0.tar.gz                            MariaDB-10.3.10-centos74-aarch64-client.rpm  MariaDB-10.3.10-centos74-aarch64-compat.rpm  mariadb-10.3.7.tar.gz
+galera-25.3.24-1.rhel7.el7.centos.aarch64.rpm  MariaDB-10.3.10-centos74-aarch64-common.rpm  MariaDB-10.3.10-centos74-aarch64-server.rpm
+[root@localhost mariaDB]# cd /home
+[root@localhost home]# cd da
+[root@localhost da]# ls
+mysql
+[root@localhost da]# rm -rf mysql/
+[root@localhost da]# cd /var/lib/
+[root@localhost lib]# cd mysql/
+[root@localhost mysql]# ls
+aria_log.00000001  aria_log_control  ib_buffer_pool  ibdata1  ib_logfile0  ib_logfile1  multi-master.info  mysql  performance_schema
+[root@localhost mysql]# cd ..
+[root@localhost lib]# ll
+total 4
+drwxr-xr-x. 2 root    root      48 12æœˆ 14 16:14 alternatives
+drwx------. 3 root    root      18 12æœˆ 14 16:17 authconfig
+drwxr-xr-x. 2 root    root       6 4æœˆ  12 2018 dbus
+drwxr-xr-x. 2 root    root      29 12æœˆ 14 16:35 dhclient
+drwxr-xr-x. 2 root    root       6 4æœˆ  12 2018 games
+drwxr-xr-x. 3 root    root      16 12æœˆ 14 17:53 home
+drwxr-xr-x. 2 root    root       6 4æœˆ  12 2018 initramfs
+drwxr-xr-x. 2 root    root      30 12æœˆ 15 03:37 logrotate
+drwx------. 2 root    root       6 12æœˆ 14 16:14 machines
+drwxr-xr-x. 2 root    root      37 12æœˆ 14 16:27 misc
+drwxr-xr-x. 4     998     996  194 12æœˆ 15 09:56 mysql
+drwx------. 2 root    root      86 12æœˆ 15 09:41 NetworkManager
+drwxr-xr-x. 2 root    root       6 11æœˆ 24 2016 os-prober
+drwxr-xr-x. 2 root    root      27 12æœˆ 14 16:14 plymouth
+drwxr-x---. 3 root    polkitd   28 12æœˆ 14 16:14 polkit-1
+drwx------. 2 postfix root      25 12æœˆ 14 16:27 postfix
+drwxr-xr-x. 2 root    root    4096 12æœˆ 15 09:58 rpm
+drwxr-xr-x. 2 root    root       6 4æœˆ  12 2018 rpm-state
+drwx------. 2 root    root      29 12æœˆ 15 10:02 rsyslog
+drwxr-xr-x. 4 root    root      35 12æœˆ 14 16:14 stateless
+drwxr-xr-x. 4 root    root      56 12æœˆ 14 16:14 systemd
+drwxr-xr-x. 2 root    root       6 4æœˆ  11 2018 tuned
+drwxr-xr-x. 6 root    root      80 12æœˆ 15 09:15 yum
+[root@localhost lib]# rm -rf mysql
+[root@localhost lib]# ls
+alternatives  dbus      games  initramfs  machines  NetworkManager  plymouth  postfix  rpm-state  stateless  tuned
+authconfig    dhclient  home   logrotate  misc      os-prober       polkit-1  rpm      rsyslog    systemd    yum
+[root@localhost lib]# cd ..
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# lsmod
+Module                  Size  Used by
+ip6t_rpfilter         262144  1 
+ipt_REJECT            262144  2 
+nf_reject_ipv4        262144  1 ipt_REJECT
+ip6t_REJECT           262144  2 
+nf_reject_ipv6        262144  1 ip6t_REJECT
+xt_conntrack          262144  11 
+ip_set                262144  0 
+nfnetlink             262144  1 ip_set
+ebtable_nat           262144  1 
+ebtable_broute        262144  1 
+bridge                327680  1 ebtable_broute
+stp                   262144  1 bridge
+llc                   262144  2 bridge,stp
+ip6table_nat          262144  1 
+nf_conntrack_ipv6     262144  7 
+nf_defrag_ipv6        262144  1 nf_conntrack_ipv6
+nf_nat_ipv6           262144  1 ip6table_nat
+ip6table_mangle       262144  1 
+ip6table_security     262144  1 
+ip6table_raw          262144  1 
+iptable_nat           262144  1 
+nf_conntrack_ipv4     262144  6 
+nf_defrag_ipv4        262144  1 nf_conntrack_ipv4
+nf_nat_ipv4           262144  1 iptable_nat
+nf_nat                262144  2 nf_nat_ipv6,nf_nat_ipv4
+nf_conntrack          262144  6 nf_conntrack_ipv6,nf_conntrack_ipv4,nf_nat_ipv6,xt_conntrack,nf_nat_ipv4,nf_nat
+iptable_mangle        262144  1 
+iptable_security      262144  1 
+iptable_raw           262144  1 
+ebtable_filter        262144  1 
+ebtables              262144  3 ebtable_filter,ebtable_nat,ebtable_broute
+ip6table_filter       262144  1 
+ip6_tables            262144  5 ip6table_mangle,ip6table_filter,ip6table_security,ip6table_raw,ip6table_nat
+iptable_filter        262144  1 
+vfat                  262144  1 
+fat                   262144  1 vfat
+crc32_ce              262144  0 
+ghash_ce              262144  0 
+sha2_ce               262144  0 
+sha256_arm64          262144  1 sha2_ce
+sha1_ce               262144  0 
+ipmi_ssif             262144  0 
+ses                   262144  0 
+enclosure             262144  1 ses
+sg                    262144  0 
+ipmi_si               262144  0 
+ipmi_devintf          262144  0 
+sbsa_gwdt             262144  0 
+ipmi_msghandler       262144  3 ipmi_ssif,ipmi_devintf,ipmi_si
+ip_tables             262144  5 iptable_mangle,iptable_filter,iptable_raw,iptable_nat,iptable_security
+xfs                  1507328  3 
+libcrc32c             262144  3 nf_conntrack,xfs,nf_nat
+sr_mod                262144  0 
+cdrom                 262144  1 sr_mod
+usb_storage           262144  0 
+marvell               262144  2 
+hibmc_drm             262144  1 
+drm_kms_helper        393216  1 hibmc_drm
+syscopyarea           262144  1 drm_kms_helper
+sysfillrect           262144  1 drm_kms_helper
+sysimgblt             262144  1 drm_kms_helper
+fb_sys_fops           262144  1 drm_kms_helper
+hisi_sas_v2_hw        262144  0 
+ttm                   393216  1 hibmc_drm
+hisi_sas_main         262144  5 hisi_sas_v2_hw
+i2c_designware_platform   262144  0 
+drm                   589824  4 hibmc_drm,ttm,drm_kms_helper
+hns_dsaf              327680  4 
+libsas                262144  2 hisi_sas_v2_hw,hisi_sas_main
+hns_enet_drv          262144  0 
+i2c_designware_core   262144  1 i2c_designware_platform
+ehci_platform         262144  0 
+i2c_core              262144  5 i2c_designware_core,ipmi_ssif,i2c_designware_platform,drm_kms_helper,drm
+scsi_transport_sas    262144  3 ses,hisi_sas_main,libsas
+hns_mdio              262144  2 
+hnae                  262144  3 hns_enet_drv,hns_dsaf
+dm_mirror             262144  0 
+dm_region_hash        262144  1 dm_mirror
+dm_log                262144  2 dm_mirror,dm_region_hash
+dm_mod                327680  12 dm_mirror,dm_log
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# groupadd mysql
+[root@localhost var]# useradd -r -g mysql mysql
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# 
+[root@localhost var]# rpm -ivh MariaDB-10.3.10-centos74-aarch64-*
+error: File not found by glob: MariaDB-10.3.10-centos74-aarch64-*
+[root@localhost var]# cd /root/mariaDB/
+[root@localhost mariaDB]# ls
+boost_1_66_0.tar.gz                            MariaDB-10.3.10-centos74-aarch64-client.rpm  MariaDB-10.3.10-centos74-aarch64-compat.rpm  mariadb-10.3.7.tar.gz
+galera-25.3.24-1.rhel7.el7.centos.aarch64.rpm  MariaDB-10.3.10-centos74-aarch64-common.rpm  MariaDB-10.3.10-centos74-aarch64-server.rpm
+[root@localhost mariaDB]# rpm -ivh MariaDB-10.3.10-centos74-aarch64-*
+warning: MariaDB-10.3.10-centos74-aarch64-client.rpm: Header V4 DSA/SHA1 Signature, key ID 1bb943db: NOKEY
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:MariaDB-compat-10.3.10-1.el7.cent################################# [ 25%]
+   2:MariaDB-common-10.3.10-1.el7.cent################################# [ 50%]
+   3:MariaDB-client-10.3.10-1.el7.cent################################# [ 75%]
+   4:MariaDB-server-10.3.10-1.el7.cent################################# [100%]
+chown: cannot access â€˜/var/lib/mysqlâ€™: No such file or directory
+
+
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER !
+To do so, start the server, then issue the following commands:
+
+'/usr/bin/mysqladmin' -u root password 'new-password'
+'/usr/bin/mysqladmin' -u root -h localhost.localdomain password 'new-password'
+
+Alternatively you can run:
+'/usr/bin/mysql_secure_installation'
+
+which will also give you the option of removing the test
+databases and anonymous user created by default.  This is
+strongly recommended for production servers.
+
+See the MariaDB Knowledgebase at http://mariadb.com/kb or the
+MySQL manual for more instructions.
+
+Please report any problems at http://mariadb.org/jira
+
+The latest information about MariaDB is available at http://mariadb.org/.
+You can find additional information about the MySQL part at:
+http://dev.mysql.com
+Consider joining MariaDB's strong and vibrant community:
+https://mariadb.org/get-involved/
+
+[root@localhost mariaDB]# cd /etc/my.cnf
+-bash: cd: /etc/my.cnf: Not a directory
+[root@localhost mariaDB]# cat /etc/my.cnf
+#
+# This group is read both both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+
+[root@localhost mariaDB]# cat my.cnf.*
+cat: my.cnf.*: No such file or directory
+[root@localhost mariaDB]# cat /etc/my.cnf*
+#
+# This group is read both both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+
+[mysqld]
+datadir=/home/mariaDB/data
+log-error=/home/mariaDB/log/alert.log
+
+
+#
+# This group is read both both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+
+cat: /etc/my.cnf.d: Is a directory
+[mysqld]
+datadir=/data/mysql
+#datadir=/home/da/mysql
+#log-error=/home/mariaDB/log/alert.log
+
+
+[root@localhost mariaDB]# cd /var/lib
+[root@localhost lib]# ls
+alternatives  dbus      games  initramfs  machines  mysql           os-prober  polkit-1  rpm        rsyslog    systemd  yum
+authconfig    dhclient  home   logrotate  misc      NetworkManager  plymouth   postfix   rpm-state  stateless  tuned
+[root@localhost lib]# cd mysql
+[root@localhost mysql]# ls
+aria_log.00000001  aria_log_control  ib_buffer_pool  ibdata1  ib_logfile0  ib_logfile1  mysql  performance_schema  test
+[root@localhost mysql]# cd ..
+[root@localhost lib]# cp -a mysql /home/da/
+[root@localhost lib]# cd /home/da
+[root@localhost da]# ls
+mysql
+[root@localhost da]# ll
+total 0
+drwxr-xr-x 5 mysql mysql 221 12æœˆ 15 10:31 mysql
+[root@localhost da]# 
+[root@localhost da]# 
+[root@localhost da]# 
+[root@localhost da]# 
+[root@localhost da]# 
+[root@localhost da]# vi /etc/my.cnf
+#
+# This group is read both both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+[mysqld]
+"/etc/my.cnf" 15L, 236C written
+[root@localhost da]# systemctl start mariadb
+Job for mariadb.service failed because the control process exited with error code. See "systemctl status mariadb.service" and "journalctl -xe" for details.
+[root@localhost da]# 
+[root@localhost da]# cd /var/log
+[root@localhost log]# vi messages 
+Dec 14 16:27:22 localhost journal: Runtime journal is using 8.0M (max allowed 4.0G, trying to leave 4.0G free of 63.4G available â†’ current limit 4.0G).
+Dec 14 16:27:22 localhost kernel: Booting Linux on physical CPU 0x10000
+Dec 14 16:27:22 localhost kernel: Linux version 4.14.0-49.el7a.aarch64 (mockbuild@aarch64-01.bsys.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-28) (GCC)) #1 SMP Tue Apr 10 17:22:26 UTC 2018
+Dec 14 16:27:22 localhost kernel: Boot CPU: AArch64 Processor [410fd082]
+Dec 14 16:27:22 localhost kernel: efi: Getting EFI parameters from FDT:
+Dec 14 16:27:22 localhost kernel: efi: EFI v2.60 by EDK II
+Dec 14 16:27:22 localhost kernel: efi:  SMBIOS=0x3ed50000  SMBIOS 3.0=0x397e0000  ACPI=0x398d0000  ACPI 2.0=0x398d0014  MEMATTR=0x3bb99018
+Dec 14 16:27:22 localhost kernel: crashkernel reserved: 0x000000000e800000 - 0x000000002e800000 (512 MB)
+Dec 14 16:27:22 localhost kernel: ACPI: Early table checksum verification disabled
+Dec 14 16:27:22 localhost kernel: ACPI: RSDP 0x00000000398D0014 000024 (v02 HISI  )
+Dec 14 16:27:22 localhost kernel: ACPI: XSDT 0x00000000398C00E8 00006C (v01 HISI   HIP07    00000000      01000013)
+Dec 14 16:27:22 localhost kernel: ACPI: FACP 0x0000000039760000 000114 (v06 HISI   HIP07    00000000 INTL 20151124)
+Dec 14 16:27:22 localhost kernel: ACPI: DSDT 0x0000000039720000 00691A (v02 HISI   HIP07    00000000 INTL 20170728)
+Dec 14 16:27:22 localhost kernel: ACPI: MCFG 0x00000000397C0000 0000AC (v01 HISI   HIP07    00000000 INTL 20151124)
+Dec 14 16:27:22 localhost kernel: ACPI: SLIT 0x00000000397B0000 00003C (v01 HISI   HIP07    00000000 INTL 20151124)
+Dec 14 16:27:22 localhost kernel: ACPI: SPCR 0x00000000397A0000 000050 (v02 HISI   HIP07    00000000 INTL 20151124)
+Dec 14 16:27:22 localhost kernel: ACPI: SRAT 0x0000000039790000 000578 (v03 HISI   HIP07    00000000 INTL 20151124)
+Dec 14 16:27:22 localhost kernel: ACPI: DBG2 0x0000000039780000 00005A (v00 HISI   HIP07    00000000 INTL 20151124)
+Dec 14 16:27:22 localhost kernel: ACPI: GTDT 0x0000000039750000 00007C (v02 HISI   HIP07    00000000 INTL 20151124)
+Dec 14 16:27:22 localhost kernel: ACPI: APIC 0x0000000039740000 0014E4 (v04 HISI   HIP07    00000000 INTL 20151124)
+Dec 14 16:27:22 localhost kernel: ACPI: IORT 0x0000000039730000 000554 (v00 HISI   HIP07    00000000 INTL 20170728)
+Dec 14 16:27:22 localhost kernel: ACPI: SPCR: console: pl011,mmio32,0x602b0000,115200
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10000 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10001 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10002 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10003 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10100 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10101 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10102 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10103 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10200 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10201 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10202 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10203 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10300 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10301 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10302 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 0 -> MPIDR 0x10303 -> Node 0
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30000 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30001 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30002 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30003 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30100 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30101 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30102 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30103 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30200 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30201 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30202 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30203 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30300 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30301 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30302 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 1 -> MPIDR 0x30303 -> Node 1
+Dec 14 16:27:22 localhost kernel: ACPI: NUMA: SRAT: PXM 2 -> MPIDR 0x50000 -> Node 2
+Dec 15 10:02:12 localhost dhclient[2368]: No DHCPOFFERS received.
+Dec 15 10:02:12 localhost dhclient[2368]: No working leases in persistent database - sleeping.
+Dec 15 10:03:03 localhost dhclient[2368]: DHCPREQUEST on enahisic2i1 to 192.168.1.107 port 67 (xid=0x260886d9)
+Dec 15 10:03:03 localhost dhclient[2368]: DHCPACK from 192.168.1.107 (xid=0x260886d9)
+Dec 15 10:03:03 localhost dhclient[2368]: bound to 192.168.1.176 -- renewal in 1516 seconds.
+Dec 15 10:04:59 localhost dhclient[2368]: DHCPREQUEST on enahisic2i0 to 192.168.1.107 port 67 (xid=0x370ae1e3)
+Dec 15 10:04:59 localhost dhclient[2368]: DHCPACK from 192.168.1.107 (xid=0x370ae1e3)
+Dec 15 10:04:59 localhost dhclient[2368]: bound to 192.168.1.197 -- renewal in 1404 seconds.
+Dec 15 10:08:44 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 7 (xid=0x462d62af)
+Dec 15 10:08:51 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 10 (xid=0x462d62af)
+Dec 15 10:09:01 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 15 (xid=0x462d62af)
+Dec 15 10:09:16 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 20 (xid=0x462d62af)
+Dec 15 10:09:36 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 9 (xid=0x462d62af)
+Dec 15 10:09:45 localhost dhclient[2368]: No DHCPOFFERS received.
+Dec 15 10:09:45 localhost dhclient[2368]: No working leases in persistent database - sleeping.
+Dec 15 10:15:30 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 6 (xid=0x13b0576e)
+Dec 15 10:15:36 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 8 (xid=0x13b0576e)
+Dec 15 10:15:44 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 19 (xid=0x13b0576e)
+Dec 15 10:16:03 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 18 (xid=0x13b0576e)
+Dec 15 10:16:21 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 10 (xid=0x13b0576e)
+Dec 15 10:16:31 localhost dhclient[2368]: No DHCPOFFERS received.
+Dec 15 10:16:31 localhost dhclient[2368]: No working leases in persistent database - sleeping.
+Dec 15 10:22:14 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 5 (xid=0x7cddaa01)
+Dec 15 10:22:19 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 6 (xid=0x7cddaa01)
+Dec 15 10:22:25 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 7 (xid=0x7cddaa01)
+Dec 15 10:22:32 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 18 (xid=0x7cddaa01)
+Dec 15 10:22:50 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 8 (xid=0x7cddaa01)
+Dec 15 10:22:58 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 15 (xid=0x7cddaa01)
+Dec 15 10:23:13 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 2 (xid=0x7cddaa01)
+Dec 15 10:23:15 localhost dhclient[2368]: No DHCPOFFERS received.
+Dec 15 10:23:15 localhost dhclient[2368]: No working leases in persistent database - sleeping.
+Dec 15 10:28:01 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 8 (xid=0x5bb02c1f)
+Dec 15 10:28:09 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 16 (xid=0x5bb02c1f)
+Dec 15 10:28:19 localhost dhclient[2368]: DHCPREQUEST on enahisic2i1 to 192.168.1.107 port 67 (xid=0x260886d9)
+Dec 15 10:28:19 localhost dhclient[2368]: DHCPACK from 192.168.1.107 (xid=0x260886d9)
+Dec 15 10:28:19 localhost dhclient[2368]: bound to 192.168.1.176 -- renewal in 1435 seconds.
+Dec 15 10:28:23 localhost dhclient[2368]: DHCPREQUEST on enahisic2i0 to 192.168.1.107 port 67 (xid=0x370ae1e3)
+Dec 15 10:28:25 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 10 (xid=0x5bb02c1f)
+Dec 15 10:28:28 localhost dhclient[2368]: DHCPREQUEST on enahisic2i0 to 192.168.1.107 port 67 (xid=0x370ae1e3)
+Dec 15 10:28:28 localhost dhclient[2368]: DHCPACK from 192.168.1.107 (xid=0x370ae1e3)
+Dec 15 10:28:29 localhost dhclient[2368]: bound to 192.168.1.197 -- renewal in 1490 seconds.
+Dec 15 10:28:35 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 15 (xid=0x5bb02c1f)
+Dec 15 10:28:50 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 12 (xid=0x5bb02c1f)
+Dec 15 10:29:02 localhost dhclient[2368]: No DHCPOFFERS received.
+Dec 15 10:29:02 localhost dhclient[2368]: No working leases in persistent database - sleeping.
+Dec 15 10:31:06 localhost systemd: Reloading.
+Dec 15 10:31:06 localhost systemd: Reloading.
+Dec 15 10:35:25 localhost systemd: Starting MariaDB 10.3.10 database server...
+Dec 15 10:35:25 localhost mysqld: 2018-12-15 10:35:25 0 [Note] /usr/sbin/mysqld (mysqld 10.3.10-MariaDB) starting as process 3225 ...
+Dec 15 10:35:25 localhost mysqld: 2018-12-15 10:35:25 0 [Warning] Can't create test file /home/da/mysql/localhost.lower-test
+Dec 15 10:35:25 localhost mysqld: #007/usr/sbin/mysqld: Can't change dir to '/home/da/mysql/' (Errcode: 13 "Permission denied")
+Dec 15 10:35:25 localhost mysqld: 2018-12-15 10:35:25 0 [ERROR] Aborting
+Dec 15 10:35:25 localhost systemd: mariadb.service: main process exited, code=exited, status=1/FAILURE
+Dec 15 10:35:25 localhost systemd: Failed to start MariaDB 10.3.10 database server.
+Dec 15 10:35:25 localhost systemd: Unit mariadb.service entered failed state.
+Dec 15 10:35:25 localhost mysqld: #007/usr/sbin/mysqld: Can't change dir to '/home/da/mysql/' (Errcode: 13 "Permission denied")
+Dec 15 10:35:25 localhost mysqld: 2018-12-15 10:35:25 0 [ERROR] Aborting
+Dec 15 10:35:25 localhost systemd: mariadb.service: main process exited, code=exited, status=1/FAILURE
+Dec 15 10:35:25 localhost systemd: Failed to start MariaDB 10.3.10 database server.
+Dec 15 10:35:25 localhost systemd: Unit mariadb.service entered failed state.
+Dec 15 10:35:25 localhost mysqld: #007/usr/sbin/mysqld: Can't change dir to '/home/da/mysql/' (Errcode: 13 "Permission denied")
+[root@localhost log]# vi /etc/my.cnf
+[mysqld]
+datadir=/home/da/mysql
+
+
+#
+# This group is read both both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+[mysqld]
+#datadir=/home/da/mysql
+"/etc/my.cnf" 15L, 254C written
+[root@localhost log]# cd /da
+-bash: cd: /da: No such file or directory
+[root@localhost log]# vi /etc/my.cnf
+[mysqld]
+#datadir=/home/da/mysql
+datadir=/da/mysql
+
+#
+# This group is read both both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+[mysqld]
+"/etc/my.cnf" 15L, 256C written
+[root@localhost log]# cd /data
+[root@localhost data]# ls
+mysql
+[root@localhost data]# systemctl start mariadb
+[root@localhost data]# systemctl stop mariadb
+[root@localhost data]# 
+[root@localhost data]# 
+[root@localhost data]# cd /data
+[root@localhost data]# ll
+total 0
+drwxr-xr-x. 4 mysql 996 194 12æœˆ 15 10:36 mysql
+[root@localhost data]# cd mysql
+[root@localhost mysql]# ll
+total 110620
+-rw-rw----. 1 mysql   996    16384 12æœˆ 15 10:36 aria_log.00000001
+-rw-rw----. 1 mysql   996       52 12æœˆ 15 10:36 aria_log_control
+-rw-rw----  1 mysql mysql      976 12æœˆ 15 10:36 ib_buffer_pool
+-rw-rw----. 1 mysql   996 12582912 12æœˆ 15 10:36 ibdata1
+-rw-rw----. 1 mysql   996 50331648 12æœˆ 15 10:36 ib_logfile0
+-rw-rw----. 1 mysql   996 50331648 12æœˆ 14 17:09 ib_logfile1
+-rw-rw----. 1 mysql   996        0 12æœˆ 14 17:10 multi-master.info
+drwx--x--x. 2 mysql   996     4096 12æœˆ 14 17:09 mysql
+drwx------. 2 mysql   996       20 12æœˆ 14 17:09 performance_schema
+[root@localhost mysql]# cd ..
+[root@localhost data]# ll
+total 0
+drwxr-xr-x. 4 mysql 996 194 12æœˆ 15 10:36 mysql
+[root@localhost data]# cd ..
+[root@localhost /]# ll
+total 16
+lrwxrwxrwx.   1 root root    7 12æœˆ 14 16:12 bin -> usr/bin
+dr-xr-xr-x.   5 root root 4096 12æœˆ 14 16:28 boot
+drwxr-xr-x.   3 root root   19 12æœˆ 14 17:49 data
+drwxr-xr-x   18 root root 3120 12æœˆ 15 09:41 dev
+drwxr-xr-x.  74 root root 8192 12æœˆ 15 10:36 etc
+drwxr-xr-x.   3 root root   16 12æœˆ 14 17:54 home
+lrwxrwxrwx.   1 root root    7 12æœˆ 14 16:12 lib -> usr/lib
+lrwxrwxrwx.   1 root root    9 12æœˆ 14 16:12 lib64 -> usr/lib64
+drwxr-xr-x.   2 root root    6 4æœˆ  12 2018 media
+drwxr-xr-x.   2 root root    6 4æœˆ  12 2018 mnt
+drwxr-xr-x.   2 root root    6 4æœˆ  12 2018 opt
+dr-xr-xr-x  643 root root    0 1æœˆ   1 1970 proc
+dr-xr-x---.   3 root root  172 12æœˆ 15 09:37 root
+drwxr-xr-x   22 root root  680 12æœˆ 15 09:41 run
+lrwxrwxrwx.   1 root root    8 12æœˆ 14 16:12 sbin -> usr/sbin
+drwxr-xr-x.   2 root root    6 4æœˆ  12 2018 srv
+dr-xr-xr-x   12 root root    0 12æœˆ 15 09:41 sys
+drwxrwxrwt.   7 root root  132 12æœˆ 15 10:36 tmp
+drwxr-xr-x.  13 root root  155 12æœˆ 14 16:12 usr
+drwxr-xr-x.  19 root root  267 12æœˆ 14 16:27 var
+[root@localhost /]# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enahisic2i0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether c0:a8:02:c6:00:04 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.197/24 brd 192.168.1.255 scope global dynamic enahisic2i0
+       valid_lft 2612sec preferred_lft 2612sec
+3: enahisic2i1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether c0:a8:02:c6:00:05 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.176/24 brd 192.168.1.255 scope global dynamic enahisic2i1
+       valid_lft 2602sec preferred_lft 2602sec
+4: enahisic2i2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether c0:a8:02:c6:00:00 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.11.235/24 brd 192.168.11.255 scope global dynamic enahisic2i2
+       valid_lft 83018sec preferred_lft 83018sec
+5: enahisic2i3: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether c0:a8:02:c6:00:01 brd ff:ff:ff:ff:ff:ff
+[root@localhost /]# ll
+total 16
+lrwxrwxrwx.   1 root root    7 12æœˆ 14 16:12 bin -> usr/bin
+dr-xr-xr-x.   5 root root 4096 12æœˆ 14 16:28 boot
+drwxr-xr-x.   3 root root   19 12æœˆ 14 17:49 data
+drwxr-xr-x   18 root root 3120 12æœˆ 15 09:41 dev
+drwxr-xr-x.  74 root root 8192 12æœˆ 15 10:36 etc
+drwxr-xr-x.   3 root root   16 12æœˆ 14 17:54 home
+lrwxrwxrwx.   1 root root    7 12æœˆ 14 16:12 lib -> usr/lib
+lrwxrwxrwx.   1 root root    9 12æœˆ 14 16:12 lib64 -> usr/lib64
+drwxr-xr-x.   2 root root    6 4æœˆ  12 2018 media
+drwxr-xr-x.   2 root root    6 4æœˆ  12 2018 mnt
+drwxr-xr-x.   2 root root    6 4æœˆ  12 2018 opt
+dr-xr-xr-x  645 root root    0 1æœˆ   1 1970 proc
+dr-xr-x---.   3 root root  172 12æœˆ 15 09:37 root
+drwxr-xr-x   22 root root  680 12æœˆ 15 09:41 run
+lrwxrwxrwx.   1 root root    8 12æœˆ 14 16:12 sbin -> usr/sbin
+drwxr-xr-x.   2 root root    6 4æœˆ  12 2018 srv
+dr-xr-xr-x   12 root root    0 12æœˆ 15 10:37 sys
+drwxrwxrwt.   7 root root  132 12æœˆ 15 10:36 tmp
+drwxr-xr-x.  13 root root  155 12æœˆ 14 16:12 usr
+drwxr-xr-x.  19 root root  267 12æœˆ 14 16:27 var
+[root@localhost /]# mysql -uroot -proot
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)
+[root@localhost /]# systemctl start mariadb
+[root@localhost /]# mysql -uroot -proot
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.3.10-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> select @@datadir;
++--------------+
+| @@datadir    |
++--------------+
+| /data/mysql/ |
++--------------+
+1 row in set (0.000 sec)
+
+MariaDB [(none)]> quit
+Bye
+[root@localhost /]# 
+[root@localhost /]# mysqladmin -uroot -proot -h localhost ping
+mysqld is alive
+[root@localhost /]# mysqladmin -uroot -proot -h localhost status
+Uptime: 174  Threads: 7  Questions: 5  Slow queries: 0  Opens: 17  Flush tables: 1  Open tables: 11  Queries per second avg: 0.028
+[root@localhost /]# 
+[root@localhost /]# mysqladmin -uroot -proot -h localhost version
+mysqladmin  Ver 9.1 Distrib 10.3.10-MariaDB, for Linux on aarch64
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Server version          10.3.10-MariaDB
+Protocol version        10
+Connection              Localhost via UNIX socket
+UNIX socket             /var/lib/mysql/mysql.sock
+Uptime:                 3 min 6 sec
+
+Threads: 7  Questions: 6  Slow queries: 0  Opens: 17  Flush tables: 1  Open tables: 11  Queries per second avg: 0.032
+[root@localhost /]# 
+[root@localhost /]# systemctl status mariadb
+â— mariadb.service - MariaDB 10.3.10 database server
+   Loaded: loaded (/usr/lib/systemd/system/mariadb.service; enabled; vendor preset: disabled)
+  Drop-In: /etc/systemd/system/mariadb.service.d
+           â””â”€migrated-from-my.cnf-settings.conf
+   Active: active (running) since å…­ 2018-12-15 10:39:36 CST; 4min 27s ago
+     Docs: man:mysqld(8)
+           https://mariadb.com/kb/en/library/systemd/
+  Process: 3398 ExecStartPost=/bin/sh -c systemctl unset-environment _WSREP_START_POSITION (code=exited, status=0/SUCCESS)
+  Process: 3350 ExecStartPre=/bin/sh -c [ ! -e /usr/bin/galera_recovery ] && VAR= ||   VAR=`/usr/bin/galera_recovery`; [ $? -eq 0 ]   && systemctl set-environment _WSREP_START_POSITION=$VAR || exit 1 (code=exited, status=0/SUCCESS)
+  Process: 3347 ExecStartPre=/bin/sh -c systemctl unset-environment _WSREP_START_POSITION (code=exited, status=0/SUCCESS)
+ Main PID: 3365 (mysqld)
+   Status: "Taking your SQL requests now..."
+   CGroup: /system.slice/mariadb.service
+           â””â”€3365 /usr/sbin/mysqld
+
+12æœˆ 15 10:39:36 localhost.localdomain mysqld[3365]: 2018-12-15 10:39:36 0 [Note] InnoDB: 10.3.10 started; log sequence number 1630878; transaction id 21
+12æœˆ 15 10:39:36 localhost.localdomain mysqld[3365]: 2018-12-15 10:39:36 0 [Note] InnoDB: Loading buffer pool(s) from /data/mysql/ib_buffer_pool
+12æœˆ 15 10:39:36 localhost.localdomain mysqld[3365]: 2018-12-15 10:39:36 0 [Note] Plugin 'FEEDBACK' is disabled.
+12æœˆ 15 10:39:36 localhost.localdomain mysqld[3365]: 2018-12-15 10:39:36 0 [Note] InnoDB: Buffer pool(s) load completed at 181215 10:39:36
+12æœˆ 15 10:39:36 localhost.localdomain mysqld[3365]: 2018-12-15 10:39:36 0 [Note] Server socket created on IP: '::'.
+12æœˆ 15 10:39:36 localhost.localdomain mysqld[3365]: 2018-12-15 10:39:36 0 [Note] Reading of all Master_info entries succeded
+12æœˆ 15 10:39:36 localhost.localdomain mysqld[3365]: 2018-12-15 10:39:36 0 [Note] Added new Master_info '' to hash table
+12æœˆ 15 10:39:36 localhost.localdomain mysqld[3365]: 2018-12-15 10:39:36 0 [Note] /usr/sbin/mysqld: ready for connections.
+12æœˆ 15 10:39:36 localhost.localdomain mysqld[3365]: Version: '10.3.10-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+12æœˆ 15 10:39:36 localhost.localdomain systemd[1]: Started MariaDB 10.3.10 database server.
+[root@localhost /]# 
+[root@localhost /]# 
+[root@localhost /]# 
+[root@localhost /]# 
+[root@localhost /]# 
+[root@localhost /]# mysql -uroot -proot -h localhost
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 12
+Server version: 10.3.10-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> quit
+Bye
+[root@localhost /]# 
+[root@localhost /]# mysqladmin -uroot -proot -h localhost processlist
++----+-------------+-----------+----+---------+------+--------------------------+------------------+----------+
+| Id | User        | Host      | db | Command | Time | State                    | Info             | Progress |
++----+-------------+-----------+----+---------+------+--------------------------+------------------+----------+
+| 1  | system user |           |    | Daemon  |      | InnoDB purge coordinator |                  | 0.000    |
+| 2  | system user |           |    | Daemon  |      | InnoDB purge worker      |                  | 0.000    |
+| 3  | system user |           |    | Daemon  |      | InnoDB purge worker      |                  | 0.000    |
+| 4  | system user |           |    | Daemon  |      | InnoDB purge worker      |                  | 0.000    |
+| 5  | system user |           |    | Daemon  |      | InnoDB shutdown handler  |                  | 0.000    |
+| 13 | root        | localhost |    | Query   | 0    | Init                     | show processlist | 0.000    |
++----+-------------+-----------+----+---------+------+--------------------------+------------------+----------+
+[root@localhost /]# 
+[root@localhost /]# 
+[root@localhost /]# mysql -uroot -proot information_schema -e "select ^C
+[root@localhost /]# 
+[root@localhost /]# 
+[root@localhost /]# 
+[root@localhost /]# 
+[root@localhost /]# mysql -uroot -proot information_schema -e 'select id,host,db,command,time,state,info from processlist;'
++----+-----------+--------------------+---------+------+--------------------------+------------------------------------------------------------+
+| id | host      | db                 | command | time | state                    | info                                                       |
++----+-----------+--------------------+---------+------+--------------------------+------------------------------------------------------------+
+| 14 | localhost | information_schema | Query   |    0 | Filling schema table     | select id,host,db,command,time,state,info from processlist |
+|  5 |           | NULL               | Daemon  |    0 | InnoDB shutdown handler  | NULL                                                       |
+|  4 |           | NULL               | Daemon  |    0 | InnoDB purge worker      | NULL                                                       |
+|  3 |           | NULL               | Daemon  |    0 | InnoDB purge worker      | NULL                                                       |
+|  2 |           | NULL               | Daemon  |    0 | InnoDB purge worker      | NULL                                                       |
+|  1 |           | NULL               | Daemon  |    0 | InnoDB purge coordinator | NULL                                                       |
++----+-----------+--------------------+---------+------+--------------------------+------------------------------------------------------------+
+[root@localhost /]# 
+[root@localhost /]# 
+[root@localhost /]# mysql -uroot -proot information_schema -e 'select DB,USER,(case when instr(host,':')>0 then substr(host,1,instr(host,':')-1) else host end) as HOST,count(*) from processlist group by DB,USER,(case when instr(host,':')>0 then substr(host,1,instr(host,':')-1) else host end);'
+ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':)>0 then substr(host,1,instr(host,:)-1) else host end) as HOST,count(*) from pr' at line 1
+[root@localhost /]# 
+[root@localhost /]# mysql -uroot -proot information_schema -e 'select DB,USER,HOST,count(*) from processlist;'
++--------------------+------+-----------+----------+
+| DB                 | USER | HOST      | count(*) |
++--------------------+------+-----------+----------+
+| information_schema | root | localhost |        6 |
++--------------------+------+-----------+----------+
+[root@localhost /]# 
+[root@localhost /]# mysql -uroot -proot information_schema -e 'select (case when instr(host,':')>0 then substr(host,1,instr(host,':')-1) from processlist;';
+ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':)>0 then substr(host,1,instr(host,:)-1) from processlist' at line 1
+[root@localhost /]# 
+[root@localhost /]# mysql -uroot -proot information_schema -e "select DB,USER,(case when instr(host,':')>0 then substr(host,1,instr(host,':')-1) else host end) as HOST,count(*) from processlist group by DB,USER,(case when instr(host,':')>0 then substr(host,1,instr(host,':')-1) else host end);"
++--------------------+-------------+-----------+----------+
+| DB                 | USER        | HOST      | count(*) |
++--------------------+-------------+-----------+----------+
+| NULL               | system user |           |        5 |
+| information_schema | root        | localhost |        1 |
++--------------------+-------------+-----------+----------+
+[root@localhost /]# 
