@@ -1,0 +1,1155 @@
+﻿[root@localhost postgre]# ll
+total 27428
+-rw-r--r-- 1 root root 28078799 Nov  7 08:00 postgresql-11.1.tar.gz
+-rw-r--r-- 1 root root       57 Nov  7 08:00 postgresql-11.1.tar.gz.md5
+[root@localhost postgre]# rm *
+rm: remove regular file â€˜postgresql-11.1.tar.gzâ€™? y
+rm: remove regular file â€˜postgresql-11.1.tar.gz.md5â€™? y
+[root@localhost postgre]# wget https://ftp.postgresql.org/pub/source/v11.1/postgresql-11.1.tar.gz
+--2019-01-15 10:47:50--  https://ftp.postgresql.org/pub/source/v11.1/postgresql-11.1.tar.gz
+Resolving ftp.postgresql.org (ftp.postgresql.org)... 204.145.124.244, 87.238.57.227, 72.32.157.246, ...
+Connecting to ftp.postgresql.org (ftp.postgresql.org)|204.145.124.244|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 28078799 (27M) [application/x-gzip]
+Saving to: â€˜postgresql-11.1.tar.gzâ€™
+
+100%[==========================================================================================================================================>] 28,078,799  1.16MB/s   in 24s    
+
+2019-01-15 10:48:14 (1.14 MB/s) - â€˜postgresql-11.1.tar.gzâ€™ saved [28078799/28078799]
+
+[root@localhost postgre]# wget https://ftp.postgresql.org/pub/source/v11.1/postgresql-11.1.tar.gz.md5
+--2019-01-15 10:48:21--  https://ftp.postgresql.org/pub/source/v11.1/postgresql-11.1.tar.gz.md5
+Resolving ftp.postgresql.org (ftp.postgresql.org)... 217.196.149.55, 204.145.124.244, 87.238.57.227, ...
+Connecting to ftp.postgresql.org (ftp.postgresql.org)|217.196.149.55|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 57 [text/plain]
+Saving to: â€˜postgresql-11.1.tar.gz.md5â€™
+
+100%[==========================================================================================================================================>] 57          --.-K/s   in 0s      
+
+2019-01-15 10:48:22 (3.94 MB/s) - â€˜postgresql-11.1.tar.gz.md5â€™ saved [57/57]
+
+[root@localhost postgre]# ll
+total 27428
+-rw-r--r-- 1 root root 28078799 Nov  7 08:00 postgresql-11.1.tar.gz
+-rw-r--r-- 1 root root       57 Nov  7 08:00 postgresql-11.1.tar.gz.md5
+[root@localhost postgre]# md5sum  postgresql-11.1.tar.gz
+a095d9c65d8831d42fe094b4cd1afab8  postgresql-11.1.tar.gz
+[root@localhost postgre]# cat  postgresql-11.1.tar.gz.md5
+a095d9c65d8831d42fe094b4cd1afab8  postgresql-11.1.tar.gz
+[root@localhost postgre]# 
+[root@localhost postgre]# 
+[root@localhost postgre]# gunzip postgresql-11.1.tar.gz
+[root@localhost postgre]# ll
+total 136724
+-rw-r--r-- 1 root root 140001280 Nov  7 08:00 postgresql-11.1.tar
+-rw-r--r-- 1 root root        57 Nov  7 08:00 postgresql-11.1.tar.gz.md5
+[root@localhost postgre]# tar xf postgresql-11.1.tar
+[root@localhost postgre]# ll
+total 136728
+drwxrwxrwx 6 1107 1107      4096 Nov  7 08:00 postgresql-11.1
+-rw-r--r-- 1 root root 140001280 Nov  7 08:00 postgresql-11.1.tar
+-rw-r--r-- 1 root root        57 Nov  7 08:00 postgresql-11.1.tar.gz.md5
+[root@localhost postgre]# cd postgresql-11.1
+[root@localhost postgresql-11.1]# ll
+total 744
+-rw-r--r--  1 1107 1107    486 Nov  7 07:56 aclocal.m4
+drwxrwxrwx  2 1107 1107   4096 Nov  7 07:59 config
+-rwxr-xr-x  1 1107 1107 559334 Nov  7 07:56 configure
+-rw-r--r--  1 1107 1107  84065 Nov  7 07:56 configure.in
+drwxrwxrwx 56 1107 1107   4096 Nov  7 07:59 contrib
+-rw-r--r--  1 1107 1107   1192 Nov  7 07:56 COPYRIGHT
+drwxrwxrwx  3 1107 1107    135 Nov  7 07:59 doc
+-rw-r--r--  1 1107 1107   3664 Nov  7 07:56 GNUmakefile.in
+-rw-r--r--  1 1107 1107    284 Nov  7 07:56 HISTORY
+-rw-r--r--  1 1107 1107  74148 Nov  7 08:00 INSTALL
+-rw-r--r--  1 1107 1107   1682 Nov  7 07:56 Makefile
+-rw-r--r--  1 1107 1107   1212 Nov  7 07:56 README
+drwxrwxrwx 16 1107 1107   4096 Nov  7 08:00 src
+[root@localhost postgresql-11.1]# ./configure
+checking build system type... aarch64-unknown-linux-gnu
+checking host system type... aarch64-unknown-linux-gnu
+checking which template to use... linux
+checking whether NLS is wanted... no
+checking for default port number... 5432
+checking for block size... 8kB
+checking for segment size... 1GB
+checking for WAL block size... 8kB
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for g++... g++
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking whether gcc supports -Wdeclaration-after-statement, for CFLAGS... yes
+checking whether gcc supports -Wendif-labels, for CFLAGS... yes
+checking whether g++ supports -Wendif-labels, for CXXFLAGS... yes
+checking whether gcc supports -Wmissing-format-attribute, for CFLAGS... yes
+checking whether g++ supports -Wmissing-format-attribute, for CXXFLAGS... yes
+checking whether gcc supports -Wformat-security, for CFLAGS... yes
+checking whether g++ supports -Wformat-security, for CXXFLAGS... yes
+checking whether gcc supports -fno-strict-aliasing, for CFLAGS... yes
+checking whether g++ supports -fno-strict-aliasing, for CXXFLAGS... yes
+checking whether gcc supports -fwrapv, for CFLAGS... yes
+checking whether g++ supports -fwrapv, for CXXFLAGS... yes
+checking whether gcc supports -fexcess-precision=standard, for CFLAGS... yes
+checking whether g++ supports -fexcess-precision=standard, for CXXFLAGS... yes
+checking whether gcc supports -funroll-loops, for CFLAGS_VECTOR... yes
+checking whether gcc supports -ftree-vectorize, for CFLAGS_VECTOR... yes
+checking whether gcc supports -Wunused-command-line-argument, for NOT_THE_CFLAGS... no
+checking whether gcc supports -Wformat-truncation, for NOT_THE_CFLAGS... no
+checking whether gcc supports -Wstringop-truncation, for NOT_THE_CFLAGS... no
+checking whether the C compiler still works... yes
+checking how to run the C preprocessor... gcc -E
+checking allow thread-safe client libraries... yes
+checking whether to build with ICU support... no
+checking whether to build with Tcl... no
+checking whether to build Perl modules... no
+checking whether to build Python modules... no
+checking whether to build with GSSAPI support... no
+checking whether to build with PAM support... no
+checking whether to build with BSD Authentication support... no
+checking whether to build with LDAP support... no
+checking whether to build with Bonjour support... no
+checking whether to build with OpenSSL support... no
+checking whether to build with SELinux support... no
+checking whether to build with systemd support... no
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ld used by GCC... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for ranlib... ranlib
+checking for strip... strip
+checking whether it is possible to strip libraries... yes
+checking for ar... ar
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for tar... /usr/bin/tar
+checking whether ln -s works... yes
+checking for gawk... gawk
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for bison... no
+configure: WARNING:
+*** Without Bison you will not be able to build PostgreSQL from Git nor
+*** change any of the parser definition files.  You can obtain Bison from
+*** a GNU mirror site.  (If you are using the official distribution of
+*** PostgreSQL then you do not need to worry about this, because the Bison
+*** output is pre-generated.)
+checking for flex... no
+configure: WARNING:
+*** Without Flex you will not be able to build PostgreSQL from Git nor
+*** change any of the scanner definition files.  You can obtain Flex from
+*** a GNU mirror site.  (If you are using the official distribution of
+*** PostgreSQL then you do not need to worry about this because the Flex
+*** output is pre-generated.)
+checking for perl... /usr/bin/perl
+configure: using perl 5.16.3
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking if compiler needs certain flags to reject unknown flags... no
+checking for the pthreads library -lpthreads... no
+checking whether pthreads work without any flags... no
+checking whether pthreads work with -Kthread... no
+checking whether pthreads work with -kthread... no
+checking for the pthreads library -llthread... no
+checking whether pthreads work with -pthread... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking if more special flags are required for pthreads... no
+checking for PTHREAD_PRIO_INHERIT... yes
+checking pthread.h usability... yes
+checking pthread.h presence... yes
+checking for pthread.h... yes
+checking for strerror_r... yes
+checking for getpwuid_r... yes
+checking for gethostbyname_r... yes
+checking whether strerror_r returns int... no
+checking for main in -lm... yes
+checking for library containing setproctitle... no
+checking for library containing dlopen... -ldl
+checking for library containing socket... none required
+checking for library containing shl_load... no
+checking for library containing getopt_long... none required
+checking for library containing crypt... -lcrypt
+checking for library containing shm_open... -lrt
+checking for library containing shm_unlink... none required
+checking for library containing clock_gettime... none required
+checking for library containing fdatasync... none required
+checking for library containing sched_yield... none required
+checking for library containing gethostbyname_r... none required
+checking for library containing shmget... none required
+checking for library containing readline... no
+configure: error: readline library not found
+If you have readline already installed, see config.log for details on the
+failure.  It is possible the compiler isn't looking in the proper directory.
+Use --without-readline to disable readline support.
+[root@localhost postgresql-11.1]# yum install readline
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+akopytov_sysbench/aarch64/signature                                                                                                                          |  836 B  00:00:00     
+akopytov_sysbench/aarch64/signature                                                                                                                          | 1.0 kB  00:00:00 !!! 
+akopytov_sysbench-source/signature                                                                                                                           |  836 B  00:00:00     
+akopytov_sysbench-source/signature                                                                                                                           | 1.0 kB  00:00:00 !!! 
+base                                                                                                                                                         | 3.6 kB  00:00:00     
+docker-ce-stable                                                                                                                                             | 3.5 kB  00:00:00     
+extras                                                                                                                                                       | 2.9 kB  00:00:00     
+updates                                                                                                                                                      | 2.9 kB  00:00:00     
+Package readline-6.2-10.el7.aarch64 already installed and latest version
+Nothing to do
+[root@localhost postgresql-11.1]# yum install readline-dev
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+No package readline-dev available.
+Error: Nothing to do
+[root@localhost postgresql-11.1]# vi config.log
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+It was created by PostgreSQL configure 11.1, which was
+generated by GNU Autoconf 2.69.  Invocation command line was
+
+  $ ./configure
+
+## --------- ##
+## Platform. ##
+## --------- ##
+
+hostname = localhost.localdomain
+uname -m = aarch64
+uname -r = 4.14.0-49.el7a.aarch64
+uname -s = Linux
+uname -v = #1 SMP Tue Apr 10 17:22:26 UTC 2018
+
+/usr/bin/uname -p = aarch64
+/bin/uname -X     = unknown
+
+/bin/arch              = aarch64
+/usr/bin/arch -k       = unknown
+/usr/convex/getsysinfo = unknown
+/usr/bin/hostinfo      = unknown
+/bin/machine           = unknown
+/usr/bin/oslevel       = unknown
+/bin/universe          = unknown
+
+PATH: /usr/local/sbin
+PATH: /usr/local/bin
+PATH: /usr/sbin
+PATH: /usr/bin
+PATH: /root/bin
+
+
+## ----------- ##
+## Core tests. ##
+## ----------- ##
+
+configure:2836: checking build system type
+configure:2850: result: aarch64-unknown-linux-gnu
+configure:2870: checking host system type
+configure:2883: result: aarch64-unknown-linux-gnu
+with_selinux='no'
+with_system_tzdata=''
+with_systemd='no'
+with_tcl='no'
+with_uuid='no'
+with_zlib='yes'
+
+## ----------- ##
+## confdefs.h. ##
+## ----------- ##
+
+/* confdefs.h */
+#define PACKAGE_NAME "PostgreSQL"
+#define PACKAGE_TARNAME "postgresql"
+#define PACKAGE_VERSION "11.1"
+#define PACKAGE_STRING "PostgreSQL 11.1"
+#define PACKAGE_BUGREPORT "pgsql-bugs@postgresql.org"
+#define PACKAGE_URL ""
+#define PG_MAJORVERSION "11"
+#define PG_VERSION "11.1"
+#define DEF_PGPORT 5432
+#define DEF_PGPORT_STR "5432"
+#define BLCKSZ 8192
+#define RELSEG_SIZE 131072
+#define XLOG_BLCKSZ 8192
+#define ENABLE_THREAD_SAFETY 1
+#define PG_KRB_SRVNAM "postgres"
+#define STDC_HEADERS 1
+#define HAVE_SYS_TYPES_H 1
+#define HAVE_SYS_STAT_H 1
+#define HAVE_STDLIB_H 1
+#define HAVE_STRING_H 1
+#define HAVE_MEMORY_H 1
+#define HAVE_STRINGS_H 1
+#define HAVE_INTTYPES_H 1
+#define HAVE_STDINT_H 1
+#define HAVE_UNISTD_H 1
+#define HAVE_PTHREAD_PRIO_INHERIT 1
+#define HAVE_PTHREAD 1
+#define HAVE_STRERROR_R 1
+#define HAVE_GETPWUID_R 1
+#define HAVE_GETHOSTBYNAME_R 1
+#define HAVE_LIBM 1
+
+configure: exit 1
+configure:11199: $? = 0
+configure:11216: result: none required
+configure:11225: checking for library containing fdatasync
+configure:11256: gcc -o conftest -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -O2  -D_GNU_SOURCE    conftest.c -lrt -lcrypt -ldl -lm  >&5
+configure:11256: $? = 0
+configure:11273: result: none required
+configure:11282: checking for library containing sched_yield
+configure:11313: gcc -o conftest -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -O2  -D_GNU_SOURCE    conftest.c -lrt -lcrypt -ldl -lm  >&5
+configure:11313: $? = 0
+configure:11330: result: none required
+configure:11340: checking for library containing gethostbyname_r
+configure:11371: gcc -o conftest -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -O2  -D_GNU_SOURCE    conftest.c -lrt -lcrypt -ldl -lm  >&5
+configure:11371: $? = 0
+configure:11388: result: none required
+configure:11397: checking for library containing shmget
+configure:11428: gcc -o conftest -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -O2  -D_GNU_SOURCE    conftest.c -lrt -lcrypt -ldl -lm  >&5
+configure:11428: $? = 0
+configure:11445: result: none required
+configure:11457: checking for library containing readline
+configure:11489: gcc -o conftest -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -O2  -D_GNU_SOURCE    conftest.c -lreadline -lrt -lcrypt -ldl -lm  >&5
+/usr/bin/ld: cannot find -lreadline
+collect2: error: ld returned 1 exit status
+configure:11489: $? = 1
+configure: failed program was:
+| /* confdefs.h */
+| #define PACKAGE_NAME "PostgreSQL"
+| #define PACKAGE_TARNAME "postgresql"
+| #define PACKAGE_VERSION "11.1"
+| #define PACKAGE_STRING "PostgreSQL 11.1"
+| #define PACKAGE_BUGREPORT "pgsql-bugs@postgresql.org"
+| #define PACKAGE_URL ""
+| #define PG_MAJORVERSION "11"
+| #define PG_VERSION "11.1"
+| #define DEF_PGPORT 5432
+| #define DEF_PGPORT_STR "5432"
+| #define BLCKSZ 8192
+| #define RELSEG_SIZE 131072
+| #define XLOG_BLCKSZ 8192
+| #define ENABLE_THREAD_SAFETY 1
+| #define PG_KRB_SRVNAM "postgres"
+configure:11457: checking for library containing readline
+configure:11489: gcc -o conftest -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -O2  -D_GNU_SOURCE    conftest.c -lreadline -lrt -lcrypt -ldl -lm  >&5
+/usr/bin/ld: cannot find -lreadline
+[root@localhost postgresql-11.1]# rpm -qa|grep readline
+readline-6.2-10.el7.aarch64
+[root@localhost postgresql-11.1]# 
+[root@localhost postgresql-11.1]# yum search readline
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+============================================================================== N/S matched: readline ===============================================================================
+readline-devel.aarch64 : Files needed to develop programs which use the readline library
+readline-static.aarch64 : Static libraries for the readline library
+perl-Term-UI.noarch : Term::ReadLine user interface made easy
+readline.aarch64 : A library for editing typed command lines
+
+  Name and summary matches only, use "search all" for everything.
+[root@localhost postgresql-11.1]# 
+[root@localhost postgresql-11.1]# yum install readline-devel
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+Resolving Dependencies
+--> Running transaction check
+---> Package readline-devel.aarch64 0:6.2-10.el7 will be installed
+--> Processing Dependency: ncurses-devel for package: readline-devel-6.2-10.el7.aarch64
+--> Running transaction check
+---> Package ncurses-devel.aarch64 0:5.9-14.20130511.el7_4 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+====================================================================================================================================================================================
+ Package                                      Arch                                  Version                                                Repository                          Size
+====================================================================================================================================================================================
+Installing:
+ readline-devel                               aarch64                               6.2-10.el7                                             base                               138 k
+Installing for dependencies:
+ ncurses-devel                                aarch64                               5.9-14.20130511.el7_4                                  base                               712 k
+
+Transaction Summary
+====================================================================================================================================================================================
+Install  1 Package (+1 Dependent package)
+
+Total download size: 850 k
+Installed size: 2.4 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/2): ncurses-devel-5.9-14.20130511.el7_4.aarch64.rpm                                                                                                       | 712 kB  00:00:01     
+(2/2): readline-devel-6.2-10.el7.aarch64.rpm                                                                                                                 | 138 kB  00:00:04     
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                               198 kB/s | 850 kB  00:00:04     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : ncurses-devel-5.9-14.20130511.el7_4.aarch64                                                                                                                      1/2 
+  Installing : readline-devel-6.2-10.el7.aarch64                                                                                                                                2/2 
+  Verifying  : ncurses-devel-5.9-14.20130511.el7_4.aarch64                                                                                                                      1/2 
+  Verifying  : readline-devel-6.2-10.el7.aarch64                                                                                                                                2/2 
+
+Installed:
+  readline-devel.aarch64 0:6.2-10.el7                                                                                                                                               
+
+Dependency Installed:
+  ncurses-devel.aarch64 0:5.9-14.20130511.el7_4                                                                                                                                     
+
+Complete!
+[root@localhost postgresql-11.1]# ll
+total 824
+-rw-r--r--  1 1107 1107    486 Nov  7 07:56 aclocal.m4
+drwxrwxrwx  2 1107 1107   4096 Nov  7 07:59 config
+-rw-r--r--  1 root root  80811 Jan 15 10:50 config.log
+-rwxr-xr-x  1 1107 1107 559334 Nov  7 07:56 configure
+-rw-r--r--  1 1107 1107  84065 Nov  7 07:56 configure.in
+drwxrwxrwx 56 1107 1107   4096 Nov  7 07:59 contrib
+-rw-r--r--  1 1107 1107   1192 Nov  7 07:56 COPYRIGHT
+drwxrwxrwx  3 1107 1107    135 Nov  7 07:59 doc
+-rw-r--r--  1 1107 1107   3664 Nov  7 07:56 GNUmakefile.in
+-rw-r--r--  1 1107 1107    284 Nov  7 07:56 HISTORY
+-rw-r--r--  1 1107 1107  74148 Nov  7 08:00 INSTALL
+-rw-r--r--  1 1107 1107   1682 Nov  7 07:56 Makefile
+-rw-r--r--  1 1107 1107   1212 Nov  7 07:56 README
+drwxrwxrwx 16 1107 1107   4096 Nov  7 08:00 src
+[root@localhost postgresql-11.1]# ./configure
+checking build system type... aarch64-unknown-linux-gnu
+checking host system type... aarch64-unknown-linux-gnu
+checking which template to use... linux
+checking whether NLS is wanted... no
+checking for default port number... 5432
+checking for block size... 8kB
+checking for segment size... 1GB
+checking for WAL block size... 8kB
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for g++... g++
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking whether gcc supports -Wdeclaration-after-statement, for CFLAGS... yes
+checking whether gcc supports -Wendif-labels, for CFLAGS... yes
+checking whether g++ supports -Wendif-labels, for CXXFLAGS... yes
+checking whether gcc supports -Wmissing-format-attribute, for CFLAGS... yes
+checking whether g++ supports -Wmissing-format-attribute, for CXXFLAGS... yes
+checking whether gcc supports -Wformat-security, for CFLAGS... yes
+checking whether g++ supports -Wformat-security, for CXXFLAGS... yes
+checking whether gcc supports -fno-strict-aliasing, for CFLAGS... yes
+checking whether g++ supports -fno-strict-aliasing, for CXXFLAGS... yes
+checking whether gcc supports -fwrapv, for CFLAGS... yes
+checking whether g++ supports -fwrapv, for CXXFLAGS... yes
+checking whether gcc supports -fexcess-precision=standard, for CFLAGS... yes
+checking whether g++ supports -fexcess-precision=standard, for CXXFLAGS... yes
+checking whether gcc supports -funroll-loops, for CFLAGS_VECTOR... yes
+checking whether gcc supports -ftree-vectorize, for CFLAGS_VECTOR... yes
+checking whether gcc supports -Wunused-command-line-argument, for NOT_THE_CFLAGS... no
+checking whether gcc supports -Wformat-truncation, for NOT_THE_CFLAGS... no
+checking whether gcc supports -Wstringop-truncation, for NOT_THE_CFLAGS... no
+checking whether the C compiler still works... yes
+checking how to run the C preprocessor... gcc -E
+checking allow thread-safe client libraries... yes
+checking whether to build with ICU support... no
+checking whether to build with Tcl... no
+checking whether to build Perl modules... no
+checking whether to build Python modules... no
+checking whether to build with GSSAPI support... no
+checking whether to build with PAM support... no
+checking whether to build with BSD Authentication support... no
+checking whether to build with LDAP support... no
+checking whether to build with Bonjour support... no
+checking whether to build with OpenSSL support... no
+checking whether to build with SELinux support... no
+checking whether to build with systemd support... no
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ld used by GCC... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for ranlib... ranlib
+checking for strip... strip
+checking whether it is possible to strip libraries... yes
+checking for ar... ar
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for tar... /usr/bin/tar
+checking whether ln -s works... yes
+checking for gawk... gawk
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for bison... no
+configure: WARNING:
+*** Without Bison you will not be able to build PostgreSQL from Git nor
+*** change any of the parser definition files.  You can obtain Bison from
+*** a GNU mirror site.  (If you are using the official distribution of
+*** PostgreSQL then you do not need to worry about this, because the Bison
+*** output is pre-generated.)
+checking for flex... no
+configure: WARNING:
+*** Without Flex you will not be able to build PostgreSQL from Git nor
+*** change any of the scanner definition files.  You can obtain Flex from
+*** a GNU mirror site.  (If you are using the official distribution of
+*** PostgreSQL then you do not need to worry about this because the Flex
+*** output is pre-generated.)
+checking for perl... /usr/bin/perl
+configure: using perl 5.16.3
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking if compiler needs certain flags to reject unknown flags... no
+checking for the pthreads library -lpthreads... no
+checking whether pthreads work without any flags... no
+checking whether pthreads work with -Kthread... no
+checking whether pthreads work with -kthread... no
+checking for the pthreads library -llthread... no
+checking whether pthreads work with -pthread... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking if more special flags are required for pthreads... no
+checking for PTHREAD_PRIO_INHERIT... yes
+checking pthread.h usability... yes
+checking pthread.h presence... yes
+checking for pthread.h... yes
+checking for strerror_r... yes
+checking for getpwuid_r... yes
+checking for gethostbyname_r... yes
+checking whether strerror_r returns int... no
+checking for main in -lm... yes
+checking for library containing setproctitle... no
+checking for library containing dlopen... -ldl
+checking for library containing socket... none required
+checking for library containing shl_load... no
+checking for library containing getopt_long... none required
+checking for library containing crypt... -lcrypt
+checking for library containing shm_open... -lrt
+checking for library containing shm_unlink... none required
+checking for library containing clock_gettime... none required
+checking for library containing fdatasync... none required
+checking for library containing sched_yield... none required
+checking for library containing gethostbyname_r... none required
+checking for library containing shmget... none required
+checking for library containing readline... -lreadline
+checking for inflate in -lz... no
+configure: error: zlib library not found
+If you have zlib already installed, see config.log for details on the
+failure.  It is possible the compiler isn't looking in the proper directory.
+Use --without-zlib to disable zlib support.
+[root@localhost postgresql-11.1]# 
+[root@localhost postgresql-11.1]# rpm -qa|grep zlib
+zlib-1.2.7-17.el7.aarch64
+[root@localhost postgresql-11.1]# 
+[root@localhost postgresql-11.1]# yum search zlib
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+================================================================================ N/S matched: zlib =================================================================================
+jzlib.noarch : Re-implementation of zlib in pure Java
+jzlib-demo.noarch : Examples for jzlib
+jzlib-javadoc.noarch : API documentation for jzlib
+perl-Compress-Raw-Zlib.aarch64 : Low-level interface to the zlib compression library
+perl-IO-Zlib.noarch : Perl IO:: style interface to Compress::Zlib
+zlib-devel.aarch64 : Header files and libraries for Zlib development
+zlib-static.aarch64 : Static libraries for Zlib development
+zlib.aarch64 : The compression and decompression library
+
+  Name and summary matches only, use "search all" for everything.
+[root@localhost postgresql-11.1]# 
+[root@localhost postgresql-11.1]# yum install zlib-devel
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+Resolving Dependencies
+--> Running transaction check
+---> Package zlib-devel.aarch64 0:1.2.7-18.el7 will be installed
+--> Processing Dependency: zlib = 1.2.7-18.el7 for package: zlib-devel-1.2.7-18.el7.aarch64
+--> Running transaction check
+---> Package zlib.aarch64 0:1.2.7-17.el7 will be updated
+---> Package zlib.aarch64 0:1.2.7-18.el7 will be an update
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+====================================================================================================================================================================================
+ Package                                      Arch                                      Version                                        Repository                              Size
+====================================================================================================================================================================================
+Installing:
+ zlib-devel                                   aarch64                                   1.2.7-18.el7                                   base                                    49 k
+Updating for dependencies:
+ zlib                                         aarch64                                   1.2.7-18.el7                                   base                                    86 k
+
+Transaction Summary
+====================================================================================================================================================================================
+Install  1 Package
+Upgrade             ( 1 Dependent package)
+
+Total download size: 135 k
+Is this ok [y/d/N]: y
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+(1/2): zlib-1.2.7-18.el7.aarch64.rpm                                                                                                                         |  86 kB  00:00:01     
+(2/2): zlib-devel-1.2.7-18.el7.aarch64.rpm                                                                                                                   |  49 kB  00:00:06     
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                                20 kB/s | 135 kB  00:00:06     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : zlib-1.2.7-18.el7.aarch64                                                                                                                                        1/3 
+  Installing : zlib-devel-1.2.7-18.el7.aarch64                                                                                                                                  2/3 
+  Cleanup    : zlib-1.2.7-17.el7.aarch64                                                                                                                                        3/3 
+  Verifying  : zlib-1.2.7-18.el7.aarch64                                                                                                                                        1/3 
+  Verifying  : zlib-devel-1.2.7-18.el7.aarch64                                                                                                                                  2/3 
+  Verifying  : zlib-1.2.7-17.el7.aarch64                                                                                                                                        3/3 
+
+Installed:
+  zlib-devel.aarch64 0:1.2.7-18.el7                                                                                                                                                 
+
+Dependency Updated:
+  zlib.aarch64 0:1.2.7-18.el7                                                                                                                                                       
+
+Complete!
+[root@localhost postgresql-11.1]# 
+[root@localhost postgresql-11.1]# ./configure
+checking build system type... aarch64-unknown-linux-gnu
+checking host system type... aarch64-unknown-linux-gnu
+checking which template to use... linux
+checking whether NLS is wanted... no
+checking for default port number... 5432
+checking for block size... 8kB
+checking for segment size... 1GB
+checking for WAL block size... 8kB
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for g++... g++
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking whether gcc supports -Wdeclaration-after-statement, for CFLAGS... yes
+checking whether gcc supports -Wendif-labels, for CFLAGS... yes
+checking whether g++ supports -Wendif-labels, for CXXFLAGS... yes
+checking whether gcc supports -Wmissing-format-attribute, for CFLAGS... yes
+checking whether g++ supports -Wmissing-format-attribute, for CXXFLAGS... yes
+checking whether gcc supports -Wformat-security, for CFLAGS... yes
+checking whether g++ supports -Wformat-security, for CXXFLAGS... yes
+checking whether gcc supports -fno-strict-aliasing, for CFLAGS... yes
+checking whether g++ supports -fno-strict-aliasing, for CXXFLAGS... yes
+checking whether gcc supports -fwrapv, for CFLAGS... yes
+checking whether g++ supports -fwrapv, for CXXFLAGS... yes
+checking whether gcc supports -fexcess-precision=standard, for CFLAGS... yes
+checking whether g++ supports -fexcess-precision=standard, for CXXFLAGS... yes
+checking whether gcc supports -funroll-loops, for CFLAGS_VECTOR... yes
+checking whether gcc supports -ftree-vectorize, for CFLAGS_VECTOR... yes
+checking whether gcc supports -Wunused-command-line-argument, for NOT_THE_CFLAGS... no
+checking whether gcc supports -Wformat-truncation, for NOT_THE_CFLAGS... no
+checking whether gcc supports -Wstringop-truncation, for NOT_THE_CFLAGS... no
+checking whether the C compiler still works... yes
+checking how to run the C preprocessor... gcc -E
+checking allow thread-safe client libraries... yes
+checking whether to build with ICU support... no
+checking whether to build with Tcl... no
+checking whether to build Perl modules... no
+checking whether to build Python modules... no
+checking whether to build with GSSAPI support... no
+checking whether to build with PAM support... no
+checking whether to build with BSD Authentication support... no
+checking whether to build with LDAP support... no
+checking whether to build with Bonjour support... no
+checking whether to build with OpenSSL support... no
+checking whether to build with SELinux support... no
+checking whether to build with systemd support... no
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ld used by GCC... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for ranlib... ranlib
+checking for strip... strip
+checking whether it is possible to strip libraries... yes
+checking for ar... ar
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for tar... /usr/bin/tar
+checking whether ln -s works... yes
+checking for gawk... gawk
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for bison... no
+configure: WARNING:
+*** Without Bison you will not be able to build PostgreSQL from Git nor
+*** change any of the parser definition files.  You can obtain Bison from
+*** a GNU mirror site.  (If you are using the official distribution of
+*** PostgreSQL then you do not need to worry about this, because the Bison
+*** output is pre-generated.)
+checking for flex... no
+configure: WARNING:
+*** Without Flex you will not be able to build PostgreSQL from Git nor
+*** change any of the scanner definition files.  You can obtain Flex from
+*** a GNU mirror site.  (If you are using the official distribution of
+*** PostgreSQL then you do not need to worry about this because the Flex
+*** output is pre-generated.)
+checking for perl... /usr/bin/perl
+configure: using perl 5.16.3
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking if compiler needs certain flags to reject unknown flags... no
+checking for the pthreads library -lpthreads... no
+checking whether pthreads work without any flags... no
+checking whether pthreads work with -Kthread... no
+checking whether pthreads work with -kthread... no
+checking for the pthreads library -llthread... no
+checking whether pthreads work with -pthread... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking if more special flags are required for pthreads... no
+checking for PTHREAD_PRIO_INHERIT... yes
+checking pthread.h usability... yes
+checking pthread.h presence... yes
+checking for pthread.h... yes
+checking for strerror_r... yes
+checking for getpwuid_r... yes
+checking for gethostbyname_r... yes
+checking whether strerror_r returns int... no
+checking for main in -lm... yes
+checking for library containing setproctitle... no
+checking for library containing dlopen... -ldl
+checking for library containing socket... none required
+checking for library containing shl_load... no
+checking for library containing getopt_long... none required
+checking for library containing crypt... -lcrypt
+checking for library containing shm_open... -lrt
+checking for library containing shm_unlink... none required
+checking for library containing clock_gettime... none required
+checking for library containing fdatasync... none required
+checking for library containing sched_yield... none required
+checking for library containing gethostbyname_r... none required
+checking for library containing shmget... none required
+checking for library containing readline... -lreadline
+checking for inflate in -lz... yes
+checking for stdbool.h that conforms to C99... yes
+checking for _Bool... yes
+checking atomic.h usability... no
+checking atomic.h presence... no
+checking for atomic.h... no
+checking crypt.h usability... yes
+checking crypt.h presence... yes
+checking for crypt.h... yes
+checking dld.h usability... no
+checking dld.h presence... no
+checking for dld.h... no
+checking fp_class.h usability... no
+checking fp_class.h presence... no
+checking for fp_class.h... no
+checking getopt.h usability... yes
+checking getopt.h presence... yes
+checking for getopt.h... yes
+checking ieeefp.h usability... no
+checking ieeefp.h presence... no
+checking for ieeefp.h... no
+checking ifaddrs.h usability... yes
+checking ifaddrs.h presence... yes
+checking for ifaddrs.h... yes
+checking langinfo.h usability... yes
+checking langinfo.h presence... yes
+checking for langinfo.h... yes
+checking mbarrier.h usability... no
+checking mbarrier.h presence... no
+checking for mbarrier.h... no
+checking poll.h usability... yes
+checking poll.h presence... yes
+checking for poll.h... yes
+checking sys/epoll.h usability... yes
+checking sys/epoll.h presence... yes
+checking for sys/epoll.h... yes
+checking sys/ipc.h usability... yes
+checking sys/ipc.h presence... yes
+checking for sys/ipc.h... yes
+checking sys/pstat.h usability... no
+checking sys/pstat.h presence... no
+checking for sys/pstat.h... no
+checking sys/resource.h usability... yes
+checking sys/resource.h presence... yes
+checking for sys/resource.h... yes
+checking sys/select.h usability... yes
+checking sys/select.h presence... yes
+checking for sys/select.h... yes
+checking sys/sem.h usability... yes
+checking sys/sem.h presence... yes
+checking for sys/sem.h... yes
+checking sys/shm.h usability... yes
+checking sys/shm.h presence... yes
+checking for sys/shm.h... yes
+checking sys/sockio.h usability... no
+checking sys/sockio.h presence... no
+checking for sys/sockio.h... no
+checking sys/tas.h usability... no
+checking sys/tas.h presence... no
+checking for sys/tas.h... no
+checking sys/un.h usability... yes
+checking sys/un.h presence... yes
+checking for sys/un.h... yes
+checking termios.h usability... yes
+checking termios.h presence... yes
+checking for termios.h... yes
+checking ucred.h usability... no
+checking ucred.h presence... no
+checking for ucred.h... no
+checking utime.h usability... yes
+checking utime.h presence... yes
+checking for utime.h... yes
+checking wchar.h usability... yes
+checking wchar.h presence... yes
+checking for wchar.h... yes
+checking wctype.h usability... yes
+checking wctype.h presence... yes
+checking for wctype.h... yes
+checking for net/if.h... yes
+checking for sys/ucred.h... no
+checking for netinet/tcp.h... yes
+checking readline/readline.h usability... yes
+checking readline/readline.h presence... yes
+checking for readline/readline.h... yes
+checking readline/history.h usability... yes
+checking readline/history.h presence... yes
+checking for readline/history.h... yes
+checking zlib.h usability... yes
+checking zlib.h presence... yes
+checking for zlib.h... yes
+checking whether byte ordering is bigendian... no
+checking for inline... inline
+checking for printf format archetype... gnu_printf
+checking for flexible array members... yes
+checking for signed types... yes
+checking for __func__... yes
+checking for _Static_assert... yes
+checking for typeof... typeof
+checking for __builtin_types_compatible_p... yes
+checking for __builtin_bswap16... yes
+checking for __builtin_bswap32... yes
+checking for __builtin_bswap64... yes
+checking for __builtin_constant_p... yes
+checking for __builtin_unreachable... yes
+checking for computed goto support... yes
+checking for __VA_ARGS__... yes
+checking whether struct tm is in sys/time.h or time.h... time.h
+checking for struct tm.tm_zone... yes
+checking for tzname... yes
+checking for union semun... no
+checking for struct sockaddr_un... yes
+checking for struct sockaddr_storage... yes
+checking for struct sockaddr_storage.ss_family... yes
+checking for struct sockaddr_storage.__ss_family... no
+checking for struct sockaddr_storage.ss_len... no
+checking for struct sockaddr_storage.__ss_len... no
+checking for struct sockaddr.sa_len... no
+checking for struct addrinfo... yes
+checking for intptr_t... yes
+checking for uintptr_t... yes
+checking for unsigned long long int... yes
+checking for long long int... yes
+checking for locale_t... yes
+checking for C/C++ restrict keyword... __restrict
+checking for struct cmsgcred... no
+checking for struct option... yes
+checking for z_streamp... yes
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+checking size of off_t... 8
+checking size of bool... 1
+checking for int timezone... yes
+checking types of arguments for accept()... int, int, struct sockaddr *, socklen_t *
+checking whether gettimeofday takes only one argument... no
+checking for wcstombs_l declaration... no
+checking for cbrt... yes
+checking for clock_gettime... yes
+checking for dlopen... yes
+checking for fdatasync... yes
+checking for getifaddrs... yes
+checking for getpeerucred... no
+checking for getrlimit... yes
+checking for mbstowcs_l... no
+checking for memmove... yes
+checking for poll... yes
+checking for posix_fallocate... yes
+checking for pstat... no
+checking for pthread_is_threaded_np... no
+checking for readlink... yes
+checking for setproctitle... no
+checking for setsid... yes
+checking for shm_open... yes
+checking for symlink... yes
+checking for sync_file_range... yes
+checking for utime... yes
+checking for utimes... yes
+checking for wcstombs_l... no
+checking for fseeko... yes
+checking for _LARGEFILE_SOURCE value needed for large files... no
+checking for posix_fadvise... yes
+checking whether posix_fadvise is declared... yes
+checking whether fdatasync is declared... yes
+checking whether strlcat is declared... no
+checking whether strlcpy is declared... no
+checking whether strnlen is declared... yes
+checking whether F_FULLFSYNC is declared... no
+checking for struct sockaddr_in6... yes
+checking for PS_STRINGS... no
+checking for snprintf... yes
+checking for vsnprintf... yes
+checking whether snprintf is declared... yes
+checking whether vsnprintf is declared... yes
+checking for isinf... yes
+checking for crypt... yes
+checking for fls... no
+checking for getopt... yes
+checking for getrusage... yes
+checking for inet_aton... yes
+checking for mkdtemp... yes
+checking for random... yes
+checking for rint... yes
+checking for srandom... yes
+checking for strerror... yes
+checking for strlcat... no
+checking for strlcpy... no
+checking for strnlen... yes
+checking for unsetenv... yes
+checking for getpeereid... no
+checking for getaddrinfo... yes
+checking for getopt_long... yes
+checking whether sys_siglist is declared... yes
+checking for syslog... yes
+checking syslog.h usability... yes
+checking syslog.h presence... yes
+checking for syslog.h... yes
+checking for opterr... yes
+checking for optreset... no
+checking for strtoll... yes
+checking for strtoull... yes
+checking whether strtoll is declared... yes
+checking whether strtoull is declared... yes
+checking for rl_completion_append_character... yes
+checking for rl_completion_matches... yes
+checking for rl_filename_completion_function... yes
+checking for rl_reset_screen_size... yes
+checking for append_history... yes
+checking for history_truncate_file... yes
+checking test program... ok
+checking whether long int is 64 bits... yes
+checking whether snprintf supports the %z modifier... yes
+checking for __builtin_mul_overflow... no
+checking size of void *... 8
+checking size of size_t... 8
+checking size of long... 8
+checking whether to build with float4 passed by value... yes
+checking whether to build with float8 passed by value... yes
+checking alignment of short... 2
+checking alignment of int... 4
+checking alignment of long... 8
+checking alignment of double... 8
+checking for int8... no
+checking for uint8... no
+checking for int64... no
+checking for uint64... no
+checking for __int128... yes
+checking for __int128 alignment bug... ok
+checking alignment of PG_INT128_TYPE... 16
+checking for builtin __sync char locking functions... yes
+checking for builtin __sync int32 locking functions... yes
+checking for builtin __sync int32 atomic operations... yes
+checking for builtin __sync int64 atomic operations... yes
+checking for builtin __atomic int32 atomic operations... yes
+checking for builtin __atomic int64 atomic operations... yes
+checking for __get_cpuid... no
+checking for __cpuid... no
+checking for _mm_crc32_u8 and _mm_crc32_u32 with CFLAGS=... no
+checking for _mm_crc32_u8 and _mm_crc32_u32 with CFLAGS=-msse4.2... no
+checking for __crc32cb, __crc32ch, __crc32cw, and __crc32cd with CFLAGS=... no
+checking for __crc32cb, __crc32ch, __crc32cw, and __crc32cd with CFLAGS=-march=armv8-a+crc... no
+checking which CRC-32C implementation to use... slicing-by-8
+checking for library containing sem_init... -lpthread
+checking which semaphore API to use... unnamed POSIX
+checking for /dev/urandom... yes
+checking which random number source to use... /dev/urandom
+checking for xmllint... /usr/bin/xmllint
+checking for DocBook XML V4.2... yes
+checking for dbtoepub... no
+checking for xsltproc... no
+checking for fop... no
+checking thread safety of required library functions... yes
+checking whether gcc supports -Wl,--as-needed... yes
+configure: using compiler=gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-36)
+configure: using CFLAGS=-Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -O2
+configure: using CPPFLAGS= -D_GNU_SOURCE 
+configure: using LDFLAGS=  -Wl,--as-needed
+configure: creating ./config.status
+config.status: creating GNUmakefile
+config.status: creating src/Makefile.global
+config.status: creating src/include/pg_config.h
+config.status: creating src/include/pg_config_ext.h
+config.status: creating src/interfaces/ecpg/include/ecpg_config.h
+config.status: linking src/backend/port/tas/dummy.s to src/backend/port/tas.s
+config.status: linking src/backend/port/dynloader/linux.c to src/backend/port/dynloader.c
+config.status: linking src/backend/port/posix_sema.c to src/backend/port/pg_sema.c
+config.status: linking src/backend/port/sysv_shmem.c to src/backend/port/pg_shmem.c
+config.status: linking src/backend/port/dynloader/linux.h to src/include/dynloader.h
+config.status: linking src/include/port/linux.h to src/include/pg_config_os.h
+config.status: linking src/makefiles/Makefile.linux to src/Makefile.port
+[root@localhost postgresql-11.1]# 
+[root@localhost postgresql-11.1]# view config.log 
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+It was created by PostgreSQL configure 11.1, which was
+generated by GNU Autoconf 2.69.  Invocation command line was
+
+  $ ./configure
+
+## --------- ##
+## Platform. ##
+## --------- ##
+
+hostname = localhost.localdomain
+uname -m = aarch64
+uname -r = 4.14.0-49.el7a.aarch64
+uname -s = Linux
+uname -v = #1 SMP Tue Apr 10 17:22:26 UTC 2018
+
+/usr/bin/uname -p = aarch64
+/bin/uname -X     = unknown
+
+/bin/arch              = aarch64
+/usr/bin/arch -k       = unknown
+/usr/convex/getsysinfo = unknown
+/usr/bin/hostinfo      = unknown
+/bin/machine           = unknown
+/usr/bin/oslevel       = unknown
+/bin/universe          = unknown
+
+PATH: /usr/local/sbin
+PATH: /usr/local/bin
+PATH: /usr/sbin
+PATH: /usr/bin
+PATH: /root/bin
+
+
+## ----------- ##
+## Core tests. ##
+## ----------- ##
+
+configure:2836: checking build system type
+configure:2850: result: aarch64-unknown-linux-gnu
+configure:2870: checking host system type
+configure:2883: result: aarch64-unknown-linux-gnu
+#define HAVE_SYSLOG 1
+#define HAVE_INT_OPTERR 1
+#define HAVE_STRTOLL 1
+#define HAVE_STRTOULL 1
+#define HAVE_DECL_STRTOLL 1
+#define HAVE_DECL_STRTOULL 1
+#define HAVE_RL_COMPLETION_APPEND_CHARACTER 1
+#define HAVE_RL_COMPLETION_MATCHES 1
+#define HAVE_RL_FILENAME_COMPLETION_FUNCTION 1
+#define HAVE_RL_RESET_SCREEN_SIZE 1
+#define HAVE_APPEND_HISTORY 1
+#define HAVE_HISTORY_TRUNCATE_FILE 1
+#define HAVE_LONG_INT_64 1
+#define PG_INT64_TYPE long int
+#define INT64_MODIFIER "l"
+#define SIZEOF_VOID_P 8
+#define SIZEOF_SIZE_T 8
+#define SIZEOF_LONG 8
+#define USE_FLOAT4_BYVAL 1
+#define FLOAT4PASSBYVAL true
+#define USE_FLOAT8_BYVAL 1
+#define FLOAT8PASSBYVAL true
+#define ALIGNOF_SHORT 2
+#define ALIGNOF_INT 4
+#define ALIGNOF_LONG 8
+#define ALIGNOF_DOUBLE 8
+#define MAXIMUM_ALIGNOF 8
+#define PG_INT128_TYPE __int128
+#define ALIGNOF_PG_INT128_TYPE 16
+#define HAVE_GCC__SYNC_CHAR_TAS 1
+#define HAVE_GCC__SYNC_INT32_TAS 1
+#define HAVE_GCC__SYNC_INT32_CAS 1
+#define HAVE_GCC__SYNC_INT64_CAS 1
+#define HAVE_GCC__ATOMIC_INT32_CAS 1
+#define HAVE_GCC__ATOMIC_INT64_CAS 1
+#define USE_SLICING_BY_8_CRC32C 1
+#define USE_UNNAMED_POSIX_SEMAPHORES 1
+#define USE_SYSV_SHARED_MEMORY 1
+#define USE_DEV_URANDOM 1
+#define HAVE_STRONG_RANDOM 1
+#define MEMSET_LOOP_LIMIT 1024
+#define PG_VERSION_STR "PostgreSQL 11.1 on aarch64-unknown-linux-gnu, compiled by gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-36), 64-bit"
+#define PG_VERSION_NUM 110001
+
+configure: exit 0
+[root@localhost postgresql-11.1]# ll
+total 1684
+-rw-r--r--  1 1107 1107    486 Nov  7 07:56 aclocal.m4
+drwxrwxrwx  2 1107 1107   4096 Nov  7 07:59 config
+-rw-r--r--  1 root root 418865 Jan 15 10:57 config.log
+-rwxr-xr-x  1 root root  39992 Jan 15 10:57 config.status
+-rwxr-xr-x  1 1107 1107 559334 Nov  7 07:56 configure
+-rw-r--r--  1 1107 1107  84065 Nov  7 07:56 configure.in
+drwxrwxrwx 56 1107 1107   4096 Nov  7 07:59 contrib
+-rw-r--r--  1 1107 1107   1192 Nov  7 07:56 COPYRIGHT
+drwxrwxrwx  3 1107 1107    135 Nov  7 07:59 doc
+-rw-r--r--  1 root root   3664 Jan 15 10:57 GNUmakefile
+-rw-r--r--  1 1107 1107   3664 Nov  7 07:56 GNUmakefile.in
+-rw-r--r--  1 1107 1107    284 Nov  7 07:56 HISTORY
+-rw-r--r--  1 1107 1107  74148 Nov  7 08:00 INSTALL
+-rw-r--r--  1 1107 1107   1682 Nov  7 07:56 Makefile
+-rw-r--r--  1 1107 1107   1212 Nov  7 07:56 README
+drwxrwxrwx 16 1107 1107   4096 Jan 15 10:57 src
+[root@localhost postgresql-11.1]# tail config.log
+#define USE_SLICING_BY_8_CRC32C 1
+#define USE_UNNAMED_POSIX_SEMAPHORES 1
+#define USE_SYSV_SHARED_MEMORY 1
+#define USE_DEV_URANDOM 1
+#define HAVE_STRONG_RANDOM 1
+#define MEMSET_LOOP_LIMIT 1024
+#define PG_VERSION_STR "PostgreSQL 11.1 on aarch64-unknown-linux-gnu, compiled by gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-36), 64-bit"
+#define PG_VERSION_NUM 110001
+
+configure: exit 0
+[root@localhost postgresql-11.1]# 
+[root@localhost postgresql-11.1]# 
+[root@localhost postgresql-11.1]# 
+[root@localhost postgresql-11.1]# make --version
+GNU Make 3.82
+Built for aarch64-redhat-linux-gnu
+Copyright (C) 2010  Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+[root@localhost postgresql-11.1]# 
+[root@localhost postgresql-11.1]# 
