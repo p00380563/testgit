@@ -1,0 +1,104 @@
+﻿postgres=# exit
+[postgres@localhost data]$ psql -U benchmarksql -d postgres -h localhost -p 5432
+psql (11.1)
+Type "help" for help.
+
+postgres=# exit
+[postgres@localhost data]$ pg_ctl stop
+waiting for server to shut down..... done
+server stopped
+[postgres@localhost data]$ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+mysql:x:998:1000::/home/mysql:/bin/bash
+postgres:x:1000:1001::/home/postgres:/bin/bash
+[postgres@localhost data]$ cd /home/sqlserver/3307
+[postgres@localhost 3307]$ ll
+total 0
+drwxr-xr-x 2 root  root   6 Jan 21 14:04 bin
+drwxr-xr-x 5 mysql root 221 Jan 21 14:11 data
+drwxr-xr-x 2 root  root  20 Jan 21 13:56 etc
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 log
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 pid
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 socket
+[postgres@localhost 3307]$ cd etc
+[postgres@localhost etc]$ ll
+total 4
+-rw-r--r-- 1 root root 603 Jan 21 13:56 my.cnf
+[postgres@localhost etc]$ cd /home/sqlserver/3307
+[postgres@localhost 3307]$ ll
+total 0
+drwxr-xr-x 2 mysql mysql   6 Jan 21 14:04 bin
+drwxr-xr-x 5 mysql mysql 221 Jan 21 14:11 data
+drwxr-xr-x 2 mysql mysql  20 Jan 21 13:56 etc
+drwxr-xr-x 2 mysql mysql   6 Jan 21 13:52 log
+drwxr-xr-x 2 mysql mysql   6 Jan 21 13:52 pid
+drwxr-xr-x 2 mysql mysql   6 Jan 21 13:52 socket
+[postgres@localhost 3307]$ cd socket/
+[postgres@localhost socket]$ ll
+total 0
+[postgres@localhost socket]$ cd ..
+[postgres@localhost 3307]$ cd etc
+[postgres@localhost etc]$ ll
+total 4
+-rw-r--r-- 1 mysql mysql 603 Jan 21 13:56 my.cnf
+[postgres@localhost etc]$ cat my.cnf
+[mysqld]
+port=3307
+datadir=/home/sqlserver/3307/data
+socket=/home/sqlserver/3307/socket/mysql.sock
+#datadir=/data/mysql
+
+#thread_concurrency=4
+innodb_read_io_threads=4
+innodb_write_io_threads=4
+
+max_connections=2048
+thread_cache_size=1024
+
+key_buffer_size=400M
+innodb_buffer_pool_size=60G
+
+[mysqld_safe]
+log-error=/home/sqlserver/3307/logs/mariadb.log
+pid-file=/home/sqlserver/3307/pid/mariadb.pid
+
+
+#
+# This group is read both both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+
+#
+# include all files from the config directory
+#
+#!includedir /etc/my.cnf.d
+
+[postgres@localhost etc]$ cd /home/sqlserver/3307/data
+[postgres@localhost data]$ cat /home/sqlserver/3307/socket/mysql.sock
+cat: /home/sqlserver/3307/socket/mysql.sock: No such file or directory
+[postgres@localhost data]$ 
+[postgres@localhost data]$ 
+[postgres@localhost data]$ 
+[postgres@localhost data]$ netstat -an|grep 3307
+tcp6       0      0 :::3307                 :::*                    LISTEN     
+unix  2      [ ACC ]     STREAM     LISTENING     1316273  /home/sqlserver/3307/socket/mysql.sock
+[postgres@localhost data]$ 
+[postgres@localhost data]$ 

@@ -1,0 +1,2580 @@
+﻿[root@localhost system]# cd /home
+[root@localhost home]# ll
+total 60
+drwxr-xr-x  3 root     root       257 Jan 21 09:46 benchmarksql
+drwxr-xr-x. 3 root     root        19 Dec 15 10:32 da
+drwxr-xr-x  2 root     root      8192 Jan 18 15:14 download
+drwxr-xr-x  2 root     root       256 Jan  3 19:18 examples
+drwxr-xr-x  7 root     root      4096 Jan  7 19:58 FlameGraph
+drwxr-xr-x  2 root     root         6 Jan 16 14:37 lmbench
+-rw-r--r--  1 root     root     44019 Dec 15 14:40 log_record.txt
+drwxr-xr-x  3 root     root        75 Jan 15 14:02 postgre
+drwx------  6 postgres postgres   257 Jan 18 16:34 postgres
+[root@localhost home]# mkdir -pv sqlserver/3307/etc
+mkdir: created directory â€˜sqlserverâ€™
+mkdir: created directory â€˜sqlserver/3307â€™
+mkdir: created directory â€˜sqlserver/3307/etcâ€™
+[root@localhost home]# mkdir -pv sqlserver/3307/pid
+mkdir: created directory â€˜sqlserver/3307/pidâ€™
+[root@localhost home]# mkdir -pv sqlserver/3307/log
+mkdir: created directory â€˜sqlserver/3307/logâ€™
+[root@localhost home]# mkdir -pv sqlserver/3307/socket
+mkdir: created directory â€˜sqlserver/3307/socketâ€™
+[root@localhost home]# mkdir -pv sqlserver/3307/data
+mkdir: created directory â€˜sqlserver/3307/dataâ€™
+[root@localhost home]# ll
+total 60
+drwxr-xr-x  3 root     root       257 Jan 21 09:46 benchmarksql
+drwxr-xr-x. 3 root     root        19 Dec 15 10:32 da
+drwxr-xr-x  2 root     root      8192 Jan 18 15:14 download
+drwxr-xr-x  2 root     root       256 Jan  3 19:18 examples
+drwxr-xr-x  7 root     root      4096 Jan  7 19:58 FlameGraph
+drwxr-xr-x  2 root     root         6 Jan 16 14:37 lmbench
+-rw-r--r--  1 root     root     44019 Dec 15 14:40 log_record.txt
+drwxr-xr-x  3 root     root        75 Jan 15 14:02 postgre
+drwx------  6 postgres postgres   257 Jan 18 16:34 postgres
+drwxr-xr-x  3 root     root        18 Jan 21 13:52 sqlserver
+[root@localhost home]# cp /etc/my.cnf ./sqlserver/3307/etc/
+[root@localhost home]# cd ./sqlserver/3307/etc/
+[root@localhost etc]# ll
+total 4
+-rw-r--r-- 1 root root 427 Jan 21 13:53 my.cnf
+[root@localhost etc]# vi my.cnf
+[mysqld]
+datadir=/home/da/mysql
+#datadir=/data/mysql
+
+#thread_concurrency=4
+innodb_read_io_threads=4
+innodb_write_io_threads=4
+
+max_connections=2048
+thread_cache_size=1024
+
+key_buffer_size=400M
+#
+# This group is read both both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+[mysqld]
+#datadir=/data/mysql
+innodb_write_io_threads=4
+thread_cache_size=1024
+innodb_buffer_pool_size=60G
+
+
+
+# use it for options that affect everything
+[client-server]
+
+# include all files from the config directory
+!includedir /etc/my.cnf.d
+#datadir=/data/mysql
+
+#thread_concurrency=4
+innodb_read_io_threads=4
+innodb_write_io_threads=4
+
+max_connections=2048
+thread_cache_size=1024
+
+key_buffer_size=400M
+innodb_buffer_pool_size=60G
+"my.cnf" 32L, 603C written
+[root@localhost etc]# pwd
+/home/sqlserver/3307/etc
+[root@localhost etc]# mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf
+190121 13:58:15 mysqld_safe Logging to '/home/sqlserver/3307/logs/mariadb.log'.
+190121 13:58:15 mysqld_safe Starting mysqld daemon with databases from /home/sqlserver/3307/data
+[root@localhost etc]# ps -ef|grep mysqld
+root     53021  6200  0 13:58 pts/0    00:00:00 grep --color=auto mysqld
+[root@localhost etc]# view /home/sqlserver/3307/logs/mariadb.log
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+[root@localhost etc]# mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf &
+[1] 53103
+[root@localhost etc]# 190121 13:59:48 mysqld_safe Logging to '/home/sqlserver/3307/logs/mariadb.log'.
+190121 13:59:48 mysqld_safe Starting mysqld daemon with databases from /home/sqlserver/3307/data
+
+[1]+  Done                    mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf
+[root@localhost etc]# cd /home/sqlserver/3307/data
+[root@localhost data]# ll
+total 0
+[root@localhost data]# mysql_install_db
+Installing MariaDB/MySQL system tables in '/home/da/mysql' ...
+^C      
+
+
+OK
+
+To start mysqld at boot time you have to copy
+support-files/mysql.server to the right place for your system
+
+
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER !
+To do so, start the server, then issue the following commands:
+
+'/usr/bin/mysqladmin' -u root password 'new-password'
+'/usr/bin/mysqladmin' -u root -h localhost.localdomain password 'new-password'
+
+Alternatively you can run:
+'/usr/bin/mysql_secure_installation'
+
+which will also give you the option of removing the test
+databases and anonymous user created by default.  This is
+strongly recommended for production servers.
+
+See the MariaDB Knowledgebase at http://mariadb.com/kb or the
+MySQL manual for more instructions.
+
+You can start the MariaDB daemon with:
+cd '/usr' ; /usr/bin/mysqld_safe --datadir='/home/da/mysql'
+
+You can test the MariaDB daemon with mysql-test-run.pl
+cd '/usr/mysql-test' ; perl mysql-test-run.pl
+
+Please report any problems at http://mariadb.org/jira
+
+The latest information about MariaDB is available at http://mariadb.org/.
+You can find additional information about the MySQL part at:
+http://dev.mysql.com
+Consider joining MariaDB's strong and vibrant community:
+https://mariadb.org/get-involved/
+
+[root@localhost data]# 
+[root@localhost data]# 
+[root@localhost data]# 
+[root@localhost data]# mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf &^C
+[root@localhost data]# systemctl stop mariadb
+[root@localhost data]# 
+[root@localhost data]# 
+[root@localhost data]# cd ..
+[root@localhost 3307]# ll
+total 0
+drwxr-xr-x 2 root root  6 Jan 21 13:52 data
+drwxr-xr-x 2 root root 20 Jan 21 13:56 etc
+drwxr-xr-x 2 root root  6 Jan 21 13:52 log
+drwxr-xr-x 2 root root  6 Jan 21 13:52 pid
+drwxr-xr-x 2 root root  6 Jan 21 13:52 socket
+[root@localhost 3307]# mkdir bin
+[root@localhost 3307]# ll
+total 0
+drwxr-xr-x 2 root root  6 Jan 21 14:04 bin
+drwxr-xr-x 2 root root  6 Jan 21 13:52 data
+drwxr-xr-x 2 root root 20 Jan 21 13:56 etc
+drwxr-xr-x 2 root root  6 Jan 21 13:52 log
+drwxr-xr-x 2 root root  6 Jan 21 13:52 pid
+drwxr-xr-x 2 root root  6 Jan 21 13:52 socket
+[root@localhost 3307]# man mysql_install_db
+MYSQL_INSTALL_DB()                                                                                                                                           MYSQL_INSTALL_DB()
+
+NAME
+       mysql_install_db - initialize MariaDB data directory
+
+SYNOPSIS
+       mysql_install_db [options]
+
+DESCRIPTION
+       mysql_install_db initializes the MariaDB data directory and creates the system tables that it contains, if they do not exist.
+
+       To invoke mysql_install_db, use the following syntax:
+
+           shell> mysql_install_db [options]
+
+       Because the MariaDB server, mysqld, needs to access the data directory when it runs later, you should either run mysql_install_db from the same account that will be
+       used for running mysqld or run it as root and use the --user option to indicate the user name that mysqld will run as. It might be necessary to specify other options
+       such as --basedir or --datadir if mysql_install_db does not use the correct locations for the installation directory or data directory. For example:
+
+           shell> bin/mysql_install_db --user=mysql \
+                    --basedir=/opt/mysql/mysql \
+                    --datadir=/opt/mysql/mysql/data
+
+       mysql_install_db needs to invoke mysqld with the --bootstrap and --skip-grant-tables options (see Section 2.3.2, â€œTypical configure Optionsâ€). If MariaDB was configured
+       with the --disable-grant-options option, --bootstrap and --skip-grant-tables will be disabled. To handle this, set the MYSQLD_BOOTSTRAP environment variable to the full
+       path name of a server that has all options enabled.  mysql_install_db will use that server.
+
+       mysql_install_db supports the following options, which can be specified on the command line or in the [mysql_install_db] and (if they are common to mysqld) [mysqld]
+       option file groups.
+
+       Â·   --basedir=path
+
+           The path to the MariaDB installation directory.
+
+       Â·   --builddir=path
+
+           If using --srcdir with out-of-directory builds, you will need to set this to the location of the build directory where built files reside..
+
+       Â·   --cross-bootstrap
+
+           For internal use. Used when building the MariaDB system tables on a different host than the target..
+
+       Â·   --datadir=path, --ldata=path
+
+           The path to the MariaDB data directory.
+[root@localhost 3307]# ll
+total 0
+drwxr-xr-x 2 root root  6 Jan 21 14:04 bin
+drwxr-xr-x 2 root root  6 Jan 21 13:52 data
+drwxr-xr-x 2 root root 20 Jan 21 13:56 etc
+drwxr-xr-x 2 root root  6 Jan 21 13:52 log
+drwxr-xr-x 2 root root  6 Jan 21 13:52 pid
+drwxr-xr-x 2 root root  6 Jan 21 13:52 socket
+[root@localhost 3307]# cd ..
+[root@localhost sqlserver]# ll
+total 0
+drwxr-xr-x 8 root root 104 Jan 21 14:04 3307
+[root@localhost sqlserver]# pwd
+/home/sqlserver
+[root@localhost sqlserver]# ll
+total 0
+drwxr-xr-x 8 root root 104 Jan 21 14:04 3307
+[root@localhost sqlserver]# mysql_install_db --basedir=/home/sqlserver --datadir=/home/sqlserver/3307/data --user=mysql
+
+FATAL ERROR: Could not find my_print_defaults
+
+The following directories were searched:
+
+    /home/sqlserver/bin
+    /home/sqlserver/extra
+
+If you compiled from source, you need to either run 'make install' to
+copy the software into the correct location ready for operation.
+If you don't want to do a full install, you can use the --srcdir
+option to only install the mysql database and privilege tables
+
+If you compiled from source, you need to either run 'make install' to
+copy the software into the correct location ready for operation.
+If you don't want to do a full install, you can use the --srcdir
+option to only install the mysql database and privilege tables
+
+If you are using a binary release, you must either be at the top
+level of the extracted archive, or pass the --basedir option
+pointing to that location.
+
+The latest information about mysql_install_db is available at
+https://mariadb.com/kb/en/installing-system-tables-mysql_install_db
+[root@localhost sqlserver]# mysql_install_db --basedir=/usr --datadir=/home/sqlserver/3307/data --user=mysql
+Installing MariaDB/MySQL system tables in '/home/sqlserver/3307/data' ...
+OK
+
+To start mysqld at boot time you have to copy
+support-files/mysql.server to the right place for your system
+
+
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER !
+To do so, start the server, then issue the following commands:
+
+'/usr/bin/mysqladmin' -u root password 'new-password'
+'/usr/bin/mysqladmin' -u root -h localhost.localdomain password 'new-password'
+
+Alternatively you can run:
+'/usr/bin/mysql_secure_installation'
+
+which will also give you the option of removing the test
+databases and anonymous user created by default.  This is
+strongly recommended for production servers.
+
+See the MariaDB Knowledgebase at http://mariadb.com/kb or the
+MySQL manual for more instructions.
+
+You can start the MariaDB daemon with:
+cd '/usr' ; /usr/bin/mysqld_safe --datadir='/home/sqlserver/3307/data'
+
+You can test the MariaDB daemon with mysql-test-run.pl
+cd '/usr/mysql-test' ; perl mysql-test-run.pl
+
+Please report any problems at http://mariadb.org/jira
+
+The latest information about MariaDB is available at http://mariadb.org/.
+You can find additional information about the MySQL part at:
+http://dev.mysql.com
+Consider joining MariaDB's strong and vibrant community:
+https://mariadb.org/get-involved/
+
+[root@localhost sqlserver]# mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf &
+[1] 54240
+[root@localhost sqlserver]# 190121 14:15:50 mysqld_safe Logging to '/home/sqlserver/3307/logs/mariadb.log'.
+190121 14:15:50 mysqld_safe Starting mysqld daemon with databases from /home/sqlserver/3307/data
+
+[1]+  Done                    mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf
+[root@localhost sqlserver]# 
+[root@localhost sqlserver]# 
+[root@localhost sqlserver]# ps -ef|grep mysqld
+root     54360  6200  0 14:16 pts/0    00:00:00 grep --color=auto mysqld
+[root@localhost sqlserver]# 
+[root@localhost sqlserver]# 
+[root@localhost sqlserver]# netstat -an|grep 3307
+[root@localhost sqlserver]# view /home/sqlserver/3307/logs/mariadb.log
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+[root@localhost sqlserver]# ll
+total 0
+drwxr-xr-x 8 root root 104 Jan 21 14:04 3307
+[root@localhost sqlserver]# netstat -an|grep 3307^C
+[root@localhost sqlserver]# mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf &^C
+[root@localhost sqlserver]# cd 3307
+[root@localhost 3307]# ll
+total 0
+drwxr-xr-x 2 root  root   6 Jan 21 14:04 bin
+drwxr-xr-x 5 mysql root 221 Jan 21 14:11 data
+drwxr-xr-x 2 root  root  20 Jan 21 13:56 etc
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 log
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 pid
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 socket
+[root@localhost 3307]# cd data
+[root@localhost data]# ll
+total 110620
+-rw-rw---- 1 mysql mysql    16384 Jan 21 14:11 aria_log.00000001
+-rw-rw---- 1 mysql mysql       52 Jan 21 14:11 aria_log_control
+-rw-rw---- 1 mysql mysql      972 Jan 21 14:11 ib_buffer_pool
+-rw-rw---- 1 mysql mysql 12582912 Jan 21 14:11 ibdata1
+-rw-rw---- 1 mysql mysql 50331648 Jan 21 14:11 ib_logfile0
+-rw-rw---- 1 mysql mysql 50331648 Jan 21 14:11 ib_logfile1
+drwx------ 2 mysql root      4096 Jan 21 14:11 mysql
+drwx------ 2 mysql mysql       28 Jan 21 14:11 performance_schema
+drwx------ 2 mysql mysql       28 Jan 21 14:11 test
+[root@localhost data]# cd ..
+[root@localhost 3307]# ll
+total 0
+drwxr-xr-x 2 root  root   6 Jan 21 14:04 bin
+drwxr-xr-x 5 mysql root 221 Jan 21 14:11 data
+drwxr-xr-x 2 root  root  20 Jan 21 13:56 etc
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 log
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 pid
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 socket
+[root@localhost 3307]# cd etc
+[root@localhost etc]# ll
+total 4
+-rw-r--r-- 1 root root 603 Jan 21 13:56 my.cnf
+[root@localhost etc]# cd ..
+[root@localhost 3307]# cd data
+[root@localhost data]# ll
+total 110620
+-rw-rw---- 1 mysql mysql    16384 Jan 21 14:11 aria_log.00000001
+-rw-rw---- 1 mysql mysql       52 Jan 21 14:11 aria_log_control
+-rw-rw---- 1 mysql mysql      972 Jan 21 14:11 ib_buffer_pool
+-rw-rw---- 1 mysql mysql 12582912 Jan 21 14:11 ibdata1
+-rw-rw---- 1 mysql mysql 50331648 Jan 21 14:11 ib_logfile0
+-rw-rw---- 1 mysql mysql 50331648 Jan 21 14:11 ib_logfile1
+drwx------ 2 mysql root      4096 Jan 21 14:11 mysql
+drwx------ 2 mysql mysql       28 Jan 21 14:11 performance_schema
+drwx------ 2 mysql mysql       28 Jan 21 14:11 test
+[root@localhost data]# cd ..
+[root@localhost 3307]# ll
+total 0
+drwxr-xr-x 2 root  root   6 Jan 21 14:04 bin
+drwxr-xr-x 5 mysql root 221 Jan 21 14:11 data
+drwxr-xr-x 2 root  root  20 Jan 21 13:56 etc
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 log
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 pid
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 socket
+[root@localhost 3307]# ll
+total 0
+drwxr-xr-x 2 root  root   6 Jan 21 14:04 bin
+drwxr-xr-x 5 mysql root 221 Jan 21 14:11 data
+drwxr-xr-x 2 root  root  20 Jan 21 13:56 etc
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 log
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 pid
+drwxr-xr-x 2 root  root   6 Jan 21 13:52 socket
+[root@localhost 3307]# cd pid
+[root@localhost pid]# ll
+total 0
+[root@localhost pid]# cd ..
+[root@localhost 3307]# cd socket/
+[root@localhost socket]# ll
+total 0
+[root@localhost socket]# cd ..
+[root@localhost 3307]# cd ..
+[root@localhost sqlserver]# ll
+total 0
+drwxr-xr-x 8 root root 104 Jan 21 14:04 3307
+[root@localhost sqlserver]# cd ..
+[root@localhost home]# ll
+total 60
+drwxr-xr-x  3 root     root       257 Jan 21 09:46 benchmarksql
+drwxr-xr-x. 3 root     root        19 Dec 15 10:32 da
+drwxr-xr-x  2 root     root      8192 Jan 18 15:14 download
+drwxr-xr-x  2 root     root       256 Jan  3 19:18 examples
+drwxr-xr-x  7 root     root      4096 Jan  7 19:58 FlameGraph
+drwxr-xr-x  2 root     root         6 Jan 16 14:37 lmbench
+-rw-r--r--  1 root     root     44019 Dec 15 14:40 log_record.txt
+drwxr-xr-x  3 root     root        75 Jan 15 14:02 postgre
+drwx------  6 postgres postgres   257 Jan 18 16:34 postgres
+drwxr-xr-x  3 root     root        18 Jan 21 13:52 sqlserver
+[root@localhost home]# chown -R mysql sqlserver
+[root@localhost home]# ll
+total 60
+drwxr-xr-x  3 root     root       257 Jan 21 09:46 benchmarksql
+drwxr-xr-x. 3 root     root        19 Dec 15 10:32 da
+drwxr-xr-x  2 root     root      8192 Jan 18 15:14 download
+drwxr-xr-x  2 root     root       256 Jan  3 19:18 examples
+drwxr-xr-x  7 root     root      4096 Jan  7 19:58 FlameGraph
+drwxr-xr-x  2 root     root         6 Jan 16 14:37 lmbench
+-rw-r--r--  1 root     root     44019 Dec 15 14:40 log_record.txt
+drwxr-xr-x  3 root     root        75 Jan 15 14:02 postgre
+drwx------  6 postgres postgres   257 Jan 18 16:34 postgres
+drwxr-xr-x  3 mysql    root        18 Jan 21 13:52 sqlserver
+[root@localhost home]# cd sqlserver
+[root@localhost sqlserver]# ll
+total 0
+drwxr-xr-x 8 mysql root 104 Jan 21 14:04 3307
+[root@localhost sqlserver]# cd 3307
+[root@localhost 3307]# ll
+total 0
+drwxr-xr-x 2 mysql root   6 Jan 21 14:04 bin
+drwxr-xr-x 5 mysql root 221 Jan 21 14:11 data
+drwxr-xr-x 2 mysql root  20 Jan 21 13:56 etc
+drwxr-xr-x 2 mysql root   6 Jan 21 13:52 log
+drwxr-xr-x 2 mysql root   6 Jan 21 13:52 pid
+drwxr-xr-x 2 mysql root   6 Jan 21 13:52 socket
+[root@localhost 3307]# cd socket/
+[root@localhost socket]# ll
+total 0
+[root@localhost socket]# cd ..
+[root@localhost 3307]# ll
+total 0
+drwxr-xr-x 2 mysql root   6 Jan 21 14:04 bin
+drwxr-xr-x 5 mysql root 221 Jan 21 14:11 data
+drwxr-xr-x 2 mysql root  20 Jan 21 13:56 etc
+drwxr-xr-x 2 mysql root   6 Jan 21 13:52 log
+drwxr-xr-x 2 mysql root   6 Jan 21 13:52 pid
+drwxr-xr-x 2 mysql root   6 Jan 21 13:52 socket
+[root@localhost 3307]# mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf &
+[1] 54538
+[root@localhost 3307]# 190121 14:19:08 mysqld_safe Logging to '/home/sqlserver/3307/logs/mariadb.log'.
+190121 14:19:08 mysqld_safe Starting mysqld daemon with databases from /home/sqlserver/3307/data
+
+[1]+  Done                    mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf
+[root@localhost 3307]# 
+[root@localhost 3307]# 
+[root@localhost 3307]# cd ..
+[root@localhost sqlserver]# cd ..
+[root@localhost home]# chown -R mysql:mysql sqlserver/
+[root@localhost home]# ll
+total 60
+drwxr-xr-x  3 root     root       257 Jan 21 09:46 benchmarksql
+drwxr-xr-x. 3 root     root        19 Dec 15 10:32 da
+drwxr-xr-x  2 root     root      8192 Jan 18 15:14 download
+drwxr-xr-x  2 root     root       256 Jan  3 19:18 examples
+drwxr-xr-x  7 root     root      4096 Jan  7 19:58 FlameGraph
+drwxr-xr-x  2 root     root         6 Jan 16 14:37 lmbench
+-rw-r--r--  1 root     root     44019 Dec 15 14:40 log_record.txt
+drwxr-xr-x  3 root     root        75 Jan 15 14:02 postgre
+drwx------  6 postgres postgres   257 Jan 18 16:34 postgres
+drwxr-xr-x  3 mysql    mysql       18 Jan 21 13:52 sqlserver
+[root@localhost home]# mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf &
+[1] 54682
+[root@localhost home]# 190121 14:19:59 mysqld_safe Logging to '/home/sqlserver/3307/logs/mariadb.log'.
+190121 14:19:59 mysqld_safe Starting mysqld daemon with databases from /home/sqlserver/3307/data
+
+[1]+  Done                    mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf
+[root@localhost home]# view /var/log/messages
+Jan 20 03:43:01 localhost rsyslogd: [origin software="rsyslogd" swVersion="8.24.0" x-pid="1777" x-info="http://www.rsyslog.com"] rsyslogd was HUPed
+Jan 20 03:45:59 localhost dhclient[2368]: DHCPREQUEST on enahisic2i1 to 192.168.1.107 port 67 (xid=0x260886d9)
+Jan 20 03:45:59 localhost dhclient[2368]: DHCPACK from 192.168.1.107 (xid=0x260886d9)
+Jan 20 03:45:59 localhost dhclient[2368]: bound to 192.168.1.176 -- renewal in 1203 seconds.
+Jan 20 03:47:42 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 8 (xid=0x388078a9)
+Jan 20 03:47:49 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 7 (xid=0x388078a9)
+Jan 20 03:47:56 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 14 (xid=0x388078a9)
+Jan 20 03:48:10 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 12 (xid=0x388078a9)
+Jan 20 03:48:22 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 14 (xid=0x388078a9)
+Jan 20 03:48:36 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 6 (xid=0x388078a9)
+Jan 20 03:48:42 localhost dhclient[2368]: No DHCPOFFERS received.
+Jan 20 03:48:42 localhost dhclient[2368]: No working leases in persistent database - sleeping.
+Jan 20 03:49:29 localhost dhclient[2368]: DHCPREQUEST on enahisic2i0 to 192.168.1.107 port 67 (xid=0x370ae1e3)
+Jan 20 03:49:34 localhost dhclient[2368]: DHCPREQUEST on enahisic2i0 to 192.168.1.107 port 67 (xid=0x370ae1e3)
+Jan 20 03:49:44 localhost dhclient[2368]: DHCPREQUEST on enahisic2i0 to 192.168.1.107 port 67 (xid=0x370ae1e3)
+Jan 20 03:49:44 localhost dhclient[2368]: DHCPACK from 192.168.1.107 (xid=0x370ae1e3)
+Jan 20 03:49:44 localhost dhclient[2368]: bound to 192.168.1.197 -- renewal in 1346 seconds.
+Jan 20 03:50:01 localhost systemd: Started Session 2692 of user root.
+Jan 20 03:50:01 localhost systemd: Starting Session 2692 of user root.
+Jan 20 03:55:32 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 7 (xid=0x97bcb0e)
+Jan 20 03:55:39 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 12 (xid=0x97bcb0e)
+Jan 20 03:55:51 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 7 (xid=0x97bcb0e)
+Jan 20 03:55:58 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 7 (xid=0x97bcb0e)
+Jan 20 03:56:05 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 7 (xid=0x97bcb0e)
+Jan 20 03:56:12 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 10 (xid=0x97bcb0e)
+Jan 20 03:56:22 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 11 (xid=0x97bcb0e)
+Jan 20 03:56:33 localhost dhclient[2368]: No DHCPOFFERS received.
+Jan 20 03:56:33 localhost dhclient[2368]: No working leases in persistent database - sleeping.
+Jan 20 03:59:07 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 6 (xid=0x179649f5)
+Jan 20 03:59:13 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 6 (xid=0x179649f5)
+Jan 20 03:59:19 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 8 (xid=0x179649f5)
+Jan 20 03:59:27 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 10 (xid=0x179649f5)
+Jan 20 03:59:37 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 12 (xid=0x179649f5)
+Jan 20 03:59:49 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 7 (xid=0x179649f5)
+Jan 20 03:59:56 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 12 (xid=0x179649f5)
+Jan 20 04:00:01 localhost systemd: Started Session 2693 of user root.
+Jan 20 04:00:01 localhost systemd: Starting Session 2693 of user root.
+Jan 20 04:00:08 localhost dhclient[2368]: No DHCPOFFERS received.
+Jan 20 04:00:08 localhost dhclient[2368]: No working leases in persistent database - sleeping.
+Jan 20 04:01:01 localhost systemd: Started Session 2694 of user root.
+Jan 20 04:01:01 localhost systemd: Starting Session 2694 of user root.
+Jan 20 04:06:02 localhost dhclient[2368]: DHCPREQUEST on enahisic2i1 to 192.168.1.107 port 67 (xid=0x260886d9)
+Jan 20 04:06:02 localhost dhclient[2368]: DHCPACK from 192.168.1.107 (xid=0x260886d9)
+Jan 20 04:06:03 localhost dhclient[2368]: bound to 192.168.1.176 -- renewal in 1374 seconds.
+Jan 21 13:58:04 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 10 (xid=0x21d95d81)
+Jan 21 13:58:14 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 21 (xid=0x21d95d81)
+Jan 21 13:58:35 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 13 (xid=0x21d95d81)
+Jan 21 13:58:48 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 8 (xid=0x21d95d81)
+Jan 21 13:58:56 localhost dhclient[2368]: No DHCPOFFERS received.
+Jan 21 13:58:56 localhost dhclient[2368]: No working leases in persistent database - sleeping.
+Jan 21 14:00:01 localhost systemd: Started Session 2934 of user root.
+Jan 21 14:00:01 localhost systemd: Starting Session 2934 of user root.
+Jan 21 14:01:01 localhost systemd: Started Session 2935 of user root.
+Jan 21 14:01:01 localhost systemd: Starting Session 2935 of user root.
+Jan 21 14:03:38 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 4 (xid=0x34c829b1)
+Jan 21 14:03:42 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 8 (xid=0x34c829b1)
+Jan 21 14:03:47 localhost dhclient[2368]: DHCPREQUEST on enahisic2i1 to 192.168.1.107 port 67 (xid=0x260886d9)
+Jan 21 14:03:47 localhost dhclient[2368]: DHCPACK from 192.168.1.107 (xid=0x260886d9)
+Jan 21 14:03:47 localhost dhclient[2368]: bound to 192.168.1.176 -- renewal in 1246 seconds.
+Jan 21 14:03:50 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 20 (xid=0x34c829b1)
+Jan 21 14:04:10 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 9 (xid=0x34c829b1)
+Jan 21 14:04:19 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 17 (xid=0x34c829b1)
+Jan 21 14:04:36 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 3 (xid=0x34c829b1)
+Jan 21 14:04:39 localhost dhclient[2368]: No DHCPOFFERS received.
+Jan 21 14:04:39 localhost dhclient[2368]: No working leases in persistent database - sleeping.
+Jan 21 14:08:47 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 7 (xid=0x4a47a077)
+Jan 21 14:08:54 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 14 (xid=0x4a47a077)
+Jan 21 14:09:08 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 15 (xid=0x4a47a077)
+Jan 21 14:09:23 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 18 (xid=0x4a47a077)
+Jan 21 14:09:41 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 7 (xid=0x4a47a077)
+Jan 21 14:09:48 localhost dhclient[2368]: No DHCPOFFERS received.
+Jan 21 14:09:48 localhost dhclient[2368]: No working leases in persistent database - sleeping.
+Jan 21 14:10:01 localhost systemd: Started Session 2936 of user root.
+Jan 21 14:10:01 localhost systemd: Starting Session 2936 of user root.
+Jan 21 14:17:04 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 4 (xid=0x64a2a847)
+Jan 21 14:17:08 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 11 (xid=0x64a2a847)
+Jan 21 14:17:19 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 10 (xid=0x64a2a847)
+Jan 21 14:17:29 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 12 (xid=0x64a2a847)
+Jan 21 14:17:41 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 12 (xid=0x64a2a847)
+Jan 21 14:17:53 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 12 (xid=0x64a2a847)
+Jan 21 14:18:05 localhost dhclient[2368]: No DHCPOFFERS received.
+Jan 21 14:18:05 localhost dhclient[2368]: No working leases in persistent database - sleeping.
+Jan 21 14:20:01 localhost systemd: Started Session 2937 of user root.
+Jan 21 14:20:01 localhost systemd: Starting Session 2937 of user root.
+Jan 21 14:21:38 localhost dhclient[2368]: DHCPREQUEST on enahisic2i0 to 192.168.1.107 port 67 (xid=0x370ae1e3)
+Jan 21 14:21:43 localhost dhclient[2368]: DHCPREQUEST on enahisic2i0 to 192.168.1.107 port 67 (xid=0x370ae1e3)
+Jan 21 14:21:53 localhost dhclient[2368]: DHCPREQUEST on enahisic2i0 to 192.168.1.107 port 67 (xid=0x370ae1e3)
+Jan 21 14:21:53 localhost dhclient[2368]: DHCPACK from 192.168.1.107 (xid=0x370ae1e3)
+Jan 21 14:17:04 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 4 (xid=0x64a2a847)
+Jan 21 14:17:08 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 11 (xid=0x64a2a847)
+Jan 21 14:17:19 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 10 (xid=0x64a2a847)
+Jan 21 14:17:29 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 12 (xid=0x64a2a847)
+Jan 21 14:17:41 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 12 (xid=0x64a2a847)
+Jan 21 14:17:53 localhost dhclient[2368]: DHCPDISCOVER on enahisic2i3 to 255.255.255.255 port 67 interval 12 (xid=0x64a2a847)
+Jan 21 14:18:05 localhost dhclient[2368]: No DHCPOFFERS received.
+Jan 21 14:18:05 localhost dhclient[2368]: No working leases in persistent database - sleeping.
+Jan 21 14:20:01 localhost systemd: Started Session 2937 of user root.
+Jan 21 14:20:01 localhost systemd: Starting Session 2937 of user root.
+Jan 21 14:21:38 localhost dhclient[2368]: DHCPREQUEST on enahisic2i0 to 192.168.1.107 port 67 (xid=0x370ae1e3)
+Jan 21 14:21:43 localhost dhclient[2368]: DHCPREQUEST on enahisic2i0 to 192.168.1.107 port 67 (xid=0x370ae1e3)
+Jan 21 14:21:53 localhost dhclient[2368]: DHCPREQUEST on enahisic2i0 to 192.168.1.107 port 67 (xid=0x370ae1e3)
+Jan 21 14:21:53 localhost dhclient[2368]: DHCPACK from 192.168.1.107 (xid=0x370ae1e3)
+Jan 21 14:21:53 localhost dhclient[2368]: bound to 192.168.1.197 -- renewal in 1217 seconds.
+[root@localhost home]# mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf &^C
+[root@localhost home]# cd sqlserver/
+[root@localhost sqlserver]# ll
+total 0
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+[root@localhost sqlserver]# cd 3307
+[root@localhost 3307]# cd data
+[root@localhost data]# ll
+total 110620
+-rw-rw---- 1 mysql mysql    16384 Jan 21 14:11 aria_log.00000001
+-rw-rw---- 1 mysql mysql       52 Jan 21 14:11 aria_log_control
+-rw-rw---- 1 mysql mysql      972 Jan 21 14:11 ib_buffer_pool
+-rw-rw---- 1 mysql mysql 12582912 Jan 21 14:11 ibdata1
+-rw-rw---- 1 mysql mysql 50331648 Jan 21 14:11 ib_logfile0
+-rw-rw---- 1 mysql mysql 50331648 Jan 21 14:11 ib_logfile1
+drwx------ 2 mysql mysql     4096 Jan 21 14:11 mysql
+drwx------ 2 mysql mysql       28 Jan 21 14:11 performance_schema
+drwx------ 2 mysql mysql       28 Jan 21 14:11 test
+[root@localhost data]# 
+[root@localhost data]# 
+[root@localhost data]# cd test
+[root@localhost test]# ll
+total 4
+-rw-rw---- 1 mysql mysql 65 Jan 21 14:11 db.opt
+[root@localhost test]# cd ..
+[root@localhost data]# ll
+total 110620
+-rw-rw---- 1 mysql mysql    16384 Jan 21 14:11 aria_log.00000001
+-rw-rw---- 1 mysql mysql       52 Jan 21 14:11 aria_log_control
+-rw-rw---- 1 mysql mysql      972 Jan 21 14:11 ib_buffer_pool
+-rw-rw---- 1 mysql mysql 12582912 Jan 21 14:11 ibdata1
+-rw-rw---- 1 mysql mysql 50331648 Jan 21 14:11 ib_logfile0
+-rw-rw---- 1 mysql mysql 50331648 Jan 21 14:11 ib_logfile1
+drwx------ 2 mysql mysql     4096 Jan 21 14:11 mysql
+drwx------ 2 mysql mysql       28 Jan 21 14:11 performance_schema
+drwx------ 2 mysql mysql       28 Jan 21 14:11 test
+[root@localhost data]# cd mysql
+[root@localhost mysql]# ll
+total 1248
+-rw-rw---- 1 mysql mysql   2110 Jan 21 14:11 columns_priv.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 columns_priv.MYD
+-rw-rw---- 1 mysql mysql   4096 Jan 21 14:11 columns_priv.MYI
+-rw-rw---- 1 mysql mysql   2602 Jan 21 14:11 column_stats.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 column_stats.MYD
+-rw-rw---- 1 mysql mysql   4096 Jan 21 14:11 column_stats.MYI
+-rw-rw---- 1 mysql mysql   2715 Jan 21 14:11 db.frm
+-rw-rw---- 1 mysql mysql   1266 Jan 21 14:11 db.MYD
+-rw-rw---- 1 mysql mysql   9216 Jan 21 14:11 db.MYI
+-rw-rw---- 1 mysql mysql   3732 Jan 21 14:11 event.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 event.MYD
+-rw-rw---- 1 mysql mysql   2048 Jan 21 14:11 event.MYI
+-rw-rw---- 1 mysql mysql   1582 Jan 21 14:11 func.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 func.MYD
+-rw-rw---- 1 mysql mysql   1024 Jan 21 14:11 func.MYI
+-rw-rw---- 1 mysql mysql     35 Jan 21 14:11 general_log.CSM
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 general_log.CSV
+-rw-rw---- 1 mysql mysql    804 Jan 21 14:11 general_log.frm
+-rw-rw---- 1 mysql mysql   1024 Jan 21 14:11 gtid_slave_pos.frm
+-rw-rw---- 1 mysql mysql  98304 Jan 21 14:11 gtid_slave_pos.ibd
+-rw-rw---- 1 mysql mysql   1706 Jan 21 14:11 help_category.frm
+-rw-rw---- 1 mysql mysql   1092 Jan 21 14:11 help_category.MYD
+-rw-rw---- 1 mysql mysql   3072 Jan 21 14:11 help_category.MYI
+-rw-rw---- 1 mysql mysql   1638 Jan 21 14:11 help_keyword.frm
+-rw-rw---- 1 mysql mysql  91408 Jan 21 14:11 help_keyword.MYD
+-rw-rw---- 1 mysql mysql  16384 Jan 21 14:11 help_keyword.MYI
+-rw-rw---- 1 mysql mysql    970 Jan 21 14:11 help_relation.frm
+-rw-rw---- 1 mysql mysql   9252 Jan 21 14:11 help_relation.MYD
+-rw-rw---- 1 mysql mysql  19456 Jan 21 14:11 help_relation.MYI
+-rw-rw---- 1 mysql mysql   1776 Jan 21 14:11 help_topic.frm
+-rw-rw---- 1 mysql mysql 405476 Jan 21 14:11 help_topic.MYD
+-rw-rw---- 1 mysql mysql  20480 Jan 21 14:11 help_topic.MYI
+-rw-rw---- 1 mysql mysql   1897 Jan 21 14:11 host.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 host.MYD
+-rw-rw---- 1 mysql mysql   2048 Jan 21 14:11 host.MYI
+-rw-rw---- 1 mysql mysql   1629 Jan 21 14:11 index_stats.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 index_stats.MYD
+-rw-rw---- 1 mysql mysql   4096 Jan 21 14:11 index_stats.MYI
+-rw-rw---- 1 mysql mysql   5404 Jan 21 14:11 innodb_index_stats.frm
+-rw-rw---- 1 mysql mysql  98304 Jan 21 14:11 innodb_index_stats.ibd
+-rw-rw---- 1 mysql mysql   1909 Jan 21 14:11 innodb_table_stats.frm
+-rw-rw---- 1 mysql mysql  98304 Jan 21 14:11 innodb_table_stats.ibd
+-rw-rw---- 1 mysql mysql   1518 Jan 21 14:11 plugin.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 plugin.MYD
+-rw-rw---- 1 mysql mysql   1024 Jan 21 14:11 plugin.MYI
+-rw-rw---- 1 mysql mysql   3529 Jan 21 14:11 proc.frm
+-rw-rw---- 1 mysql mysql   1132 Jan 21 14:11 proc.MYD
+-rw-rw---- 1 mysql mysql   4096 Jan 21 14:11 proc.MYI
+-rw-rw---- 1 mysql mysql   2895 Jan 21 14:11 procs_priv.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 procs_priv.MYD
+-rw-rw---- 1 mysql mysql   4096 Jan 21 14:11 procs_priv.MYI
+-rw-rw---- 1 mysql mysql   2839 Jan 21 14:11 proxies_priv.frm
+-rw-rw---- 1 mysql mysql   2538 Jan 21 14:11 proxies_priv.MYD
+-rw-rw---- 1 mysql mysql  10240 Jan 21 14:11 proxies_priv.MYI
+-rw-rw---- 1 mysql mysql   1661 Jan 21 14:11 roles_mapping.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 roles_mapping.MYD
+-rw-rw---- 1 mysql mysql   4096 Jan 21 14:11 roles_mapping.MYI
+-rw-rw---- 1 mysql mysql   2703 Jan 21 14:11 servers.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 servers.MYD
+-rw-rw---- 1 mysql mysql   1024 Jan 21 14:11 servers.MYI
+-rw-rw---- 1 mysql mysql     35 Jan 21 14:11 slow_log.CSM
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 slow_log.CSV
+-rw-rw---- 1 mysql mysql   2374 Jan 21 14:11 slow_log.frm
+-rw-rw---- 1 mysql mysql   2980 Jan 21 14:11 tables_priv.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 tables_priv.MYD
+-rw-rw---- 1 mysql mysql   4096 Jan 21 14:11 tables_priv.MYI
+-rw-rw---- 1 mysql mysql   1374 Jan 21 14:11 table_stats.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 table_stats.MYD
+-rw-rw---- 1 mysql mysql   2048 Jan 21 14:11 table_stats.MYI
+-rw-rw---- 1 mysql mysql    973 Jan 21 14:11 time_zone.frm
+-rw-rw---- 1 mysql mysql    971 Jan 21 14:11 time_zone_leap_second.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 time_zone_leap_second.MYD
+-rw-rw---- 1 mysql mysql   1024 Jan 21 14:11 time_zone_leap_second.MYI
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 time_zone.MYD
+-rw-rw---- 1 mysql mysql   1024 Jan 21 14:11 time_zone.MYI
+-rw-rw---- 1 mysql mysql   1146 Jan 21 14:11 time_zone_name.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 time_zone_name.MYD
+-rw-rw---- 1 mysql mysql   1024 Jan 21 14:11 time_zone_name.MYI
+-rw-rw---- 1 mysql mysql   1013 Jan 21 14:11 time_zone_transition.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 time_zone_transition.MYD
+-rw-rw---- 1 mysql mysql   1024 Jan 21 14:11 time_zone_transition.MYI
+-rw-rw---- 1 mysql mysql   1079 Jan 21 14:11 time_zone_transition_type.frm
+-rw-rw---- 1 mysql mysql      0 Jan 21 14:11 time_zone_transition_type.MYD
+-rw-rw---- 1 mysql mysql   1024 Jan 21 14:11 time_zone_transition_type.MYI
+-rw-rw---- 1 mysql mysql   2618 Jan 21 14:11 transaction_registry.frm
+-rw-rw---- 1 mysql mysql 147456 Jan 21 14:11 transaction_registry.ibd
+-rw-rw---- 1 mysql mysql   3229 Jan 21 14:11 user.frm
+-rw-rw---- 1 mysql mysql    392 Jan 21 14:11 user.MYD
+-rw-rw---- 1 mysql mysql   4096 Jan 21 14:11 user.MYI
+[root@localhost mysql]# cd ..
+[root@localhost data]# ll
+total 110620
+-rw-rw---- 1 mysql mysql    16384 Jan 21 14:11 aria_log.00000001
+-rw-rw---- 1 mysql mysql       52 Jan 21 14:11 aria_log_control
+-rw-rw---- 1 mysql mysql      972 Jan 21 14:11 ib_buffer_pool
+-rw-rw---- 1 mysql mysql 12582912 Jan 21 14:11 ibdata1
+-rw-rw---- 1 mysql mysql 50331648 Jan 21 14:11 ib_logfile0
+-rw-rw---- 1 mysql mysql 50331648 Jan 21 14:11 ib_logfile1
+drwx------ 2 mysql mysql     4096 Jan 21 14:11 mysql
+drwx------ 2 mysql mysql       28 Jan 21 14:11 performance_schema
+drwx------ 2 mysql mysql       28 Jan 21 14:11 test
+[root@localhost data]# mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf &^C
+[root@localhost data]# 
+[root@localhost data]# 
+[root@localhost data]# /usr/bin/mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf
+190121 14:26:40 mysqld_safe Logging to '/home/sqlserver/3307/logs/mariadb.log'.
+190121 14:26:40 mysqld_safe Starting mysqld daemon with databases from /home/sqlserver/3307/data
+
+
+
+
+
+^C
+^Cc
+
+
+
+
+
+
+
+
+^Ccccc
+^Ccc
+
+
+
+
+
+^Ccc    [root@localhost data]# /usr/bin/mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf &
+[1] 55656
+[root@localhost data]# 190121 14:32:02 mysqld_safe Logging to '/home/sqlserver/3307/logs/mariadb.log'.
+190121 14:32:02 mysqld_safe Starting mysqld daemon with databases from /home/sqlserver/3307/data
+
+[root@localhost data]# ps -ef|grep mysqld
+root     55871  6200  0 14:33 pts/0    00:00:00 grep --color=auto mysqld
+[1]+  Done                    /usr/bin/mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf
+[root@localhost data]# 
+[root@localhost data]# 
+[root@localhost data]# 
+[root@localhost data]# 
+[root@localhost data]# 
+[root@localhost data]# ll
+total 110620
+-rw-rw---- 1 mysql mysql    16384 Jan 21 14:33 aria_log.00000001
+-rw-rw---- 1 mysql mysql       52 Jan 21 14:33 aria_log_control
+-rw-rw---- 1 mysql mysql      976 Jan 21 14:33 ib_buffer_pool
+-rw-rw---- 1 mysql mysql 12582912 Jan 21 14:33 ibdata1
+-rw-rw---- 1 mysql mysql 50331648 Jan 21 14:33 ib_logfile0
+-rw-rw---- 1 mysql mysql 50331648 Jan 21 14:11 ib_logfile1
+-rw-rw---- 1 mysql mysql        0 Jan 21 14:26 multi-master.info
+drwx------ 2 mysql mysql     4096 Jan 21 14:11 mysql
+drwx------ 2 mysql mysql       28 Jan 21 14:11 performance_schema
+drwx------ 2 mysql mysql       28 Jan 21 14:11 test
+[root@localhost data]# cd ..
+[root@localhost 3307]# ll
+total 0
+drwxr-xr-x 2 mysql mysql   6 Jan 21 14:04 bin
+drwxr-xr-x 5 mysql mysql 250 Jan 21 14:33 data
+drwxr-xr-x 2 mysql mysql  20 Jan 21 13:56 etc
+drwxr-xr-x 2 mysql mysql   6 Jan 21 13:52 log
+drwxr-xr-x 2 mysql mysql   6 Jan 21 14:33 pid
+drwxr-xr-x 2 mysql mysql   6 Jan 21 14:33 socket
+[root@localhost 3307]# cd bin
+[root@localhost bin]# ll
+total 0
+[root@localhost bin]# cd ..
+[root@localhost 3307]# ll
+total 0
+drwxr-xr-x 2 mysql mysql   6 Jan 21 14:04 bin
+drwxr-xr-x 5 mysql mysql 250 Jan 21 14:33 data
+drwxr-xr-x 2 mysql mysql  20 Jan 21 13:56 etc
+drwxr-xr-x 2 mysql mysql   6 Jan 21 13:52 log
+drwxr-xr-x 2 mysql mysql   6 Jan 21 14:33 pid
+drwxr-xr-x 2 mysql mysql   6 Jan 21 14:33 socket
+[root@localhost 3307]# cd pid
+[root@localhost pid]# ll
+total 0
+[root@localhost pid]# cd ..
+[root@localhost 3307]# history|grep mysql_install
+ 1160  mysql_install_db
+ 1166  man mysql_install_db
+ 1172  mysql_install_db --basedir=/home/sqlserver --datadir=/home/sqlserver/3307/data --user=mysql
+ 1173  mysql_install_db --basedir=/usr --datadir=/home/sqlserver/3307/data --user=mysql
+ 1243  history|grep mysql_install
+[root@localhost 3307]# cd etc
+[root@localhost etc]# ll
+total 4
+-rw-r--r-- 1 mysql mysql 603 Jan 21 13:56 my.cnf
+[root@localhost etc]# cat my.cnf
+[mysqld]
+port=3307
+datadir=/home/sqlserver/3307/data
+socket=/home/sqlserver/3307/socket/mysql.sock
+#datadir=/data/mysql
+
+#thread_concurrency=4
+innodb_read_io_threads=4
+innodb_write_io_threads=4
+
+max_connections=2048
+thread_cache_size=1024
+
+key_buffer_size=400M
+innodb_buffer_pool_size=60G
+
+[mysqld_safe]
+log-error=/home/sqlserver/3307/logs/mariadb.log
+pid-file=/home/sqlserver/3307/pid/mariadb.pid
+
+
+#
+# This group is read both both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+
+#
+# include all files from the config directory
+#
+#!includedir /etc/my.cnf.d
+
+[root@localhost etc]# netstat -an | grep -i listen
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN     
+tcp6       0      0 :::22                   :::*                    LISTEN     
+tcp6       0      0 ::1:25                  :::*                    LISTEN     
+unix  2      [ ACC ]     STREAM     LISTENING     4        /run/systemd/journal/stdout
+unix  2      [ ACC ]     STREAM     LISTENING     609051   /var/run/docker/metrics.sock
+unix  2      [ ACC ]     STREAM     LISTENING     25627    /run/lvm/lvmpolld.socket
+unix  2      [ ACC ]     STREAM     LISTENING     672814   /run/docker/libnetwork/f2d76e6f50d903847d2929da105e514bc7d5aff30c96f360abc9a3f64aa3f24f.sock
+unix  2      [ ACC ]     STREAM     LISTENING     584507   /run/containerd/containerd.sock
+unix  2      [ ACC ]     STREAM     LISTENING     159      private/bounce
+unix  2      [ ACC ]     STREAM     LISTENING     142      public/pickup
+unix  2      [ ACC ]     STREAM     LISTENING     146      public/cleanup
+unix  2      [ ACC ]     STREAM     LISTENING     13439    /run/lvm/lvmetad.socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     13445    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     668809   /run/systemd/private
+unix  2      [ ACC ]     STREAM     LISTENING     153      private/tlsmgr
+unix  2      [ ACC ]     STREAM     LISTENING     156      private/rewrite
+unix  2      [ ACC ]     STREAM     LISTENING     162      private/defer
+unix  2      [ ACC ]     STREAM     LISTENING     165      private/trace
+unix  2      [ ACC ]     STREAM     LISTENING     168      private/verify
+unix  2      [ ACC ]     STREAM     LISTENING     174      private/proxymap
+unix  2      [ ACC ]     STREAM     LISTENING     65706    /run/dbus/system_bus_socket
+unix  2      [ ACC ]     STREAM     LISTENING     177      private/proxywrite
+unix  2      [ ACC ]     STREAM     LISTENING     180      private/smtp
+unix  2      [ ACC ]     STREAM     LISTENING     183      private/relay
+unix  2      [ ACC ]     STREAM     LISTENING     189      private/error
+unix  2      [ ACC ]     STREAM     LISTENING     192      private/retry
+unix  2      [ ACC ]     STREAM     LISTENING     195      private/discard
+unix  2      [ ACC ]     STREAM     LISTENING     198      private/local
+unix  2      [ ACC ]     STREAM     LISTENING     63589    private/virtual
+unix  2      [ ACC ]     STREAM     LISTENING     63592    private/lmtp
+unix  2      [ ACC ]     STREAM     LISTENING     63595    private/anvil
+unix  2      [ ACC ]     STREAM     LISTENING     63598    private/scache
+unix  2      [ ACC ]     STREAM     LISTENING     632505   /var/run/docker/containerd/containerd-debug.sock
+unix  2      [ ACC ]     STREAM     LISTENING     632507   /var/run/docker/containerd/containerd.sock
+unix  2      [ ACC ]     STREAM     LISTENING     149      public/qmgr
+unix  2      [ ACC ]     STREAM     LISTENING     572375   /var/run/docker.sock
+unix  2      [ ACC ]     STREAM     LISTENING     171      public/flush
+unix  2      [ ACC ]     STREAM     LISTENING     186      public/showq
+[root@localhost etc]# mkdir -pv /home/sqlserver/3308/etc
+mkdir: created directory â€˜/home/sqlserver/3308â€™
+mkdir: created directory â€˜/home/sqlserver/3308/etcâ€™
+[root@localhost etc]# mkdir -pv /home/sqlserver/3308/pid
+mkdir: created directory â€˜/home/sqlserver/3308/pidâ€™
+[root@localhost etc]# mkdir -pv /home/sqlserver/3308/log
+mkdir: created directory â€˜/home/sqlserver/3308/logâ€™
+[root@localhost etc]# mkdir -pv /home/sqlserver/3308/socket
+mkdir: created directory â€˜/home/sqlserver/3308/socketâ€™
+[root@localhost etc]# mkdir -pv /home/sqlserver/3308/data 
+mkdir: created directory â€˜/home/sqlserver/3308/dataâ€™
+[root@localhost etc]# cp /home/sqlserver/3307/etc/my.cnf /home/sqlserver/3308/etc/my.cnf
+[root@localhost etc]# sed -i 's/3307/3308/g' /home/sqlserver/3308/etc/my.cnf
+[root@localhost etc]# mysql_install_db --basedir=/usr --datadir=/home/sqlserver/3308/data --user=mysql
+chown -R mysql:mysql /home/sqlserver
+/usr/bin/mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf &
+Installing MariaDB/MySQL system tables in '/home/sqlserver/3308/data' ...
+OK
+
+To start mysqld at boot time you have to copy
+support-files/mysql.server to the right place for your system
+
+
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER !
+To do so, start the server, then issue the following commands:
+
+'/usr/bin/mysqladmin' -u root password 'new-password'
+'/usr/bin/mysqladmin' -u root -h localhost.localdomain password 'new-password'
+
+Alternatively you can run:
+'/usr/bin/mysql_secure_installation'
+
+which will also give you the option of removing the test
+databases and anonymous user created by default.  This is
+strongly recommended for production servers.
+
+See the MariaDB Knowledgebase at http://mariadb.com/kb or the
+MySQL manual for more instructions.
+
+You can start the MariaDB daemon with:
+cd '/usr' ; /usr/bin/mysqld_safe --datadir='/home/sqlserver/3308/data'
+
+You can test the MariaDB daemon with mysql-test-run.pl
+cd '/usr/mysql-test' ; perl mysql-test-run.pl
+
+Please report any problems at http://mariadb.org/jira
+
+The latest information about MariaDB is available at http://mariadb.org/.
+You can find additional information about the MySQL part at:
+http://dev.mysql.com
+Consider joining MariaDB's strong and vibrant community:
+https://mariadb.org/get-involved/
+
+[root@localhost etc]# chown -R mysql:mysql /home/sqlserver
+[root@localhost etc]# /usr/bin/mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf &
+[1] 56556
+[root@localhost etc]# 190121 14:44:10 mysqld_safe Logging to '/home/sqlserver/3307/logs/mariadb.log'.
+190121 14:44:10 mysqld_safe Starting mysqld daemon with databases from /home/sqlserver/3307/data
+
+[root@localhost etc]# /usr/bin/mysqld_safe --defaults-file=/home/sqlserver/3308/etc/my.cnf &
+[2] 56710
+[root@localhost etc]# 190121 14:44:37 mysqld_safe Logging to '/home/sqlserver/3308/logs/mariadb.log'.
+190121 14:44:37 mysqld_safe Starting mysqld daemon with databases from /home/sqlserver/3308/data
+
+[root@localhost etc]# netstat -an|grep 3308
+tcp6       0      0 :::3308                 :::*                    LISTEN     
+unix  2      [ ACC ]     STREAM     LISTENING     1345465  /home/sqlserver/3308/socket/mysql.sock
+[root@localhost etc]# 
+[root@localhost etc]# 
+[root@localhost etc]# mysql -uroot -S /home/sqlserver/3308/socket/mysql.sock
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.3.10-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> exit
+Bye
+[root@localhost etc]# ps -ef|grep mysqld
+root     56556  6200  0 14:44 pts/0    00:00:00 /bin/sh /usr/bin/mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf
+mysql    56654 56556  9 14:44 pts/0    00:00:05 /usr/sbin/mysqld --defaults-file=/home/sqlserver/3307/etc/my.cnf --basedir=/usr --datadir=/home/sqlserver/3307/data --plugin-dir=/usr/lib64/mysql/plugin --user=mysql --log-error=/home/sqlserver/3307/logs/mariadb.log --pid-file=/home/sqlserver/3307/pid/mariadb.pid --socket=/home/sqlserver/3307/socket/mysql.sock --port=3307
+root     56710  6200  0 14:44 pts/0    00:00:00 /bin/sh /usr/bin/mysqld_safe --defaults-file=/home/sqlserver/3308/etc/my.cnf
+mysql    56807 56710 18 14:44 pts/0    00:00:06 /usr/sbin/mysqld --defaults-file=/home/sqlserver/3308/etc/my.cnf --basedir=/usr --datadir=/home/sqlserver/3308/data --plugin-dir=/usr/lib64/mysql/plugin --user=mysql --log-error=/home/sqlserver/3308/logs/mariadb.log --pid-file=/home/sqlserver/3308/pid/mariadb.pid --socket=/home/sqlserver/3308/socket/mysql.sock --port=3308
+root     56873  6200  0 14:45 pts/0    00:00:00 grep --color=auto mysqld
+[root@localhost etc]# /usr/bin/mysqladmin -uroot -S /home/sqlserver/3307/socket/mysql.sock shutdown
+[1]-  Done                    /usr/bin/mysqld_safe --defaults-file=/home/sqlserver/3307/etc/my.cnf
+[root@localhost etc]# /usr/bin/mysqladmin -uroot -S /home/sqlserver/3308/socket/mysql.sock shutdown
+[2]+  Done                    /usr/bin/mysqld_safe --defaults-file=/home/sqlserver/3308/etc/my.cnf
+[root@localhost etc]# 
+[root@localhost etc]# 
+[root@localhost etc]# 
+[root@localhost etc]# ll
+total 4
+-rw-r--r-- 1 mysql mysql 603 Jan 21 13:56 my.cnf
+[root@localhost etc]# cd ..
+[root@localhost 3307]# ps -ef|grep mysqld
+root     56932  6200  0 14:46 pts/0    00:00:00 grep --color=auto mysqld
+[root@localhost 3307]# x=1
+[root@localhost 3307]# i=1
+[root@localhost 3307]# ((x=x+i
+> ))
+[root@localhost 3307]# echo $x
+2
+[root@localhost 3307]# cd ..
+[root@localhost sqlserver]# ll
+total 0
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 14:43 3308
+[root@localhost sqlserver]# vi init.sh
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+  mkdir -pv /home/sqlserver/${x}/socket
+  mkdir -pv /home/sqlserver/${x}/data
+"init.sh" [New] 14L, 374C written
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 14:43 3308
+-rw-r--r-- 1 root  root  374 Jan 21 14:51 init.sh
+[root@localhost sqlserver]# sh -x init.sh
++ x=3308
++ for i in '{1..2}'
++ (( x=x+i ))
++ mkdir -pv /home/sqlserver/3309/etc
+mkdir: created directory â€˜/home/sqlserver/3309â€™
+mkdir: created directory â€˜/home/sqlserver/3309/etcâ€™
++ mkdir -pv /home/sqlserver/3309/pid
+mkdir: created directory â€˜/home/sqlserver/3309/pidâ€™
++ mkdir -pv /home/sqlserver/3309/log
+mkdir: created directory â€˜/home/sqlserver/3309/logâ€™
++ mkdir -pv /home/sqlserver/3309/socket
+mkdir: created directory â€˜/home/sqlserver/3309/socketâ€™
++ mkdir -pv /home/sqlserver/3309/data
+mkdir: created directory â€˜/home/sqlserver/3309/dataâ€™
++ cp /home/sqlserver/3307/etc/my.cnf /home/sqlserver/3309/etc/my.cnf
++ sed -i 's/3307/${x}/g' /home/sqlserver/3309/etc/my.cnf
++ for i in '{1..2}'
++ (( x=x+i ))
++ mkdir -pv /home/sqlserver/3311/etc
+mkdir: created directory â€˜/home/sqlserver/3311â€™
+mkdir: created directory â€˜/home/sqlserver/3311/etcâ€™
++ mkdir -pv /home/sqlserver/3311/pid
+mkdir: created directory â€˜/home/sqlserver/3311/pidâ€™
++ mkdir -pv /home/sqlserver/3311/log
+mkdir: created directory â€˜/home/sqlserver/3311/logâ€™
++ mkdir -pv /home/sqlserver/3311/socket
+mkdir: created directory â€˜/home/sqlserver/3311/socketâ€™
++ mkdir -pv /home/sqlserver/3311/data
+mkdir: created directory â€˜/home/sqlserver/3311/dataâ€™
++ cp /home/sqlserver/3307/etc/my.cnf /home/sqlserver/3311/etc/my.cnf
++ sed -i 's/3307/${x}/g' /home/sqlserver/3311/etc/my.cnf
+[root@localhost sqlserver]# 
+[root@localhost sqlserver]# cat /home/sqlserver/3311/etc/my.cnf
+[mysqld]
+port=${x}
+datadir=/home/sqlserver/${x}/data
+socket=/home/sqlserver/${x}/socket/mysql.sock
+#datadir=/data/mysql
+
+#thread_concurrency=4
+innodb_read_io_threads=4
+innodb_write_io_threads=4
+
+max_connections=2048
+thread_cache_size=1024
+
+key_buffer_size=400M
+innodb_buffer_pool_size=60G
+
+[mysqld_safe]
+log-error=/home/sqlserver/${x}/logs/mariadb.log
+pid-file=/home/sqlserver/${x}/pid/mariadb.pid
+
+
+#
+# This group is read both both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+
+#
+# include all files from the config directory
+#
+#!includedir /etc/my.cnf.d
+
+[root@localhost sqlserver]# :q
+bash: :q: command not found
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 14:43 3308
+drwxr-xr-x 7 root  root   89 Jan 21 14:51 3309
+drwxr-xr-x 7 root  root   89 Jan 21 14:51 3311
+-rw-r--r-- 1 root  root  374 Jan 21 14:51 init.sh
+[root@localhost sqlserver]# rm -rf 3308 3311
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 root  root   89 Jan 21 14:51 3309
+-rw-r--r-- 1 root  root  374 Jan 21 14:51 init.sh
+[root@localhost sqlserver]# rm -rf 3309
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+-rw-r--r-- 1 root  root  374 Jan 21 14:51 init.sh
+[root@localhost sqlserver]# rm init.sh
+rm: remove regular file â€˜init.shâ€™? y
+[root@localhost sqlserver]# vi init.sh
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+  mkdir -pv /home/sqlserver/${x}/socket
+  mkdir -pv /home/sqlserver/${x}/data
+"init.sh" [New] 13L, 373C written
+[root@localhost sqlserver]# sh init.sh
+mkdir: created directory â€˜/home/sqlserver/3308â€™
+mkdir: created directory â€˜/home/sqlserver/3308/etcâ€™
+mkdir: created directory â€˜/home/sqlserver/3308/pidâ€™
+mkdir: created directory â€˜/home/sqlserver/3308/logâ€™
+mkdir: created directory â€˜/home/sqlserver/3308/socketâ€™
+mkdir: created directory â€˜/home/sqlserver/3308/dataâ€™
+mkdir: created directory â€˜/home/sqlserver/3309â€™
+mkdir: created directory â€˜/home/sqlserver/3309/etcâ€™
+mkdir: created directory â€˜/home/sqlserver/3309/pidâ€™
+mkdir: created directory â€˜/home/sqlserver/3309/logâ€™
+mkdir: created directory â€˜/home/sqlserver/3309/socketâ€™
+mkdir: created directory â€˜/home/sqlserver/3309/dataâ€™
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 root  root   89 Jan 21 14:53 3308
+drwxr-xr-x 7 root  root   89 Jan 21 14:53 3309
+-rw-r--r-- 1 root  root  373 Jan 21 14:53 init.sh
+[root@localhost sqlserver]# cd 3308
+[root@localhost 3308]# ll
+total 0
+drwxr-xr-x 2 root root  6 Jan 21 14:53 data
+drwxr-xr-x 2 root root 20 Jan 21 14:53 etc
+drwxr-xr-x 2 root root  6 Jan 21 14:53 log
+drwxr-xr-x 2 root root  6 Jan 21 14:53 pid
+drwxr-xr-x 2 root root  6 Jan 21 14:53 socket
+[root@localhost 3308]# cd etc
+[root@localhost etc]# ll
+total 4
+-rw-r--r-- 1 root root 603 Jan 21 14:53 my.cnf
+[root@localhost etc]# cat my.cnf
+[mysqld]
+port=3308
+datadir=/home/sqlserver/3308/data
+socket=/home/sqlserver/3308/socket/mysql.sock
+#datadir=/data/mysql
+
+#thread_concurrency=4
+innodb_read_io_threads=4
+innodb_write_io_threads=4
+
+max_connections=2048
+thread_cache_size=1024
+
+key_buffer_size=400M
+innodb_buffer_pool_size=60G
+
+[mysqld_safe]
+log-error=/home/sqlserver/3308/logs/mariadb.log
+pid-file=/home/sqlserver/3308/pid/mariadb.pid
+
+
+#
+# This group is read both both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+
+#
+# include all files from the config directory
+#
+#!includedir /etc/my.cnf.d
+
+[root@localhost etc]# cd ..
+[root@localhost 3308]# cd ..
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 root  root   89 Jan 21 14:53 3308
+drwxr-xr-x 7 root  root   89 Jan 21 14:53 3309
+-rw-r--r-- 1 root  root  373 Jan 21 14:53 init.sh
+[root@localhost sqlserver]# rm -rf 3308
+[root@localhost sqlserver]# rm -rf 3309
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+-rw-r--r-- 1 root  root  373 Jan 21 14:53 init.sh
+[root@localhost sqlserver]# rm init.sh
+rm: remove regular file â€˜init.shâ€™? y
+[root@localhost sqlserver]# vi init.sh
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+  mkdir -pv /home/sqlserver/${x}/socket
+  chown -R mysql:mysql /home/sqlserver
+  mysql_install_db --basedir=/usr --datadir=/home/sqlserver/${x}/data --user=mysql
+"init.sh" [New] 16L, 496C written
+[root@localhost sqlserver]# sh init.sh
+mkdir: created directory â€˜/home/sqlserver/3308â€™
+mkdir: created directory â€˜/home/sqlserver/3308/etcâ€™
+mkdir: created directory â€˜/home/sqlserver/3308/pidâ€™
+mkdir: created directory â€˜/home/sqlserver/3308/logâ€™
+mkdir: created directory â€˜/home/sqlserver/3308/socketâ€™
+mkdir: created directory â€˜/home/sqlserver/3308/dataâ€™
+Installing MariaDB/MySQL system tables in '/home/sqlserver/3308/data' ...
+OK
+
+To start mysqld at boot time you have to copy
+support-files/mysql.server to the right place for your system
+
+
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER !
+To do so, start the server, then issue the following commands:
+
+'/usr/bin/mysqladmin' -u root password 'new-password'
+'/usr/bin/mysqladmin' -u root -h localhost.localdomain password 'new-password'
+
+Alternatively you can run:
+'/usr/bin/mysql_secure_installation'
+
+which will also give you the option of removing the test
+databases and anonymous user created by default.  This is
+strongly recommended for production servers.
+
+See the MariaDB Knowledgebase at http://mariadb.com/kb or the
+MySQL manual for more instructions.
+
+You can start the MariaDB daemon with:
+cd '/usr' ; /usr/bin/mysqld_safe --datadir='/home/sqlserver/3308/data'
+
+You can test the MariaDB daemon with mysql-test-run.pl
+cd '/usr/mysql-test' ; perl mysql-test-run.pl
+
+Please report any problems at http://mariadb.org/jira
+
+The latest information about MariaDB is available at http://mariadb.org/.
+You can find additional information about the MySQL part at:
+http://dev.mysql.com
+Consider joining MariaDB's strong and vibrant community:
+https://mariadb.org/get-involved/
+
+mkdir: created directory â€˜/home/sqlserver/3309â€™
+mkdir: created directory â€˜/home/sqlserver/3309/etcâ€™
+mkdir: created directory â€˜/home/sqlserver/3309/pidâ€™
+mkdir: created directory â€˜/home/sqlserver/3309/logâ€™
+mkdir: created directory â€˜/home/sqlserver/3309/socketâ€™
+mkdir: created directory â€˜/home/sqlserver/3309/dataâ€™
+Installing MariaDB/MySQL system tables in '/home/sqlserver/3309/data' ...
+OK
+
+To start mysqld at boot time you have to copy
+support-files/mysql.server to the right place for your system
+
+
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER !
+To do so, start the server, then issue the following commands:
+
+'/usr/bin/mysqladmin' -u root password 'new-password'
+'/usr/bin/mysqladmin' -u root -h localhost.localdomain password 'new-password'
+
+Alternatively you can run:
+'/usr/bin/mysql_secure_installation'
+
+which will also give you the option of removing the test
+databases and anonymous user created by default.  This is
+strongly recommended for production servers.
+
+See the MariaDB Knowledgebase at http://mariadb.com/kb or the
+MySQL manual for more instructions.
+
+You can start the MariaDB daemon with:
+cd '/usr' ; /usr/bin/mysqld_safe --datadir='/home/sqlserver/3309/data'
+
+You can test the MariaDB daemon with mysql-test-run.pl
+cd '/usr/mysql-test' ; perl mysql-test-run.pl
+
+Please report any problems at http://mariadb.org/jira
+
+The latest information about MariaDB is available at http://mariadb.org/.
+You can find additional information about the MySQL part at:
+http://dev.mysql.com
+Consider joining MariaDB's strong and vibrant community:
+https://mariadb.org/get-involved/
+
+[root@localhost sqlserver]# vi start.sh
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+"start.sh" [New] 7L, 128C written
+[root@localhost sqlserver]# sh start.sh
+[root@localhost sqlserver]# 190121 14:56:50 mysqld_safe Logging to '/home/sqlserver/3308/logs/mariadb.log'.
+190121 14:56:50 mysqld_safe Logging to '/home/sqlserver/3309/logs/mariadb.log'.
+190121 14:56:50 mysqld_safe Starting mysqld daemon with databases from /home/sqlserver/3308/data
+190121 14:56:50 mysqld_safe Starting mysqld daemon with databases from /home/sqlserver/3309/data
+
+[root@localhost sqlserver]# 
+[root@localhost sqlserver]# ps -ef|grep mysqld
+root     57765     1  0 14:56 pts/0    00:00:00 /bin/sh /usr/bin/mysqld_safe --defaults-file=/home/sqlserver/3308/etc/my.cnf
+root     57766     1  0 14:56 pts/0    00:00:00 /bin/sh /usr/bin/mysqld_safe --defaults-file=/home/sqlserver/3309/etc/my.cnf
+mysql    57961 57766 47 14:56 pts/0    00:00:06 /usr/sbin/mysqld --defaults-file=/home/sqlserver/3309/etc/my.cnf --basedir=/usr --datadir=/home/sqlserver/3309/data --plugin-dir=/usr/lib64/mysql/plugin --user=mysql --log-error=/home/sqlserver/3309/logs/mariadb.log --pid-file=/home/sqlserver/3309/pid/mariadb.pid --socket=/home/sqlserver/3309/socket/mysql.sock --port=3309
+mysql    57962 57765 45 14:56 pts/0    00:00:05 /usr/sbin/mysqld --defaults-file=/home/sqlserver/3308/etc/my.cnf --basedir=/usr --datadir=/home/sqlserver/3308/data --plugin-dir=/usr/lib64/mysql/plugin --user=mysql --log-error=/home/sqlserver/3308/logs/mariadb.log --pid-file=/home/sqlserver/3308/pid/mariadb.pid --socket=/home/sqlserver/3308/socket/mysql.sock --port=3308
+root     58043  6200  0 14:57 pts/0    00:00:00 grep --color=auto mysqld
+[root@localhost sqlserver]# 
+[root@localhost sqlserver]# 
+[root@localhost sqlserver]# 
+[root@localhost sqlserver]# exit
+exit
+[postgres@localhost postgresql-11.1]$ pwd
+/home/postgres/postgresql-11.1
+[postgres@localhost postgresql-11.1]$ exit
+logout
+[root@localhost /]# cd /home/sqlserver
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# du -sk *
+111880  3307
+111880  3308
+111880  3309
+111880  3310
+111880  3311
+111880  3312
+111880  3313
+111880  3314
+124608  3315
+4       init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# ll
+total 4
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+[root@localhost sqlserver]# vi start.sh
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+for i in {1..80}
+do
+  ((x=x+1))
+"start.sh" [New] 8L, 130C written
+[root@localhost sqlserver]# ll
+total 8
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+[root@localhost sqlserver]# ll
+total 8
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+[root@localhost sqlserver]# vi stop.sh
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+"stop.sh" [New] 8L, 137C written
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 root  root  137 Jan 21 15:05 stop.sh
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3332
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 mysql mysql 137 Jan 21 15:05 stop.sh
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3332
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 mysql mysql 137 Jan 21 15:05 stop.sh
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3332
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 mysql mysql 137 Jan 21 15:05 stop.sh
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3332
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 mysql mysql 137 Jan 21 15:05 stop.sh
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3332
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 mysql mysql 137 Jan 21 15:05 stop.sh
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3332
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 mysql mysql 137 Jan 21 15:05 stop.sh
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3332
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 mysql mysql 137 Jan 21 15:05 stop.sh
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3332
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 mysql mysql 137 Jan 21 15:05 stop.sh
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3332
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 mysql mysql 137 Jan 21 15:05 stop.sh
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3332
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 mysql mysql 137 Jan 21 15:05 stop.sh
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3332
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 mysql mysql 137 Jan 21 15:05 stop.sh
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3332
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3333
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 mysql mysql 137 Jan 21 15:05 stop.sh
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3332
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3333
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 mysql mysql 137 Jan 21 15:05 stop.sh
+[root@localhost sqlserver]# ll
+total 12
+drwxr-xr-x 8 mysql mysql 104 Jan 21 14:04 3307
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:00 3308
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3309
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3310
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3311
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:01 3312
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3313
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3314
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3315
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3316
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:02 3317
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3318
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3319
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3320
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3321
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3322
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:03 3323
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3324
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3325
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3326
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3327
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:04 3328
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3329
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3330
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3331
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3332
+drwxr-xr-x 7 mysql mysql  89 Jan 21 15:05 3333
+-rw-r--r-- 1 mysql mysql 496 Jan 21 15:00 init.sh
+-rw-r--r-- 1 mysql mysql 130 Jan 21 15:05 start.sh
+-rw-r--r-- 1 mysql mysql 137 Jan 21 15:05 stop.sh
