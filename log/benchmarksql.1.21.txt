@@ -1,0 +1,272 @@
+﻿[root@localhost benchmarksql]# unzip benchmarksql-4.1.0.zip
+Archive:  benchmarksql-4.1.0.zip
+   creating: benchmarksql-4.1.0/
+  inflating: benchmarksql-4.1.0/.DS_Store  
+   creating: benchmarksql-4.1.0/build/
+  inflating: benchmarksql-4.1.0/build/Customer.class  
+  inflating: benchmarksql-4.1.0/build/District.class  
+  inflating: benchmarksql-4.1.0/build/ExecJDBC.class  
+  inflating: benchmarksql-4.1.0/build/History.class  
+  inflating: benchmarksql-4.1.0/build/Item.class  
+  inflating: benchmarksql-4.1.0/build/jdbcIO.class  
+  inflating: benchmarksql-4.1.0/build/jTPCC.class  
+  inflating: benchmarksql-4.1.0/build/jTPCCConfig.class  
+  inflating: benchmarksql-4.1.0/build/jTPCCTerminal.class  
+  inflating: benchmarksql-4.1.0/build/jTPCCUtil.class  
+  inflating: benchmarksql-4.1.0/build/LoadData.class  
+  inflating: benchmarksql-4.1.0/build/NewOrder.class  
+  inflating: benchmarksql-4.1.0/build/Oorder.class  
+  inflating: benchmarksql-4.1.0/build/OrderLine.class  
+  inflating: benchmarksql-4.1.0/build/Stock.class  
+  inflating: benchmarksql-4.1.0/build/Warehouse.class  
+  inflating: benchmarksql-4.1.0/build.xml  
+   creating: benchmarksql-4.1.0/dist/
+  inflating: benchmarksql-4.1.0/dist/BenchmarkSQL-4.1.jar  
+  inflating: benchmarksql-4.1.0/HOW-TO-RUN.txt  
+   creating: benchmarksql-4.1.0/lib/
+  inflating: benchmarksql-4.1.0/lib/.DS_Store  
+  inflating: benchmarksql-4.1.0/lib/apache-log4j-extras-1.1.jar  
+  inflating: benchmarksql-4.1.0/lib/log4j-1.2.17.jar  
+  inflating: benchmarksql-4.1.0/lib/postgresql-9.3-1101.jdbc41.jar  
+  inflating: benchmarksql-4.1.0/README.txt  
+   creating: benchmarksql-4.1.0/run/
+  inflating: benchmarksql-4.1.0/run/clean.sh  
+   creating: benchmarksql-4.1.0/run/log/
+   creating: benchmarksql-4.1.0/run/log/archive/
+  inflating: benchmarksql-4.1.0/run/log4j.xml  
+  inflating: benchmarksql-4.1.0/run/props.ora  
+  inflating: benchmarksql-4.1.0/run/props.pg  
+  inflating: benchmarksql-4.1.0/run/runBenchmark.sh  
+  inflating: benchmarksql-4.1.0/run/runLoader.sh  
+  inflating: benchmarksql-4.1.0/run/runSQL.sh  
+  inflating: benchmarksql-4.1.0/run/sqlIndexCreates  
+  inflating: benchmarksql-4.1.0/run/sqlIndexDrops  
+  inflating: benchmarksql-4.1.0/run/sqlTableCopies  
+  inflating: benchmarksql-4.1.0/run/sqlTableCreates  
+  inflating: benchmarksql-4.1.0/run/sqlTableDrops  
+  inflating: benchmarksql-4.1.0/run/sqlTableTruncates  
+   creating: benchmarksql-4.1.0/src/
+   creating: benchmarksql-4.1.0/src/client/
+  inflating: benchmarksql-4.1.0/src/client/jTPCC.java  
+  inflating: benchmarksql-4.1.0/src/client/jTPCCConfig.java  
+  inflating: benchmarksql-4.1.0/src/client/jTPCCTerminal.java  
+  inflating: benchmarksql-4.1.0/src/client/jTPCCUtil.java  
+   creating: benchmarksql-4.1.0/src/jdbc/
+  inflating: benchmarksql-4.1.0/src/jdbc/ExecJDBC.java  
+  inflating: benchmarksql-4.1.0/src/jdbc/jdbcIO.java  
+   creating: benchmarksql-4.1.0/src/LoadData/
+  inflating: benchmarksql-4.1.0/src/LoadData/LoadData.java  
+   creating: benchmarksql-4.1.0/src/pojo/
+  inflating: benchmarksql-4.1.0/src/pojo/Customer.java  
+  inflating: benchmarksql-4.1.0/src/pojo/District.java  
+  inflating: benchmarksql-4.1.0/src/pojo/History.java  
+  inflating: benchmarksql-4.1.0/src/pojo/Item.java  
+  inflating: benchmarksql-4.1.0/src/pojo/NewOrder.java  
+  inflating: benchmarksql-4.1.0/src/pojo/Oorder.java  
+  inflating: benchmarksql-4.1.0/src/pojo/OrderLine.java  
+  inflating: benchmarksql-4.1.0/src/pojo/Stock.java  
+  inflating: benchmarksql-4.1.0/src/pojo/Warehouse.java  
+[root@localhost benchmarksql]# ll
+total 16820
+-rw-r--r-- 1 root root 6108214 Jan 21 09:34 apache-ant-1.10.5-bin.tar.gz
+-rw-r--r-- 1 root root 5829814 Jan 21 09:34 apache-ant-1.9.13-bin.tar.gz
+drwxr-xr-x 7 root root     178 Mar 13  2014 benchmarksql-4.1.0
+-rw-r--r-- 1 root root 1433232 Jan 21 09:34 benchmarksql-4.1.0.zip
+-rw-r--r-- 1 root root 2263539 Jan 21 09:34 benchmarksql-5.0.zip
+-rw-r--r-- 1 root root  825943 Jan 21 09:34 postgresql-42.2.5.jar
+-rw-r--r-- 1 root root  753264 Jan 21 09:34 postgresql-42.2.5.jre7.jar
+[root@localhost benchmarksql]# java -version
+java version "1.7.0_201"
+OpenJDK Runtime Environment (rhel-2.6.16.1.el7_6-aarch64 u201-b00)
+OpenJDK 64-Bit Server VM (build 24.201-b00, mixed mode)
+[root@localhost benchmarksql]# cp postgresql-42.2.5.jre7.jar ./benchmarksql-4.1.0/lib/
+[root@localhost benchmarksql]# cd benchmarksql-4.1.0
+[root@localhost benchmarksql-4.1.0]# ll
+total 20
+drwxr-xr-x 2 root root 4096 Mar 13  2014 build
+-rwxr-xr-x 1 root root 1112 Mar 13  2014 build.xml
+drwxr-xr-x 2 root root   42 Mar 13  2014 dist
+-rwxr-xr-x 1 root root 1927 Mar 13  2014 HOW-TO-RUN.txt
+drwxr-xr-x 2 root root  178 Jan 21 09:47 lib
+-rwxr-xr-x 1 root root 2825 Mar 13  2014 README.txt
+drwxr-xr-x 3 root root 4096 Mar 13  2014 run
+drwxr-xr-x 6 root root   80 Jul 31  2013 src
+[root@localhost benchmarksql-4.1.0]# cd lib
+[root@localhost lib]# ll
+total 2132
+-rwxr-xr-x 1 root root 346729 Mar 20  2013 apache-log4j-extras-1.1.jar
+-rwxr-xr-x 1 root root 489883 May  6  2012 log4j-1.2.17.jar
+-rw-r--r-- 1 root root 753264 Jan 21 09:47 postgresql-42.2.5.jre7.jar
+-rw-r--r-- 1 root root 588901 Feb 20  2014 postgresql-9.3-1101.jdbc41.jar
+[root@localhost lib]# cd ..
+[root@localhost benchmarksql-4.1.0]# ll
+total 20
+drwxr-xr-x 2 root root 4096 Mar 13  2014 build
+-rwxr-xr-x 1 root root 1112 Mar 13  2014 build.xml
+drwxr-xr-x 2 root root   42 Mar 13  2014 dist
+-rwxr-xr-x 1 root root 1927 Mar 13  2014 HOW-TO-RUN.txt
+drwxr-xr-x 2 root root  178 Jan 21 09:47 lib
+-rwxr-xr-x 1 root root 2825 Mar 13  2014 README.txt
+drwxr-xr-x 3 root root 4096 Mar 13  2014 run
+drwxr-xr-x 6 root root   80 Jul 31  2013 src
+[root@localhost benchmarksql-4.1.0]# more  HOW-TO-RUN.txt
+
+Instructions for running
+------------------------
+Use of JDK7 is required.   Sample JDBC Connection Property files are provided as follows:
+  props.pg  : for PostgreSQL/EnterpriseDB
+  props.ora : for Oracle
+
+0. As the user postgres, create the benchmarksql user with correct permissions.
+        postgres=# CREATE USER benchmarksql WITH SUPERUSER PASSWORD 'password';
+        postgres=# GRANT ALL PRIVILEGES ON DATABASE postgres TO benchmarksql;
+
+1. Go to the 'run' directory, edit the appropriate "props.???" 
+   file to point to the database instance you'd like to test.   
+
+2. Run the "sqlTableCreates" to create the base tables.
+
+        $ ./runSQL.sh props.pg sqlTableCreates
+
+
+3. Run the Loader command file to load all of the default data 
+   for a benchmark:
+
+
+  A.) Approximately half a million rows (per Warehouse) will be loaded 
+      across 9 tables.  
+
+        $ ./runLoader.sh props.pg numWarehouses 1
+
+      NOTE: You should run the sqlTableTruncates scripts if your tables
+            are not already empty.
+      
+  B.) Alternatively, for PostgreSQL you may choose to generate the 
+      load data out to CSV files where it can be efficiently 
+      bulk loaded into the database as many times as required by your 
+      testing.
+
+      $ ./runLoader.sh props.pg numWarehouses 1 fileLocation /tmp/csv/   
+        
+      These CSV files can be bulk loaded as follows:
+        $  ./runSQL.sh props.pg sqlTableCopies
+
+      You may truncate the data via:
+
+        $  ./runSQL.sh props.pg sqlTableTruncates
+
+[root@localhost benchmarksql-4.1.0]# 
+[root@localhost benchmarksql-4.1.0]# cd run
+[root@localhost run]# ll
+total 52
+-rwxr-xr-x 1 root root   36 Nov  4  2013 clean.sh
+drwxr-xr-x 3 root root   29 Mar 13  2014 log
+-rwxr-xr-x 1 root root 1874 Jul 31  2013 log4j.xml
+-rwxr-xr-x 1 root root  504 Jul  3  2013 props.ora
+-rwxr-xr-x 1 root root  577 Jul 31  2013 props.pg
+-rwxr-xr-x 1 root root  153 Mar 13  2014 runBenchmark.sh
+-rwxr-xr-x 1 root root  109 Mar 13  2014 runLoader.sh
+-rwxr-xr-x 1 root root  176 Mar 13  2014 runSQL.sh
+-rwxr-xr-x 1 root root 1084 Jul 31  2013 sqlIndexCreates
+-rwxr-xr-x 1 root root  610 Jul 30  2013 sqlIndexDrops
+-rwxr-xr-x 1 root root 1577 Jul 31  2013 sqlTableCopies
+-rwxr-xr-x 1 root root 3175 Jul 31  2013 sqlTableCreates
+-rwxr-xr-x 1 root root  309 Jul 30  2013 sqlTableDrops
+-rwxr-xr-x 1 root root  344 Jul 30  2013 sqlTableTruncates
+[root@localhost run]# cat runBenchmark.sh
+java -cp .:../lib/postgresql-9.3-1101.jdbc41.jar:../lib/log4j-1.2.17.jar:../lib/apache-log4j-extras-1.1.jar:../dist/BenchmarkSQL-4.1.jar -Dprop=$1 jTPCC
+[root@localhost run]# 
+[root@localhost run]# 
+[root@localhost run]# sed -i 's/postgresql-9.3-1101.jdbc41.jar/postgresql-42.2.5.jre7.jar/g' runBenchmark.sh^C
+[root@localhost run]# cp runBenchmark.sh runBenchmark.sh.bak
+[root@localhost run]# cp runLoader.sh  runLoader.sh.bak
+[root@localhost run]# cp runSQL.sh runSQL.sh.bak
+[root@localhost run]# 
+[root@localhost run]# 
+[root@localhost run]# sed -i 's/postgresql-9.3-1101.jdbc41.jar/postgresql-42.2.5.jre7.jar/g' runBenchmark.sh
+[root@localhost run]# sed -i 's/postgresql-9.3-1101.jdbc41.jar/postgresql-42.2.5.jre7.jar/g' runLoader.sh
+[root@localhost run]# sed -i 's/postgresql-9.3-1101.jdbc41.jar/postgresql-42.2.5.jre7.jar/g' runSQL.sh
+[root@localhost run]# diff runBenchmark.sh runBenchmark.sh.bak
+1c1
+< java -cp .:../lib/postgresql-42.2.5.jre7.jar:../lib/log4j-1.2.17.jar:../lib/apache-log4j-extras-1.1.jar:../dist/BenchmarkSQL-4.1.jar -Dprop=$1 jTPCC
+---
+> java -cp .:../lib/postgresql-9.3-1101.jdbc41.jar:../lib/log4j-1.2.17.jar:../lib/apache-log4j-extras-1.1.jar:../dist/BenchmarkSQL-4.1.jar -Dprop=$1 jTPCC
+[root@localhost run]# diff runLoader.sh runLoader.sh.bak
+1c1
+< java -cp .:../lib/postgresql-42.2.5.jre7.jar:../dist/BenchmarkSQL-4.1.jar -Dprop=$1 LoadData $2 $3 $4 $5
+---
+> java -cp .:../lib/postgresql-9.3-1101.jdbc41.jar:../dist/BenchmarkSQL-4.1.jar -Dprop=$1 LoadData $2 $3 $4 $5
+[root@localhost run]# diff runSQL.sh runSQL.sh.bak
+1c1
+< myCP="../lib/postgresql-42.2.5.jre7.jar"
+---
+> myCP="../lib/postgresql-9.3-1101.jdbc41.jar"
+[root@localhost run]# 
+[root@localhost run]# 
+[root@localhost run]# ll
+total 64
+-rwxr-xr-x 1 root root   36 Nov  4  2013 clean.sh
+drwxr-xr-x 3 root root   29 Mar 13  2014 log
+-rwxr-xr-x 1 root root 1874 Jul 31  2013 log4j.xml
+-rwxr-xr-x 1 root root  504 Jul  3  2013 props.ora
+-rwxr-xr-x 1 root root  577 Jul 31  2013 props.pg
+-rwxr-xr-x 1 root root  149 Jan 21 09:51 runBenchmark.sh
+-rwxr-xr-x 1 root root  153 Jan 21 09:50 runBenchmark.sh.bak
+-rwxr-xr-x 1 root root  105 Jan 21 09:51 runLoader.sh
+-rwxr-xr-x 1 root root  109 Jan 21 09:51 runLoader.sh.bak
+-rwxr-xr-x 1 root root  172 Jan 21 09:51 runSQL.sh
+-rwxr-xr-x 1 root root  176 Jan 21 09:51 runSQL.sh.bak
+-rwxr-xr-x 1 root root 1084 Jul 31  2013 sqlIndexCreates
+-rwxr-xr-x 1 root root  610 Jul 30  2013 sqlIndexDrops
+-rwxr-xr-x 1 root root 1577 Jul 31  2013 sqlTableCopies
+-rwxr-xr-x 1 root root 3175 Jul 31  2013 sqlTableCreates
+-rwxr-xr-x 1 root root  309 Jul 30  2013 sqlTableDrops
+-rwxr-xr-x 1 root root  344 Jul 30  2013 sqlTableTruncates
+[root@localhost run]# 
+[root@localhost run]# 
+[root@localhost run]# vi props.pg
+driver=org.postgresql.Driver
+conn=jdbc:postgresql://localhost:5432/postgres
+user=benchmarksql
+password=password
+
+warehouses=1
+terminals=1
+//To run specified transactions per terminal- runMins must equal zero
+runTxnsPerTerminal=10
+//To run for specified minutes- runTxnsPerTerminal must equal zero
+runMins=0
+//Number of total transactions per minute
+limitTxnsPerMin=300
+
+
+//The following five values must add up to 100
+//The default percentages of 45, 43, 4, 4 & 4 match the TPC-C spec
+newOrderWeight=45
+paymentWeight=43
+orderStatusWeight=4
+deliveryWeight=4
+stockLevelWeight=4
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+password=password
