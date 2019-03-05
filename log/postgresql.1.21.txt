@@ -102,3 +102,96 @@ tcp6       0      0 :::3307                 :::*                    LISTEN
 unix  2      [ ACC ]     STREAM     LISTENING     1316273  /home/sqlserver/3307/socket/mysql.sock
 [postgres@localhost data]$ 
 [postgres@localhost data]$ 
+[postgres@localhost data]$ 
+[postgres@localhost data]$ 
+[postgres@localhost data]$ 
+[postgres@localhost data]$ Connection to 192.168.1.197 closed by remote host.
+Connection to 192.168.1.197 closed.
+pengwei@BoardServer2:~$ 
+pengwei@BoardServer2:~$ 
+pengwei@BoardServer2:~$ 
+pengwei@BoardServer2:~$ ll
+total 1627544
+drwxr-xr-x   7 pengwei User       4096  2æœˆ 14 09:03 ./
+drwxr-xr-x 204 root    root       4096  1æœˆ 14 14:10 ../
+-rw-------   1 pengwei User       3634  2æœˆ 13 17:49 .bash_history
+-rw-r--r--   1 pengwei User        220  9æœˆ 25 14:58 .bash_logout
+-rw-r--r--   1 pengwei User       3724  9æœˆ 25 14:58 .bashrc
+drwxr-xr-x   2 pengwei User       4096  1æœˆ 18 14:26 benchmarksql/
+drwxr-xr-x   2 pengwei User       4096 12æœˆ 14 15:33 bios/
+drwx------   2 pengwei User       4096  9æœˆ 25 14:58 .cache/
+lrwxrwxrwx   1 pengwei User         49  2æœˆ 12 15:41 config -> /home/hisilicon/ftp/grub.cfg-01-c0-a8-02-c6-00-04
+-rw-r--r--   1 pengwei User       8980  9æœˆ 25 14:58 examples.desktop
+-rw-r--r--   1 pengwei User       1595  9æœˆ 25 14:58 grub.cfg
+-rw-r--r--   1 pengwei User    2263563  1æœˆ 16 11:10 lmbench-3.0-a9.zip
+-rw-r--r--   1 pengwei User     943588  1æœˆ 16 15:09 lmbench.tar.gz
+drwxr-xr-x   2 pengwei User       4096 12æœˆ 11 16:35 mariaDB/
+-rw-r--r--   1 pengwei User   50702462  1æœˆ 18 15:10 openjdk-1.7.tar.gz
+-rw-r--r--   1 pengwei User     134279  1æœˆ  3 20:19 perf.svg
+-rw-r--r--   1 pengwei User        675  9æœˆ 25 14:58 .profile
+-rw-r--r--   1 pengwei User       5658 11æœˆ 22 16:54 py.log
+-rw-r--r--   1 pengwei User   22802018 11æœˆ 22 16:08 Python-3.7.1.tgz
+-rw-r--r--   1 pengwei User       2621  1æœˆ 22 10:02 spec_ref.tar.gz
+-rw-r--r--   1 pengwei User 1589352081  1æœˆ 16 11:15 spec.tar.gz
+drwx------   2 pengwei User       4096 11æœˆ 23 13:35 .ssh/
+-rw-r--r--   1 pengwei User     308969  1æœˆ 17 10:13 stream.tar.gz
+lrwxrwxrwx   1 pengwei User         27  9æœˆ 25 14:58 tftp -> /home/hisilicon/ftp/pengwei/
+-rw-------   1 pengwei User        870  2æœˆ 14 09:03 .Xauthority
+pengwei@BoardServer2:~$ board_list
+pengwei possessed boards list:
+Idx: Board No Board Type -> Shared Users
+  1:      177        D05 -> liweijie: 745446887@qq.com; lihang: lihang48@hisilicon.com; xiaojun: xiaojun2@hisilicon.com; lixianfa: lixianfa@huawei.com; luxianjun: luxianjun1@huawei.com; wangxiaochun: wangxiaochun@huawei.com; liuxl: z.liuxinliang@hisilicon.com; zhuweilun: zhuweilun@huawei.com; tiantao: tiantao@huawei.com; gaozhangfei: zhangfei.gao@linaro.org; huangming: huangming23@huawei.com; zhangfeng: zhangfeng56@huawei.com; 
+  2:      209        D05 -> liweijie: 745446887@qq.com; lihang: lihang48@hisilicon.com; xiaojun: xiaojun2@hisilicon.com; liuxl: z.liuxinliang@hisilicon.com; zhuweilun: zhuweilun@huawei.com; tanxiaojun: tanxiaojun@huawei.com; 
+  3:      198        D05 -> liweijie: 745446887@qq.com; lihang: lihang48@hisilicon.com; xiaojun: xiaojun2@hisilicon.com; epfcloud: babak.falsafi@epfl.ch; liuxl: z.liuxinliang@hisilicon.com; zhuweilun: zhuweilun@huawei.com; 
+pengwei@BoardServer2:~$ 
+pengwei@BoardServer2:~$ 
+pengwei@BoardServer2:~$ board_connect 3
+z.liuxinliang@hisilicon.com is using the board on 198
+if you really want to use it, please contact with him
+pengwei@BoardServer2:~$ 
+pengwei@BoardServer2:~$ board_connect 2
+/home/pengwei/grub.cfg  #sync to#  /home/hisilicon/ftp/grub.cfg-01-c0-a8-02-d1-00-04
+Connected to board: No=209, type=D05.
+Info: SOL payload already de-activated
+[SOL Session operational.  Use ~? for help]
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# pwd
+/root
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# cd /home
+[root@localhost home]# ll
+total 0
+[root@localhost home]# pwd
+/home
+[root@localhost home]# cd ..
+[root@localhost /]# ll
+total 20
+lrwxrwxrwx.   1 root root    7 Aug 12  2018 bin -> usr/bin
+dr-xr-xr-x.   6 root root 4096 Jan 30 01:10 boot
+drwxr-xr-x.  19 root root 3180 Jan 30 01:55 dev
+drwxr-xr-x. 113 root root 8192 Jan 30 01:10 etc
+drwxr-xr-x.   2 root root    6 Aug 12  2018 home
+lrwxrwxrwx.   1 root root    7 Aug 12  2018 lib -> usr/lib
+lrwxrwxrwx.   1 root root    9 Aug 12  2018 lib64 -> usr/lib64
+drwxr-xr-x.   2 root root    6 Aug 12  2018 media
+drwxr-xr-x.   2 root root    6 Aug 12  2018 mnt
+drwxr-xr-x.   2 root root    6 Aug 12  2018 opt
+dr-xr-xr-x. 650 root root    0 Dec 31  1969 proc
+dr-xr-x---.   2 root root  135 Jan 31 03:31 root
+drwxr-xr-x.  39 root root 1020 Jan 30 01:55 run
+lrwxrwxrwx.   1 root root    8 Aug 12  2018 sbin -> usr/sbin
+drwxr-xr-x.   2 root root    6 Aug 12  2018 srv
+dr-xr-xr-x.  12 root root    0 Jan 30 01:09 sys
+drwxrwxrwt.   3 root root   85 Feb 13 03:31 tmp
+drwxr-xr-x.  12 root root  144 Jan 29 22:43 usr
+drwxr-xr-x.  22 root root 4096 Jan 30 01:09 var
+[root@localhost /]# 
+[root@localhost /]# 
+[root@localhost /]# 
+[root@localhost /]# P/usr/local/openlab/Include/bmcop.sh: line 28: 26462 Killed                  $bmc_op_cmd
+                                                                        pengwei@BoardServer2:~$ pengwei@BoardServer2:~$ pengwei@BoardServer2:~$ pengwei@BoardServer2:~$ pengwei@Boar
